@@ -1,0 +1,46 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://localhost:3306/STAR_WARS_PROJECT?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
+    username: root
+    password: 1234
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+
+
+  #  sql:
+  #    init:
+  #      mode: always
+  jpa:
+    # Choose either MySQL 8 or MySQL 5 below
+    # For MySQL 8
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    #For MySQL 5
+    #database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
+  #Cloudinary Properties
+  cloudinary:
+    api-key: 459979215534265
+    api-secret: ${CLOUDINARY_API_SECRET}
+    cloud-name: dedh1hh8k
+
+  #Passwords for the first 2 users that are auto initialized in the DataBase: Admin and User
+  STAR_WARS_PROJECT:
+    admin:
+      defaultPasswordForAdmin: ${DEFAULT_PASS_ADMIN:test}
+    user:
+      defaultPasswordForUser: ${DEFAULT_PASS_USER:test}

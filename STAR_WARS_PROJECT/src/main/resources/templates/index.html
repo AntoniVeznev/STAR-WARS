@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{/fragments/commons::head}"></head>
+<body class="body-login">
+
+<nav th:replace="~{/fragments/commons::navigation}"></nav>
+
+
+<!--Hero START-->
+<section class="hero  ">
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" loading="lazy" class="hero__video">
+        <source src="/videos/header-video.mp4.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero__content h-100 container-custom position-relative">
+        <div class="d-flex h-100 align-items-center hero__content-width">
+            <div class="text-white">
+                <h1 class="hero__heading fw-bold mb-4">Welcome to our Star Wars fan website.</h1>
+                <p class="lead mb-4">This video is part of Star Wars: Revenge of the Sith (Episode III).
+                    Feel free to check all Star Wars movies by clicking the button below.</p>
+                <a href="/movies/catalogue" class="mt-2 btn btn-lg btn-outline-light" role="button">
+                    All Movies</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Hero END-->
+
+<!--<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item w-100" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+</div>-->
+
+<!--Top three movies START-->
+<h2 class="threeTopMovies-h2 ">Latest Star Wars Movies:</h2>
+<div class="card-group ">
+    <div th:each="ltm : ${latestStarWarsMovies}" th:object="${ltm}" class="card">
+        <img th:src="*{picture.getPictureUrl()}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 th:text="*{title}" class="card-title">Star Wars: Episode V - The Empire Strikes Back (1980)</h5>
+            <!--<p th:text="*{description}" class="card-text">After the Rebels are brutally overpowered by the Empire on the
+                ice planet Hoth,
+                Luke Skywalker begins Jedi training with Yoda, while his friends are pursued across the galaxy
+                by Darth Vader and bounty hunter Boba Fett.</p>-->
+        </div>
+        <div class="card-footer ">
+            <a th:href="@{/movies/details/{id}(id=*{id})}" class="mt-2 btn btn-lg btn-outline-light" role="button">More
+                Details</a>
+        </div>
+    </div>
+
+</div>
+<!--Top three movies END-->
+
+
+<!--Hero START-->
+<section class="hero ">
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" loading="lazy" class="serial__video">
+        <source src="/videos/Luthen%20Rael%20Tie%20Fighter%20Chase%20Scene%20%5B4K%20HDR%5D%20-%20Star%20Wars%20Andor.mp4"
+                type="video/mp4">
+    </video>
+    <div class="hero__content h-100 container-custom position-relative">
+        <div class="d-flex h-100 align-items-center hero__content-width">
+            <div class="text-white">
+                <h1 class="hero__heading fw-bold mb-4">Star Wars: Andor</h1>
+                <p class="lead mb-4">Maybe you've seen all the movies, and now it is time to dive into a new adventure
+                    with some Star Wars TV Series.</p>
+                <a href="/series/catalogue" class="mt-2 btn btn-lg btn-outline-light" role="button">All TV Series</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Hero END-->
+
+
+<!--Last three serials START-->
+<h2 class="lastThreeSerials-h2">Latest Star Wars - TV Series:</h2>
+<div class="card-group">
+    <div th:each="lts : ${latestStarWarsSeries}" th:object="${lts}" class="card">
+        <img th:src="*{picture.getPictureUrl()}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 th:text="*{title}" class="card-title">Star Wars: Andor (2022)</h5>
+            <!--<p th:text="*{description}" class="card-text">Prequel series to Star Wars' 'Rogue One'. In an era filled
+                with danger, deception
+                and intrigue, Cassian will embark on the path that is destined to turn him into a Rebel hero.
+            </p>-->
+        </div>
+        <div class="card-footer">
+            <a th:href="@{/series/details/{id}(id=*{id})}" class="mt-2 btn btn-lg btn-outline-light" role="button">More
+                Details</a>
+        </div>
+    </div>
+
+</div>
+<!--Last three serials END-->
+
+<!--Last NEWS START-->
+<th:block th:if="${notEnoughNews == false}">
+    <h2 class="latestThreeNews-h2">Latest News:</h2>
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner ">
+            <div class="carousel-item active" th:object="${latestStarWarsNews.get(0)}">
+                <img  th:src="*{picture.getPictureUrl()}"  class="h-auto d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h5 th:text="${latestStarWarsNews.get(0).title}">Star Wars Jedi: Survivor</h5>
+                  <!--  <p th:text="${latestStarWarsNews.get(0).description.substring(0,100)}">Stand against the darkness on March 17,
+                        2023.</p>-->
+                    <a th:href="@{/news/details/{id}(id=*{id})}" class="mt-2 btn btn-lg btn-outline-light"
+                       role="button">Read More...</a>
+                </div>
+            </div>
+            <div class="carousel-item" th:object="${latestStarWarsNews.get(1)}">
+                <img th:src="*{picture.getPictureUrl()}" class="h-auto d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h5 th:text="${latestStarWarsNews.get(1).title}">Star Wars Jedi: Survivor</h5>
+                    <!--<p th:text="${latestStarWarsNews.get(1).description.substring(0,100)}">Stand against the darkness on March 17,
+                        2023.</p>-->
+                    <a th:href="@{/news/details/{id}(id=*{id})}" class="mt-2 btn btn-lg btn-outline-light"
+                       role="button">Read More...</a>
+                </div>
+            </div>
+            <div class="carousel-item" th:object="${latestStarWarsNews.get(2)}">
+                <img th:src="*{picture.getPictureUrl()}" class="h-auto d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h5 th:text="${latestStarWarsNews.get(2).title}">Star Wars Jedi: Survivor</h5>
+                    <!--<p th:text="${latestStarWarsNews.get(2).description.substring(0,100)}">Stand against the darkness on March 17,
+                        2023.</p>-->
+                    <a th:href="@{/news/details/{id}(id=*{id})}" class="mt-2 btn btn-lg btn-outline-light"
+                       role="button">Read More...</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+</th:block>
+
+
+<!--Last NEWS END-->
+
+
+<!--GAMES START-->
+<div class="invisible"></div>
+<section class="hero">
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" loading="lazy" class="game__video">
+        <source src="/videos/3.%20cutted%20game%20video.mp4" type="video/mp4">
+    </video>
+    <div class="hero__content h-100 container-custom position-relative">
+        <div class="d-flex h-100 align-items-center hero__content-width">
+            <div class="text-white">
+                <h1 class="hero__heading fw-bold mb-4">Star Wars Jedi: Survivor</h1>
+                <p class="lead mb-4">This video is part of Star Wars Jedi: Survivor. The game is not released yet but
+                    here
+                    you can check all Star Wars Games.</p>
+                <a href="/games/catalogue" class="mt-2 btn btn-lg btn-outline-light" role="button">All Games</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--GAMES END-->
+
+
+<!--Footer START-->
+<footer th:replace="~{/fragments/commons::footer}"></footer>
+<!--Footer END-->
+
+<script th:replace="~{/fragments/commons::script}"></script>
+
+</body>
+</html>
+

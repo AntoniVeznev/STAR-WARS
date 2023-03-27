@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{/fragments/commons::head}"></head>
+<body>
+<nav th:replace="~{/fragments/commons::navigation}"></nav>
+
+<th:block>
+
+    <div id="main-news" class="container">
+        <section class="border-bottom pb-4 mb-5 pt-5">
+            <div class="row gx-5">
+                <div class="col-md-6 mb-4">
+                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                        <img th:src="${news.picture.pictureUrl}" class="img-fluid" alt=""/>
+                        <a th:href="@{/news/details/{id}(id=${news.id})}">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <span class="badge bg-danger px-2 py-1 shadow-1-strong mb-3">News of the day</span>
+                    <h4><strong th:text="${news.title}">Facilis consequatur eligendi</strong></h4>
+                    <p class="text" th:text="|${news.description.substring(0,100)}...|">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
+                        eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
+                        sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
+                    </p>
+                    <a th:href="@{/news/details/{id}(id=${news.id})}" class="mt-2 btn btn-lg btn-outline-light"
+                       role="button">Read More...</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="row gx-lg-5 ">
+                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 " th:each="an : ${allNews}" th:object="${an}">
+                    <div>
+                        <div class="bg-image hover-overlay shadow-1-strong ripple rounded-5 mb-4 "
+                             data-mdb-ripple-color="light">
+                            <img th:src="*{picture.getPictureUrl()}" class="img-fluid "/>
+                            <a th:href="@{/news/details/{id}(id=*{id})}">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+
+                        <div class="row mb-3 ">
+                            <div class="col-6">
+                                <a class="text-info">
+                                    <i class="fas fa-plane " th:text="|Posted by: *{authorName}|"></i>
+                                </a>
+                            </div>
+                            <div class="col-6 text-end text-info">
+                                <u th:text="|Posted: *{postDate.getDayOfMonth()} *{postDate.getMonth().toString().toUpperCase()} , *{postDate.getYear()} year|">
+                                    15.07.2020</u>
+                            </div>
+                        </div>
+
+                        <a th:href="@{/news/details/{id}(id=*{id})}" class="text-white">
+                            <h5 id="h5News" th:text="*{title}">This is title of the news</h5>
+                            <p id="pNews" th:text="|*{description.substring(0,100)}...|">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, iste aliquid. Sed
+                                id nihil magni, sint vero provident esse numquam perferendis ducimus dicta
+                                adipisci iusto nam temporibus modi animi laboriosam?
+                            </p>
+                        </a>
+                        <hr/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+</th:block>
+
+<!--Footer START-->
+<footer th:replace="~{/fragments/commons::footer}"></footer>
+<!--Footer END-->
+
+<script th:replace="~{/fragments/commons::script}"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+package com.example.star_wars_project.model.entity;
+
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
+import java.util.Set;
+
+@Entity
+@Table(name = "games")
+public class Game extends BaseEntity {
+    private String title;
+    private String description;
+    private String videoUrl;
+    private LocalDate releaseDate;
+    private Set<Platform> platforms;
+    private User author;
+
+    public Game() {
+    }
+
+    @Column(unique = true, nullable = false, columnDefinition = "LONGTEXT")
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Column(unique = true, nullable = false, columnDefinition = "LONGTEXT")
+    public String getDescription() {
+        return description;
+    }
+
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
+    @Column(name = "video_url", nullable = false, columnDefinition = "TEXT")
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+
+    @Column(name = "release_date")
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    @ManyToMany
+    public Set<Platform> getPlatforms() {
+        return platforms;
+    }
+
+    public void setPlatforms(Set<Platform> platforms) {
+        this.platforms = platforms;
+    }
+
+    @ManyToOne
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+}

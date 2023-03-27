@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{/fragments/commons::head}"></head>
+<body>
+<nav th:replace="~{/fragments/commons::navigation}"></nav>
+
+<div
+        th:action="@{/serials/catalogue/{id}(id=*{id})}"
+        th:method="GET"
+        th:object="${currentSerial}">
+
+    <div class="container poster one-column align-content-center" data-title="Solo: A Star Wars Story">
+        <div class="title">
+            <h1 th:text="*{title}" class="h1detailstest text-light catalog-title ">Solo: A Star Wars Story</h1>
+            <div class="flex-meta">
+                <div class="meta-config-compact">
+                    <div class="meta-compact">
+                        <div class="text-light meta-title flex-meta-item">
+                            <p th:text="|Genre: *{genre.name}|" class="p1detailstest  meta-value">Genre: Science
+                                Fiction</p>
+                            <p th:text="|Release Date: *{releaseDate.getMonth().toString().toUpperCase()} *{releaseDate.getDayOfMonth()}, *{releaseDate.getYear()} year|" class="p2detailstest meta">Release Date:
+                                23.05.2018y</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p th:text="*{description}" class="desc text-light"> Board the Millennium Falcon and journey to a galaxy
+                far, far away in Solo: A
+                Star Wars
+                Story, an all-new adventure with the most beloved scoundrel in the galaxy. Through a series of daring
+                escapades deep within a dark and dangerous criminal underworld, Han Solo meets his mighty future copilot
+                Chewbacca and encounters the notorious gambler Lando Calrissian, in a journey that will set the course
+                of one of the Star Wars saga’s most unlikely heroes.
+            </p>
+
+        </div>
+        <div class="poster-container">
+            <div class="poster-inner poster-box ">
+                <div class="poster">
+                    <img th:src="${picture.pictureUrl}" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Footer START-->
+<footer th:replace="~{/fragments/commons::footer}"></footer>
+<!--Footer END-->
+
+<script th:replace="~{/fragments/commons::script}"></script>
+
+</body>
+</html>

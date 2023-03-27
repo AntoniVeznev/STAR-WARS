@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{/fragments/commons::head}"></head>
+<body>
+<nav th:replace="~{/fragments/commons::navigation}"></nav>
+
+<div class="blog-single gray-bg bg-black"
+     th:action="@{/news/details/{id}(id=*{id})}"
+     th:method="GET"
+     th:object="${currentNews}">
+    <div class="container-fluid ">
+        <div class="align-items-center ">
+            <div class="lg-8 m-15px-tb ">
+                <article class="article bg-black ">
+                    <div id="divNewsDetail" class="article-img pt-5">
+                        <img th:src="${picture.getPictureUrl()}" class="img-fluid"  id="imgRespNews" title="" alt="">
+                    </div>
+                    <div class="row mb-3 ">
+                        <div class="col-6">
+                            <a class="text-info">
+                                <i class="fas fa-plane " th:text="|Posted by: *{author.username}|">Posted by: </i>
+                            </a>
+                        </div>
+                        <div class="col-6 text-end text-info">
+                            <u th:text="|Published: *{postDate.getHour()}:*{postDate.getMinute()} h. --- *{postDate.getDayOfMonth()} *{postDate.getMonth().toString().toUpperCase()} , *{postDate.getYear()} year|">
+                                15.07.2020</u>
+                        </div>
+                    </div>
+                    <div class="article-title text-center text-white pt-5 border-bottom">
+                        <h2 th:text="*{title}">They Now Bade Farewell To The Kind But Unseen People</h2>
+                    </div>
+                    <div class="article-content text-center  text-white pt-5 border-top border-bottom">
+                        <p th:text="*{description}">Aenean eleifend ante maecenas pulvinar montes lorem et pede dis dolor pretium donec dictum.
+                            Vici consequat justo enim. Venenatis eget adipiscing luctus lorem. Adipiscing veni amet
+                            luctus enim sem libero tellus viverra venenatis aliquam. Commodo natoque quam pulvinar
+                            elit.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Footer START-->
+<footer th:replace="~{/fragments/commons::footer}"></footer>
+<!--Footer END-->
+
+<script th:replace="~{/fragments/commons::script}"></script>
+
+</body>
+</html>
