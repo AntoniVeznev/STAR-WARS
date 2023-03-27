@@ -40,7 +40,7 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<AllMoviesViewModel> latestStarWarsMovies() {
         return movieRepository
-                .findNewestThreeMoviesByReleaseDate()
+                .findNewestFourMoviesByReleaseDate()
                 .stream()
                 .map(newestMovie -> {
                     AllMoviesViewModel newestMovies =
@@ -64,8 +64,6 @@ public class MovieServiceImpl implements MovieService {
         movie.setAuthor(userRepository.findUserByUsername(currentUserUsername).orElse(null));
         movie.setGenre(genreRepository.findByName(movieAddBindingModel.getGenre()));
         movieRepository.save(movie);
-
-        //TODO: >>>>>>>>>>> PICTURE TEST CODE BELOW:
 
         MultipartFile pictureMultipartFile = movieAddBindingModel.getPicture();
         String pictureMultipartFileTitle = movieAddBindingModel.getPictureTitle();

@@ -46,7 +46,7 @@ public class AddController {
     }
 
     @PostMapping("/news")
-    public String addMovieConfirm(@Valid NewsAddBindingModel newsAddBindingModel,
+    public String addNewsConfirm(@Valid NewsAddBindingModel newsAddBindingModel,
                                   BindingResult bindingResult,
                                   RedirectAttributes redirectAttributes,
                                   Principal principal) throws IOException {

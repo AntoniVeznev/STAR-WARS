@@ -15,5 +15,5 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     List<Movie> findAllMoviesByReleaseDate();
 
     @Query("select m from Movie m order by m.releaseDate desc limit 4")
-    List<Movie> findNewestThreeMoviesByReleaseDate();
+    List<Movie> findNewestFourMoviesByReleaseDate();
 }

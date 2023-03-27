@@ -25,12 +25,11 @@ public class SeriesServiceImpl implements SeriesService {
     private final SeriesRepository seriesRepository;
     private final UserRepository userRepository;
     private final GenreRepository genreRepository;
-
     private final ModelMapper modelMapper;
     private final CloudinaryService cloudinaryService;
     private final PictureRepository pictureRepository;
 
-    public SeriesServiceImpl(SeriesRepository seriesRepository, UserRepository userRepository, GenreRepository genreRepository,  ModelMapper modelMapper, CloudinaryService cloudinaryService, PictureRepository pictureRepository) {
+    public SeriesServiceImpl(SeriesRepository seriesRepository, UserRepository userRepository, GenreRepository genreRepository, ModelMapper modelMapper, CloudinaryService cloudinaryService, PictureRepository pictureRepository) {
         this.seriesRepository = seriesRepository;
         this.userRepository = userRepository;
         this.genreRepository = genreRepository;
@@ -57,7 +56,7 @@ public class SeriesServiceImpl implements SeriesService {
     @Override
     public List<AllSerialsViewModel> latestStarWarsSerials() {
         return seriesRepository
-                .findNewestThreeSeriesByReleaseDate()
+                .findNewestFourSeriesByReleaseDate()
                 .stream()
                 .map(newestSerial -> {
                     AllSerialsViewModel serial =

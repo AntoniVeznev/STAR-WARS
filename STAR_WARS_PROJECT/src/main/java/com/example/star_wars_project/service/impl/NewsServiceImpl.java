@@ -1,6 +1,6 @@
 package com.example.star_wars_project.service.impl;
 
-import com.example.star_wars_project.model.binding.GameAddBindingModel;
+
 import com.example.star_wars_project.model.binding.NewsAddBindingModel;
 import com.example.star_wars_project.model.entity.*;
 import com.example.star_wars_project.model.view.AllNewsViewModel;
@@ -91,6 +91,5 @@ public class NewsServiceImpl implements NewsService {
                     return currentNews;
                 }).collect(Collectors.toList());
     }
-
 
 }

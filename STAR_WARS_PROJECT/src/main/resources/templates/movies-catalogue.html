@@ -8,9 +8,8 @@
 <nav th:replace="~{/fragments/commons::navigation}"></nav>
 
 <h2 class="threeTopMovies-h2">All Movies ordered by release year:</h2>
-
 <div class="row row-cols-1 row-cols-md-4 g-2">
-    <div th:each="m : ${movies}" th:object="${m}"  class="col">
+    <div class="col" th:each="m : ${movies}" th:object="${m}">
         <div class="card h-100">
             <img th:src="*{picture.getPictureUrl()}" class="card-img-top" alt="...">
             <div class="card-body">

@@ -12,10 +12,19 @@ public class Game extends BaseEntity {
     private String description;
     private String videoUrl;
     private LocalDate releaseDate;
-    private Set<Platform> platforms;
+    private Platform platform;
     private User author;
 
     public Game() {
+    }
+
+    @OneToOne
+    public Platform getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(Platform platform) {
+        this.platform = platform;
     }
 
     @Column(unique = true, nullable = false, columnDefinition = "LONGTEXT")
@@ -56,14 +65,6 @@ public class Game extends BaseEntity {
         this.releaseDate = releaseDate;
     }
 
-    @ManyToMany
-    public Set<Platform> getPlatforms() {
-        return platforms;
-    }
-
-    public void setPlatforms(Set<Platform> platforms) {
-        this.platforms = platforms;
-    }
 
     @ManyToOne
     public User getAuthor() {

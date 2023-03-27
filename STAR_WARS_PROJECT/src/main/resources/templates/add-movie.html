@@ -48,19 +48,6 @@
             </div>
         </div>
 
-        <!--<div class="form-group row">
-            <label for="description" class="col-sm-2 col-form-label">Description</label>
-            <div class="col-sm-10">
-                <input th:field="*{description}" th:errorclass="is-invalid" type="text" class="form-control"
-                       id="description"
-                       aria-describedby="descriptionHelpInline" placeholder="Description">
-                <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" id="descriptionHelpInline"
-                       class="invalid-feedback bg-danger text-light rounded">
-                    Description cant be empty.
-                </small>
-            </div>
-        </div>-->
-
         <div class="form-group row">
             <label for="description" class="col-sm-2 col-form-label">Description:</label>
             <div class="col-sm-10">
@@ -82,7 +69,8 @@
                         aria-describedby="genresHelpInline">
                     <option value="" selected>Genres</option>
                     <option th:each="g : ${T(com.example.star_wars_project.model.entity.enums.GenreNameEnum).values()}"
-                            th:value="${g}" th:text="${g}">Action
+                            th:value="${g}"
+                            th:text="${g}">Action
                     </option>
                 </select>
                 <small id="genresHelpInline" class="invalid-feedback bg-danger text-light rounded">
@@ -91,20 +79,6 @@
             </div>
         </div>
 
-        <!--test check box-->
-
-        <!--ГОРЕ ЗАКОМЕНТИРАХ ВРЕМЕННО ЖАНРОВЕТЕ И ТУК УЖ ПРОБВАМ ДА НАПРАВЯ ЧЕК БОКС-->
-       <!-- <div class="form-group row-cols-0" th:field="*{genre}">
-            <div>
-                <div class="form-check form-check-inline"
-                     th:each="g : ${T(com.example.star_wars_project.model.entity.enums.GenreNameEnum).values()}">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" >
-                    <label  class="form-check-label" for="inlineCheckbox1">1</label>
-                </div>
-            </div>
-        </div>-->
-
-        <!--test check box-->
 
         <div class="form-group row">
             <label for="title" class="col-sm-2 col-form-label">Picture title</label>

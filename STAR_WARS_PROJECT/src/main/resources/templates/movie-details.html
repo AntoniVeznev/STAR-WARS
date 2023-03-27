@@ -19,11 +19,19 @@
                 <div class="meta-config-compact">
                     <div class="meta-compact">
                         <div class="text-light meta-title flex-meta-item">
-                            <p th:text="|Genre: *{genre.name}|" class="p1detailstest  meta-value">Genre: Science
-                                Fiction</p>
-                            <p th:text="|Release Date: *{releaseDate.getMonth().toString().toUpperCase()} *{releaseDate.getDayOfMonth()}, *{releaseDate.getYear()} year|"
-                               class="p2detailstest meta">Release Date:
-                                23.05.2018y</p>
+                            <a class="text-info">
+                                <p th:text="|Genre: *{genre.name},|" class="p1detailstest  meta-value">Genre: Science
+                                    Fiction</p>
+                            </a>
+                            <a class="text-info">
+                                <p th:text="|Release Date: *{releaseDate.getMonth().toString().toUpperCase()} *{releaseDate.getDayOfMonth()}, *{releaseDate.getYear()} year|"
+                                   class="p2detailstest meta">Release Date:
+                                    23.05.2018y</p>
+                            </a>
+
+
+
+
                         </div>
                     </div>
                 </div>

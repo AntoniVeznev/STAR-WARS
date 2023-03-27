@@ -5,7 +5,6 @@ import com.example.star_wars_project.model.entity.Game;
 import com.example.star_wars_project.model.entity.Picture;
 import com.example.star_wars_project.model.entity.Platform;
 import com.example.star_wars_project.model.view.AllGamesViewModel;
-import com.example.star_wars_project.model.view.AllMoviesViewModel;
 import com.example.star_wars_project.repository.GameRepository;
 import com.example.star_wars_project.repository.PictureRepository;
 import com.example.star_wars_project.repository.PlatformRepository;
@@ -64,11 +63,9 @@ public class GameServiceImpl implements GameService {
         Game game = modelMapper.map(gameAddBindingModel, Game.class);
         game.setAuthor(userRepository.findUserByUsername(currentUserUsername).orElse(null));
 
-        Set<Platform> platforms = new HashSet<>();
-        Platform platformByName = platformRepository.findPlatformByName(gameAddBindingModel.getPlatform());
-        platforms.add(platformByName);
 
-        game.setPlatforms(platforms);
+        game.setPlatform(platformRepository.findPlatformByName(gameAddBindingModel.getPlatform()));
+
         gameRepository.save(game);
 
         MultipartFile pictureMultipartFile = gameAddBindingModel.getPicture();

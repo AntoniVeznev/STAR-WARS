@@ -7,11 +7,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 public class MovieAddBindingModel {
     private String title;
     private LocalDate releaseDate;
     private GenreNameEnum genre;
+
     private String description;
     private String pictureTitle;
     private MultipartFile picture;

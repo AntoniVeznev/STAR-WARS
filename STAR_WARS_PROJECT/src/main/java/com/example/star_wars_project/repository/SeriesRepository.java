@@ -15,5 +15,5 @@ public interface SeriesRepository extends JpaRepository<Series, Long> {
     List<Series> findAllSeriesByReleaseDate();
 
     @Query("select s from Series s order by s.releaseDate desc limit 4")
-    List<Series> findNewestThreeSeriesByReleaseDate();
+    List<Series> findNewestFourSeriesByReleaseDate();
 }
