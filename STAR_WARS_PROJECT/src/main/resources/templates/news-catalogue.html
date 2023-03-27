@@ -24,7 +24,7 @@
                 <div class="col-md-6 mb-4">
                     <span class="badge bg-danger px-2 py-1 shadow-1-strong mb-3">News of the day</span>
                     <h4><strong th:text="${news.title}">Facilis consequatur eligendi</strong></h4>
-                    <p class="text" th:text="|${news.description.substring(0,100)}...|">
+                    <p class="text" th:text="|${news.description.substring(0,50)}...|">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
                         eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
                         sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
@@ -61,7 +61,7 @@
 
                         <a th:href="@{/news/details/{id}(id=*{id})}" class="text-white">
                             <h5 id="h5News" th:text="*{title}">This is title of the news</h5>
-                            <p id="pNews" th:text="|*{description.substring(0,100)}...|">
+                            <p id="pNews" th:text="|*{description.substring(0,50)}...|">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, iste aliquid. Sed
                                 id nihil magni, sint vero provident esse numquam perferendis ducimus dicta
                                 adipisci iusto nam temporibus modi animi laboriosam?

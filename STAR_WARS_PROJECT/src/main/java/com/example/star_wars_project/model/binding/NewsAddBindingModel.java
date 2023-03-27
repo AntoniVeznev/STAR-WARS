@@ -37,7 +37,7 @@ public class NewsAddBindingModel {
     public void setPostDate(LocalDateTime postDate) {
         this.postDate = postDate;
     }
-    @Length(min = 10, max = 10000, message = "Description length must be between 10 and 10000 characters!")
+    @Length(min = 50, max = 10000, message = "Description length must be between 10 and 10000 characters!")
     public String getDescription() {
         return description;
     }
