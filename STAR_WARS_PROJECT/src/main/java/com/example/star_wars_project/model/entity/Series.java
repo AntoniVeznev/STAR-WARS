@@ -13,9 +13,19 @@ public class Series extends BaseEntity {
     private User author;
     private Genre genre;
 
+    private Boolean isApproved;
 
     public Series() {
     }
+    @Column
+    public Boolean getApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(Boolean approved) {
+        isApproved = approved;
+    }
+
     @ManyToOne
     public Genre getGenre() {
         return genre;

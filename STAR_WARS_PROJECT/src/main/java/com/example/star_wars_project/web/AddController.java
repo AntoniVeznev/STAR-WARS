@@ -25,16 +25,12 @@ public class AddController {
     private final SeriesService seriesService;
     private final NewsService newsService;
     private final GameService gameService;
-    private final PictureService pictureService;
-    private final CloudinaryService cloudinaryService;
 
-    public AddController(MovieService movieService, SeriesService seriesService, NewsService newsService, GameService gameService, PictureService pictureService, CloudinaryService cloudinaryService) {
+    public AddController(MovieService movieService, SeriesService seriesService, NewsService newsService, GameService gameService) {
         this.movieService = movieService;
         this.seriesService = seriesService;
         this.newsService = newsService;
         this.gameService = gameService;
-        this.pictureService = pictureService;
-        this.cloudinaryService = cloudinaryService;
     }
 
     @GetMapping("/news")

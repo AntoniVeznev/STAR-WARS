@@ -16,4 +16,9 @@ public interface NewsRepository extends JpaRepository<News, Long> {
 
     @Query("SELECT n from News n order by n.postDate desc ")
     List<News> findAllNewsOrderedByNewestToOldest();
+
+    @Query("select n from News n where n.approved = null or n.approved=false")
+    List<News> findNewsThatAreNotApproved();
+
+    News findNewsById(Long id);
 }

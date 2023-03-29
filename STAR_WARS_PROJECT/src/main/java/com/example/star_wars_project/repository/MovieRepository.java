@@ -16,4 +16,9 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     @Query("select m from Movie m order by m.releaseDate desc limit 4")
     List<Movie> findNewestFourMoviesByReleaseDate();
+
+    @Query("select m from Movie m where m.approved = null or m.approved=false")
+    List<Movie> findMoviesThatAreNotApproved();
+
+    Movie findMovieById(Long id);
 }

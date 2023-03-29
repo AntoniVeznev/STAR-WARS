@@ -15,7 +15,18 @@ public class Game extends BaseEntity {
     private Platform platform;
     private User author;
 
+    private Boolean isApproved;
+
     public Game() {
+    }
+
+    @Column
+    public Boolean getApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(Boolean approved) {
+        isApproved = approved;
     }
 
     @OneToOne

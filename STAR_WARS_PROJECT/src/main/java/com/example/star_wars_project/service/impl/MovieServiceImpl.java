@@ -81,6 +81,19 @@ public class MovieServiceImpl implements MovieService {
 
     }
 
+    @Override
+    public List<AllMoviesViewModel> findAllMoviesWithValueNullOrFalse() {
+        return movieRepository
+                .findMoviesThatAreNotApproved()
+                .stream()
+                .map(movie -> {
+                    AllMoviesViewModel currentMovie = modelMapper.map(movie, AllMoviesViewModel.class);
+                    Picture pictureByMovieId = pictureRepository.findPictureByMovie_Id(movie.getId());
+                    currentMovie.setPicture(pictureByMovieId);
+                    return currentMovie;
+                }).collect(Collectors.toList());
+    }
+
 
     @Override
     public List<AllMoviesViewModel> findAllMoviesOrderedByReleaseDate() {
@@ -93,5 +106,19 @@ public class MovieServiceImpl implements MovieService {
                     currentMovie.setPicture(pictureByMovieId);
                     return currentMovie;
                 }).collect(Collectors.toList());
+    }
+
+    @Override
+    public void approveMovieWithId(Long id) {
+        Movie movie = movieRepository.findMovieById(id);
+        movie.setApproved(true);
+        movieRepository.save(movie);
+    }
+
+    @Override
+    public void deleteMovieWithId(Long id) {
+        List<Picture> allByMovieId = pictureRepository.findAllByMovie_Id(id);
+        pictureRepository.deleteAll(allByMovieId);
+        movieRepository.deleteById(id);
     }
 }

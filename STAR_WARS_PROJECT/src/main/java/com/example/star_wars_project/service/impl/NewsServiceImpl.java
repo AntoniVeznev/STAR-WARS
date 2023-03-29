@@ -92,4 +92,31 @@ public class NewsServiceImpl implements NewsService {
                 }).collect(Collectors.toList());
     }
 
+    @Override
+    public List<AllNewsViewModel> findAllNewsWithValueNullOrFalse() {
+        return newsRepository
+                .findNewsThatAreNotApproved()
+                .stream()
+                .map(news -> {
+                    AllNewsViewModel currentNews = modelMapper.map(news, AllNewsViewModel.class);
+                    Picture pictureByNewsId = pictureRepository.findPictureByNews_Id(news.getId());
+                    currentNews.setPicture(pictureByNewsId);
+                    return currentNews;
+                }).collect(Collectors.toList());
+    }
+
+    @Override
+    public void approveNewsWithId(Long id) {
+        News news = newsRepository.findNewsById(id);
+        news.setApproved(true);
+        newsRepository.save(news);
+    }
+
+    @Override
+    public void deleteNewsWithId(Long id) {
+        List<Picture> allByNewsId = pictureRepository.findAllByNews_Id(id);
+        pictureRepository.deleteAll(allByNewsId);
+        newsRepository.deleteById(id);
+    }
+
 }

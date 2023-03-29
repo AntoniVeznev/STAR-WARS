@@ -15,7 +15,16 @@ public class News extends BaseEntity {
     private LocalDateTime postDate;
     private User author;
 
+    private Boolean isApproved;
     public News() {
+    }
+@Column
+    public Boolean getApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(Boolean approved) {
+        isApproved = approved;
     }
 
     @Column(unique = true, nullable = false, columnDefinition = "LONGTEXT")

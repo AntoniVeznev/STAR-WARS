@@ -14,6 +14,8 @@ public interface GameRepository extends JpaRepository<Game, Long> {
     @Query("SELECT g FROM Game g order by g.releaseDate asc")
     List<Game> findAllGamesByReleaseDate();
 
+    @Query("select g from Game g where g.approved = null or g.approved=false")
+    List<Game> findGamesThatAreNotApproved();
 
-
+    Game findGameById(Long id);
 }

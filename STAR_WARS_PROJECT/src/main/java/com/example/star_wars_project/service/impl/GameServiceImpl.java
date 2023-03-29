@@ -3,7 +3,6 @@ package com.example.star_wars_project.service.impl;
 import com.example.star_wars_project.model.binding.GameAddBindingModel;
 import com.example.star_wars_project.model.entity.Game;
 import com.example.star_wars_project.model.entity.Picture;
-import com.example.star_wars_project.model.entity.Platform;
 import com.example.star_wars_project.model.view.AllGamesViewModel;
 import com.example.star_wars_project.repository.GameRepository;
 import com.example.star_wars_project.repository.PictureRepository;
@@ -17,9 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -81,5 +78,32 @@ public class GameServiceImpl implements GameService {
         picture.setGame(gameRepository.findGameByTitle(gameAddBindingModel.getTitle()));
         pictureRepository.save(picture);
 
+    }
+
+    @Override
+    public List<AllGamesViewModel> findAllGamesWithValueNullOrFalse() {
+        return gameRepository
+                .findGamesThatAreNotApproved()
+                .stream()
+                .map(game -> {
+                    AllGamesViewModel currentGame = modelMapper.map(game, AllGamesViewModel.class);
+                    Picture pictureByGameId = pictureRepository.findPictureByGame_Id(game.getId());
+                    currentGame.setPicture(pictureByGameId);
+                    return currentGame;
+                }).collect(Collectors.toList());
+    }
+
+    @Override
+    public void approveGameWithId(Long id) {
+        Game game = gameRepository.findGameById(id);
+        game.setApproved(true);
+        gameRepository.save(game);
+    }
+
+    @Override
+    public void deleteGameWithId(Long id) {
+        List<Picture> allByGameId = pictureRepository.findAllByGame_Id(id);
+        pictureRepository.deleteAll(allByGameId);
+        gameRepository.deleteById(id);
     }
 }

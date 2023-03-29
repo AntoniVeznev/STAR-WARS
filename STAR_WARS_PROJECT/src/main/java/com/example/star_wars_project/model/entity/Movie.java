@@ -13,8 +13,18 @@ public class Movie extends BaseEntity {
     private User author;
     private Genre genre;
 
+    private Boolean isApproved;
 
     public Movie() {
+    }
+
+    @Column()
+    public Boolean getApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(Boolean approved) {
+        isApproved = approved;
     }
 
     @ManyToOne

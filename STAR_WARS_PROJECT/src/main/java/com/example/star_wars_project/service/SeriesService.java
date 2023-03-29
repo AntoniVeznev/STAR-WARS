@@ -17,4 +17,10 @@ public interface SeriesService {
 
     void addSerial(SeriesAddBindingModel seriesAddBindingModel, String currentUserUsername) throws IOException;
 
+    List<AllSerialsViewModel> findAllSeriesWithValueNullOrFalse();
+
+    void approveSerialWithId(Long id);
+
+    void deleteSerialWithId(Long id);
+
 }

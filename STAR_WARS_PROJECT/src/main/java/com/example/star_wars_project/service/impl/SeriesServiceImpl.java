@@ -95,4 +95,31 @@ public class SeriesServiceImpl implements SeriesService {
         picture.setSeries(seriesRepository.findSeriesByTitle(seriesAddBindingModel.getTitle()));
         pictureRepository.save(picture);
     }
+
+    @Override
+    public List<AllSerialsViewModel> findAllSeriesWithValueNullOrFalse() {
+        return seriesRepository
+                .findSeriesThatAreNotApproved()
+                .stream()
+                .map(series -> {
+                    AllSerialsViewModel currentSerial = modelMapper.map(series, AllSerialsViewModel.class);
+                    Picture pictureBySeriesId = pictureRepository.findPictureBySeries_Id(series.getId());
+                    currentSerial.setPicture(pictureBySeriesId);
+                    return currentSerial;
+                }).collect(Collectors.toList());
+    }
+
+    @Override
+    public void approveSerialWithId(Long id) {
+        Series series = seriesRepository.findSerialById(id);
+        series.setApproved(true);
+        seriesRepository.save(series);
+    }
+
+    @Override
+    public void deleteSerialWithId(Long id) {
+        List<Picture> allBySerialId = pictureRepository.findAllBySeries_Id(id);
+        pictureRepository.deleteAll(allBySerialId);
+        seriesRepository.deleteById(id);
+    }
 }

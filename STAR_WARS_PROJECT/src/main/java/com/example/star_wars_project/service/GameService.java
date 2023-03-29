@@ -13,4 +13,10 @@ public interface GameService {
     Game findGame(Long id);
 
     void addGame(GameAddBindingModel gameAddBindingModel, String currentUserUsername) throws IOException;
+
+    List<AllGamesViewModel> findAllGamesWithValueNullOrFalse();
+
+    void approveGameWithId(Long id);
+
+    void deleteGameWithId(Long id);
 }

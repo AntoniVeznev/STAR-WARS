@@ -16,4 +16,9 @@ public interface NewsService {
 
     List<AllNewsViewModel> findAllNews();
 
+    List<AllNewsViewModel> findAllNewsWithValueNullOrFalse();
+
+    void approveNewsWithId(Long id);
+
+    void deleteNewsWithId(Long id);
 }
