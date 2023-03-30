@@ -24,4 +24,5 @@ public interface MovieService {
 
     void deleteMovieWithId(Long id);
 
+    void initMovies();
 }

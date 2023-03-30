@@ -1,8 +1,10 @@
 package com.example.star_wars_project.service.impl;
 
 import com.example.star_wars_project.model.binding.SeriesAddBindingModel;
+import com.example.star_wars_project.model.entity.Movie;
 import com.example.star_wars_project.model.entity.Picture;
 import com.example.star_wars_project.model.entity.Series;
+import com.example.star_wars_project.model.entity.enums.GenreNameEnum;
 import com.example.star_wars_project.model.view.AllSerialsViewModel;
 import com.example.star_wars_project.repository.GenreRepository;
 import com.example.star_wars_project.repository.PictureRepository;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -121,5 +124,89 @@ public class SeriesServiceImpl implements SeriesService {
         List<Picture> allBySerialId = pictureRepository.findAllBySeries_Id(id);
         pictureRepository.deleteAll(allBySerialId);
         seriesRepository.deleteById(id);
+    }
+
+    @Override
+    public void initSeries() {
+        if (seriesRepository.count() > 0) {
+            return;
+        }
+
+        Series series1 = new Series();
+        series1.setApproved(null);
+        series1.setDescription("In an era filled with danger, deception and intrigue, Cassian Andor will discover the difference he can make in the struggle against the tyrannical Galactic Empire. He embarks on a path that is destined to turn him into a rebel hero.");
+        series1.setReleaseDate(LocalDate.of(2022, 9, 21));
+        series1.setTitle("Andor");
+        series1.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        series1.setGenre(genreRepository.findByName(GenreNameEnum.CRIME));
+
+
+        Picture picture1 = new Picture();
+        picture1.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1680193752/Andor_l5emwa.webp");
+        picture1.setPublicId("Andor_l5emwa");
+        picture1.setTitle("Andor");
+        picture1.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture1.setSeries(series1);
+
+        seriesRepository.save(series1);
+        pictureRepository.save(picture1);
+
+        Series series2 = new Series();
+        series2.setApproved(null);
+        series2.setDescription("Jedi Master Obi-Wan Kenobi has to save young Leia after she is kidnapped, all the while being pursued by Imperial Inquisitors and his former Padawan, now known as Darth Vader.");
+        series2.setReleaseDate(LocalDate.of(2022, 5, 27));
+        series2.setTitle("Obi-Wan Kenobi");
+        series2.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        series2.setGenre(genreRepository.findByName(GenreNameEnum.ADVENTURE));
+
+
+        Picture picture2 = new Picture();
+        picture2.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1680193759/Obi-Wan_Kenobi_xr4qtd.webp");
+        picture2.setPublicId("Obi-Wan_Kenobi_xr4qtd");
+        picture2.setTitle("Obi-Wan Kenobi");
+        picture2.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture2.setSeries(series2);
+
+        seriesRepository.save(series2);
+        pictureRepository.save(picture2);
+
+        Series series3 = new Series();
+        series3.setApproved(null);
+        series3.setDescription("The legendary bounty hunter Boba Fett navigates the underworld of the galaxy with mercenary Fennec Shand when they return to the sands of Tatooine to stake their claim on the territory formerly ruled by the deceased crime lord Jabba the Hutt.");
+        series3.setReleaseDate(LocalDate.of(2021, 12, 29));
+        series3.setTitle("The Book of Boba Fett");
+        series3.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        series3.setGenre(genreRepository.findByName(GenreNameEnum.CRIME));
+
+
+        Picture picture3 = new Picture();
+        picture3.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1680193768/The_Book_of_Boba_Fett_ep6pbn.webp");
+        picture3.setPublicId("The_Book_of_Boba_Fett_ep6pbn");
+        picture3.setTitle("The Book of Boba Fett");
+        picture3.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture3.setSeries(series3);
+
+        seriesRepository.save(series3);
+        pictureRepository.save(picture3);
+
+        Series series4 = new Series();
+        series4.setApproved(null);
+        series4.setDescription("The Star Wars saga continues from Executive Producer George Lucas and Lucasfilm Animation! With cutting-edge, feature-film quality computer animation, classic characters, astounding action, and the timeless battle between good and evil, Star Wars: The Clone Wars expands the Star Wars story with all new adventures set in a galaxy far, far away.");
+        series4.setReleaseDate(LocalDate.of(2008, 8, 15));
+        series4.setTitle("The Clone Wars");
+        series4.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        series4.setGenre(genreRepository.findByName(GenreNameEnum.ANIMATION));
+
+
+        Picture picture4 = new Picture();
+        picture4.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1680193774/The_Clone_Wars_iiguxr.jpg");
+        picture4.setPublicId("The_Clone_Wars_iiguxr");
+        picture4.setTitle("The Clone Wars");
+        picture4.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture4.setSeries(series4);
+
+        seriesRepository.save(series4);
+        pictureRepository.save(picture4);
+
     }
 }

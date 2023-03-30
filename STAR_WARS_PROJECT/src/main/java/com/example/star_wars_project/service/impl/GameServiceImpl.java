@@ -106,4 +106,9 @@ public class GameServiceImpl implements GameService {
         pictureRepository.deleteAll(allByGameId);
         gameRepository.deleteById(id);
     }
+
+    @Override
+    public void initGames() {
+
+    }
 }

@@ -23,4 +23,5 @@ public interface SeriesService {
 
     void deleteSerialWithId(Long id);
 
+    void initSeries();
 }

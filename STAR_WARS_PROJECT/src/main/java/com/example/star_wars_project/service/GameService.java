@@ -19,4 +19,6 @@ public interface GameService {
     void approveGameWithId(Long id);
 
     void deleteGameWithId(Long id);
+
+    void initGames();
 }

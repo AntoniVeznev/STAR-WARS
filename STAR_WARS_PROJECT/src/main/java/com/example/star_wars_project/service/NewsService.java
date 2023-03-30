@@ -21,4 +21,6 @@ public interface NewsService {
     void approveNewsWithId(Long id);
 
     void deleteNewsWithId(Long id);
+
+    void initNews();
 }
