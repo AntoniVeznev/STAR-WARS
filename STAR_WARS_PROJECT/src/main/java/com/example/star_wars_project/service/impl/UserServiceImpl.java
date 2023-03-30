@@ -1,19 +1,28 @@
 package com.example.star_wars_project.service.impl;
 
+import com.example.star_wars_project.model.entity.Movie;
+import com.example.star_wars_project.model.entity.Picture;
 import com.example.star_wars_project.model.entity.Role;
 import com.example.star_wars_project.model.entity.User;
+import com.example.star_wars_project.model.entity.enums.RoleNameEnum;
 import com.example.star_wars_project.model.service.UserServiceModel;
+import com.example.star_wars_project.model.view.AllMoviesViewModel;
+import com.example.star_wars_project.model.view.AllUsersViewModel;
 import com.example.star_wars_project.repository.RoleRepository;
 import com.example.star_wars_project.repository.UserRepository;
 import com.example.star_wars_project.service.UserService;
+import org.hibernate.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -111,4 +120,35 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
     }
+
+    @Override
+    public List<AllUsersViewModel> findAllUsersWithRoleUSER() {
+        List<User> all = userRepository.findAll();
+        List<AllUsersViewModel> allUsersViewModel = new ArrayList<>();
+        for (User user : all) {
+            if (user.getRoles().size() == 1) {
+                allUsersViewModel.add(modelMapper.map(user, AllUsersViewModel.class));
+            }
+        }
+        return allUsersViewModel;
+    }
+
+    @Override
+    public void promoteUserWithId(Long id) {
+        User user = userRepository.findUserById(id);
+        user.getRoles().clear();
+
+        List<Role> allRolesFromDb = roleRepository.findAll();
+        user.getRoles().add(allRolesFromDb.get(0));
+        user.getRoles().add(allRolesFromDb.get(1));
+
+        userRepository.save(user);
+
+    }
+
+    @Override
+    public void deleteUserWithId(Long id) {
+        userRepository.deleteById(id);
+    }
+
 }

@@ -11,7 +11,5 @@ import java.util.Set;
 public interface RoleRepository extends JpaRepository<Role,Long> {
 
 
-    Role findRoleByName(String user);
-
-
+    Role findRoleByName(String name);
 }
