@@ -113,14 +113,14 @@
     <!--TEST TEST TEST VIDEO-->
 
         <div class="form-group row">
-            <label for="title" class="col-sm-2 col-form-label">Video URL</label>
+            <label for="title" class="col-sm-2 col-form-label">YouTube URL</label>
             <div class="col-sm-10">
                 <input th:field="*{videoUrl}" th:errorclass="is-invalid"
                        name="title"
                        type="text"
                        class="form-control"
                        id="videoTitle"
-                       aria-describedby="videoHelpInline" placeholder="Youtube Video Link">
+                       aria-describedby="videoHelpInline" placeholder="First choose a YouTube-video then click 'Share' button and copy the text after the last symbol - '/'">
                 <small th:if="${#fields.hasErrors('videoUrl')}" th:errors="*{videoUrl}"
                        id="videoHelpInline"
                        class="invalid-feedback bg-danger text-light rounded">

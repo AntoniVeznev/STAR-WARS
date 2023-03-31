@@ -124,7 +124,9 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public void initNews() {
-
+        if (newsRepository.count() > 0) {
+            return;
+        }
         News news1 = new News();
         news1.setApproved(null);
         news1.setDescription("Note: Following publication of this article, the release date of Star Wars Jedi: Survivor was moved to April 28, 2023. This has been reflected below.\n" +

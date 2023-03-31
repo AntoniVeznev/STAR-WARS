@@ -19,7 +19,7 @@
                     <div class="mt-1 rounded badge-info " th:each="m : ${allNotApprovedMovies}"
                          th:object="${m}">
                         <span th:text="*{title}" class="text-light"> >>> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, repellat.</span>
-                        <a class="ml-3 text-info" th:href="@{/admin/movie/delete/{id}(id=*{id})}">Approve</a>
+                        <a class="ml-3 text-info" th:href="@{/admin/movie/approve/{id}(id=*{id})}">Approve</a>
                         <a class="ml-3 text-info" th:href="@{/admin/movie/delete/{id}(id=*{id})}">Delete</a>
                     </div>
                 </div>
@@ -34,6 +34,16 @@
                     </div>
                 </div>
 
+                <h3 class="mySticky bg-danger text-light mb-2 mt-5">News</h3>
+                <div class=" rounded " style="height: 20vh; overflow: auto; background-color: slategrey">
+                    <div class="mt-1 rounded badge-info " th:each="n : ${allNotApprovedNews}" th:object="${n}">
+                        <span th:text="*{title}" class="text-light "> >>> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, repellat.</span>
+                        <a class="ml-3 text-info" th:href="@{/admin/news/approve/{id}(id=*{id})}">Approve</a>
+                        <a class="ml-3 text-info" th:href="@{/admin/news/delete/{id}(id=*{id})}">Delete</a>
+                    </div>
+                </div>
+
+
                 <h3 class="mySticky bg-danger text-light mb-2 mt-5">Games</h3>
                 <div class=" rounded " style="height: 20vh; overflow: auto; background-color: slategrey">
                     <div class="mt-1 rounded badge-info " th:each="g : ${allNotApprovedGames}" th:object="${g}">
@@ -43,14 +53,7 @@
                     </div>
                 </div>
 
-                <h3 class="mySticky bg-danger text-light mb-2 mt-5">News</h3>
-                <div class=" rounded " style="height: 20vh; overflow: auto; background-color: slategrey">
-                    <div class="mt-1 rounded badge-info " th:each="n : ${allNotApprovedNews}" th:object="${n}">
-                        <span th:text="*{title}" class="text-light "> >>> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, repellat.</span>
-                        <a class="ml-3 text-info" th:href="@{/admin/news/approve/{id}(id=*{id})}">Approve</a>
-                        <a class="ml-3 text-info" th:href="@{/admin/news/delete/{id}(id=*{id})}">Delete</a>
-                    </div>
-                </div>
+
             </div>
 
 
