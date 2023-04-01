@@ -31,17 +31,7 @@ public class AllSerialsController {
         model.addAttribute("serials", serials);
         return "serials-catalogue";
     }
-    @GetMapping("/catalogue/{id}")
-    public String catalogue(@PathVariable Long id, Model model) {
-        Series currentSerial = seriesService.findSerial(id);
-        Picture picture = pictureService.findPictureBySerialId(id);
-        model.addAttribute("currentSerial", currentSerial);
-        model.addAttribute("picture", picture);
-        if (currentSerial == null) {
-            return "index";
-        }
-        return "serial-details";
-    }
+
     @GetMapping("/details/{id}")
     public String details(@PathVariable Long id, Model model) {
         Series currentSerial = seriesService.findSerial(id);

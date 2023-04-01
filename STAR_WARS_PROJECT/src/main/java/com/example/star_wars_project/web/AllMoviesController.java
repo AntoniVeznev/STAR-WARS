@@ -33,17 +33,7 @@ public class AllMoviesController {
 
 
 
-    @GetMapping("/catalogue/{id}")
-    public String catalogue(@PathVariable Long id, Model model) {
-        Movie currentMovie = movieService.findMovie(id);
-        Picture picture = pictureService.findPictureByMovieId(id);
-        model.addAttribute("currentMovie", currentMovie);
-        model.addAttribute("picture", picture);
-        if (currentMovie == null) {
-            return "index";
-        }
-        return "movie-details";
-    }
+
     @GetMapping("/details/{id}")
     public String details(@PathVariable Long id, Model model) {
         Movie currentMovie = movieService.findMovie(id);
@@ -55,6 +45,4 @@ public class AllMoviesController {
         }
         return "movie-details";
     }
-
-
 }

@@ -170,15 +170,6 @@ public class AddController {
     }
 
 
-
-
-
-
-
-
-
-
-
     @ModelAttribute
     public MovieAddBindingModel movieAddBindingModel() {
         return new MovieAddBindingModel();
