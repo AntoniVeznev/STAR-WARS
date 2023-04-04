@@ -7,7 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlatformRepository extends JpaRepository<Platform, Long> {
-
-
     Platform findPlatformByName(PlatformNameEnum platforms);
 }

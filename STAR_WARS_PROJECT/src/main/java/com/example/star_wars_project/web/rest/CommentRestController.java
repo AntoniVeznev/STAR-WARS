@@ -1,16 +1,10 @@
-package com.example.star_wars_project.web;
+package com.example.star_wars_project.web.rest;
 
 import com.example.star_wars_project.model.binding.CommentAddBindingModel;
-
 import com.example.star_wars_project.model.view.CommentsView;
-import com.example.star_wars_project.repository.UserRepository;
 import com.example.star_wars_project.service.CommentService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.net.URI;
 import java.security.Principal;

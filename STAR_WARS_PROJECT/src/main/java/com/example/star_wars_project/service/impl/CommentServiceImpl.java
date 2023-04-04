@@ -30,12 +30,16 @@ public class CommentServiceImpl implements CommentService {
     }
 
     public List<CommentsView> getCommentsByMovie(Long movieId) {
-        List<Comment> allByMovie = commentRepository.findAllByMovie(movieRepository.findMovieById(movieId));
+        List<Comment> allByMovie = commentRepository.findCommentsByMovie_IdOrderByCreatedDesc(movieId);
+        for (Comment comment : allByMovie) {
+            System.out.println(comment.getMovie().getTitle());
+            System.out.println(comment.getCreated());
+        }
         return allByMovie
                 .stream()
                 .map(comment -> {
                     CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
-                    commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm h.")));
+                    commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
 
                     return commentsView;
                 })
@@ -62,7 +66,7 @@ public class CommentServiceImpl implements CommentService {
 
 
     public CommentsView getComment(Long id) {
-        Comment comment = commentRepository.findById(id).orElse(null);
+        Comment comment = commentRepository.findCommentById(id);
         CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
         commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm h.")));
         commentsView.setPostContent(comment.getPostContent());
