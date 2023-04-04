@@ -12,6 +12,7 @@
         th:method="GET"
         th:object="${currentMovie}">
 
+    <input type="hidden" name="movieId" id="movieId" th:value="${currentMovie.id}">
     <div class="container poster one-column align-content-center" data-title="Solo: A Star Wars Story">
         <div class="title">
             <h1 th:text="*{title}" class="h1detailstest text-light catalog-title ">Solo: A Star Wars Story</h1>
@@ -28,10 +29,6 @@
                                    class="p2detailstest meta">Release Date:
                                     23.05.2018y</p>
                             </a>
-
-
-
-
                         </div>
                     </div>
                 </div>
@@ -44,7 +41,6 @@
                 Chewbacca and encounters the notorious gambler Lando Calrissian, in a journey that will set the course
                 of one of the Star Wars saga’s most unlikely heroes.
             </p>
-
         </div>
         <div class="poster-container">
             <div class="poster-inner poster-box ">
@@ -54,14 +50,57 @@
             </div>
         </div>
     </div>
+
+    <form id="commentForm">
+        <section>
+            <div class="container-fluid ">
+                <div class="row d-flex justify-content-center ">
+                    <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6 ">
+                        <div class="card ">
+                            <div class="card-body p-4 ">
+                                <div id="divTestComment2" class="d-flex flex-start w-100 ">
+                                    <div id="divTestComment3" class="w-100">
+                                        <h5 class="text-dark fw-bolder ">Add a comment</h5>
+                                        <div class="form-outline ">
+                                            <textarea class="form-control" id="textAreaExample" name="textAreaExample" rows="4"></textarea>
+                                            <label class="form-label  text-dark fw-bolder" for="textAreaExample">What is your view?</label>
+                                        </div>
+                                        <div class="d-flex justify-content-between mt-3 ">
+                                            <button type="submit" class="btn btn-info ">Post</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+
+    <section>
+        <div class="container-fluid ">
+            <div class="row d-flex justify-content-center ">
+                <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6 ">
+                    <div class="card text-dark">
+                        <div class="card-body p-4">
+                            <div class="d-flex flex-start">
+                                <div id="commentSpanTest">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 
-<!--Footer START-->
+<script th:src="@{/js/comments.js}"></script>
 <footer th:replace="~{/fragments/commons::footer}"></footer>
-<!--Footer END-->
-
 <script th:replace="~{/fragments/commons::script}"></script>
-
 </body>
+
 </html>

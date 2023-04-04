@@ -21,7 +21,7 @@ public class SpringSecurityConfiguration {
                 //TODO: РАЗРЕШАВАМ УЖ ПАПКА СТАТИК!
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 //TODO: НАИСТИНА РАЗРЕШАВАМ ПАПКА СТАТИК!
-                .requestMatchers("/css/**", "/images/**", "/js/**", "/videos/**", "/webjars/**").permitAll()
+                .requestMatchers("/css/**", "/images/**", "/js/**", "/videos/**", "/webjars/**","/api/**").permitAll()
                 //TODO: ДОСТЪПНО КАКТО ЗА АНОНИМНИ ТАКА И ЗА ЛОГНАТИ БЕЗ ЗНАЧЕНИЕ АДМИН ИЛИ ЮЗАР!
                 .requestMatchers("/", "/movies/catalogue", "/news/catalogue", "/series/catalogue", "/games/catalogue", "/users/login-error").permitAll()
                 //TODO: РАЗРЕШАВАМ АНОНИМНИТЕ ДА МОГАТ ДА СЕ ЛОГВАТ И РЕГИСТРИРАТ!

@@ -574,3 +574,10 @@ button.nav-link {
     height: auto;
     object-fit: cover;
 }
+#divTestComment2, #divTestComment3{
+
+    height: 20%;
+}
+#my0Test{
+    padding-bottom: 2rem;
+}

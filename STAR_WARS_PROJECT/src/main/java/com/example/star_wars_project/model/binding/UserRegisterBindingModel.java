@@ -24,7 +24,7 @@ public class UserRegisterBindingModel {
         this.username = username;
     }
 
-    @Length(min = 3, max = 20, message = "Full name must be between 3 and 20 characters! Please enter a valid full name!")
+    @Length(min = 5, max = 20, message = "Full name must be between 5 and 20 characters! Please enter a valid full name!")
     public String getFullName() {
         return fullName;
     }

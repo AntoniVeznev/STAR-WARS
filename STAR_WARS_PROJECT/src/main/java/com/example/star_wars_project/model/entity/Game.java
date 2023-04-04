@@ -14,7 +14,6 @@ public class Game extends BaseEntity {
     private LocalDate releaseDate;
     private Platform platform;
     private User author;
-
     private Boolean isApproved;
 
     public Game() {

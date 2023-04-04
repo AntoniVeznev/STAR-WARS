@@ -21,7 +21,7 @@ public class SeriesAddBindingModel {
     public SeriesAddBindingModel() {
     }
 
-    @Length(min = 4, max = 100, message = "Please insert picture title with length between 4 and 100 characters!")
+    @Length(min = 5, max = 100, message = "Please insert picture title with length between 5 and 100 characters!")
     public String getPictureTitle() {
         return pictureTitle;
     }
@@ -47,7 +47,7 @@ public class SeriesAddBindingModel {
         this.publicId = publicId;
     }
 
-    @Length(min = 3, max = 250, message = "Serial title length must be between 3 and 250 characters!")
+    @Length(min = 5, max = 250, message = "Serial title length must be between 5 and 250 characters!")
     public String getTitle() {
         return title;
     }

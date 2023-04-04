@@ -23,7 +23,7 @@ public class GameAddBindingModel {
     public GameAddBindingModel() {
     }
 
-    @Length(min = 3, max = 250, message = "Game title length must be between 3 and 250 characters!")
+    @Length(min = 5, max = 250, message = "Game title length must be between 5 and 250 characters!")
     public String getTitle() {
         return title;
     }
@@ -43,7 +43,7 @@ public class GameAddBindingModel {
         this.releaseDate = releaseDate;
     }
 
-    @Length(min = 10, max = 3000, message = "Description length must be between 10 and 1000 characters!")
+    @Length(min = 50, max = 3000, message = "Description length must be between 50 and 3000 characters!")
     public String getDescription() {
         return description;
     }

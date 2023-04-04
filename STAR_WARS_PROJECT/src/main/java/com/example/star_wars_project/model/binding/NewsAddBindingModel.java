@@ -37,7 +37,7 @@ public class NewsAddBindingModel {
     public void setPostDate(LocalDateTime postDate) {
         this.postDate = postDate;
     }
-    @Length(min = 50, max = 100000, message = "Description length must be between 10 and 100000 characters!")
+    @Length(min = 50, max = 100000, message = "Description length must be between 50 and 100000 characters!")
     public String getDescription() {
         return description;
     }
@@ -45,7 +45,7 @@ public class NewsAddBindingModel {
     public void setDescription(String description) {
         this.description = description;
     }
-    @Length(min = 4, max = 100, message = "Please insert picture title with length between 4 and 100 characters!")
+    @Length(min = 5, max = 100, message = "Please insert picture title with length between 5 and 100 characters!")
     public String getPictureTitle() {
         return pictureTitle;
     }

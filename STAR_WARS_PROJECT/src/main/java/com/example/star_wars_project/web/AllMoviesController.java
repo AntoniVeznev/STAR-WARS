@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+
 @Controller
 @RequestMapping("/movies")
+
 public class AllMoviesController {
     private final MovieService movieService;
     private final PictureService pictureService;
@@ -31,9 +33,6 @@ public class AllMoviesController {
         return "movies-catalogue";
     }
 
-
-
-
     @GetMapping("/details/{id}")
     public String details(@PathVariable Long id, Model model) {
         Movie currentMovie = movieService.findMovie(id);
@@ -44,5 +43,7 @@ public class AllMoviesController {
             return "index";
         }
         return "movie-details";
+
     }
 }
+

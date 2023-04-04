@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class Comment extends BaseEntity {
     private Boolean approved;
     private LocalDateTime created;
-    private String textContent;
+    private String postContent;
     private Movie movie;
     private Series series;
     private News news;
@@ -50,7 +50,7 @@ public class Comment extends BaseEntity {
         this.series = series;
     }
 
-    @Column(nullable = false)
+    @Column()
     public Boolean getApproved() {
         return approved;
     }
@@ -68,14 +68,15 @@ public class Comment extends BaseEntity {
         this.created = created;
     }
 
-    @Column(columnDefinition = "LONGTEXT")
-    public String getTextContent() {
-        return textContent;
+    @Column(columnDefinition = "LONGTEXT", nullable = false)
+    public String getPostContent() {
+        return postContent;
     }
 
-    public void setTextContent(String textContent) {
-        this.textContent = textContent;
+    public void setPostContent(String postContent) {
+        this.postContent = postContent;
     }
+
 
     @ManyToOne
     public Movie getMovie() {

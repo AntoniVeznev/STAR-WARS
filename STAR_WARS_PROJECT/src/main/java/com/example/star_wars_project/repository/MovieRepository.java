@@ -21,4 +21,5 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     List<Movie> findMoviesThatAreNotApproved();
 
     Movie findMovieById(Long id);
+
 }
