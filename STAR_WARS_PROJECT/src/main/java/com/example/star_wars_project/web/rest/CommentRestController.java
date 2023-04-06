@@ -35,11 +35,16 @@ public class CommentRestController {
     public ResponseEntity<CommentsView> createComment(Principal principal,
                                                       @RequestBody CommentAddBindingModel commentAddBindingModel,
                                                       @PathVariable("movieId") Long movieId) {
+
         String name = principal.getName();
+
+
         CommentsView commentsView = commentService.createComment(commentAddBindingModel, movieId, name);
+
         if (commentsView == null) {
             return ResponseEntity.noContent().build();
         }
+
         return ResponseEntity.created(URI.create(String.format("/api/%d/comments/%d", movieId, commentsView.getId()))).body(commentsView);
     }
 }

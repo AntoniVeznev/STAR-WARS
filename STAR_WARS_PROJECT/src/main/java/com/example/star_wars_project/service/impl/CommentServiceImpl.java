@@ -2,6 +2,7 @@ package com.example.star_wars_project.service.impl;
 
 import com.example.star_wars_project.model.binding.CommentAddBindingModel;
 import com.example.star_wars_project.model.entity.Comment;
+import com.example.star_wars_project.model.entity.User;
 import com.example.star_wars_project.model.view.CommentsView;
 import com.example.star_wars_project.repository.CommentRepository;
 import com.example.star_wars_project.repository.MovieRepository;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,16 +34,11 @@ public class CommentServiceImpl implements CommentService {
 
     public List<CommentsView> getCommentsByMovie(Long movieId) {
         List<Comment> allByMovie = commentRepository.findCommentsByMovie_IdOrderByCreatedDesc(movieId);
-        for (Comment comment : allByMovie) {
-            System.out.println(comment.getMovie().getTitle());
-            System.out.println(comment.getCreated());
-        }
         return allByMovie
                 .stream()
                 .map(comment -> {
                     CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
                     commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
-
                     return commentsView;
                 })
                 .collect(Collectors.toList());
@@ -58,7 +56,7 @@ public class CommentServiceImpl implements CommentService {
         comment.setAuthor(userRepository.findUserByUsername(name).orElse(null));
         comment.setPostContent(commentAddBindingModel.getPostContent());
         CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
-        commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm h.")));
+        commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
         commentRepository.save(comment);
         commentsView.setId(comment.getId());
         return commentsView;
@@ -68,7 +66,7 @@ public class CommentServiceImpl implements CommentService {
     public CommentsView getComment(Long id) {
         Comment comment = commentRepository.findCommentById(id);
         CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
-        commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm h.")));
+        commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
         commentsView.setPostContent(comment.getPostContent());
         return commentsView;
     }

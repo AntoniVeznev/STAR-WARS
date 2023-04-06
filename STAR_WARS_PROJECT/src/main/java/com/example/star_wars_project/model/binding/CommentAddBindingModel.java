@@ -1,8 +1,6 @@
 package com.example.star_wars_project.model.binding;
 
 import jakarta.validation.constraints.FutureOrPresent;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,7 +24,6 @@ public class CommentAddBindingModel {
     public void setCreated(LocalDateTime created) {
         this.created = created;
     }
-
 
     @Length(min = 3, max = 3000, message = "Comment length must be between 3 and 3000 characters!")
     public String getPostContent() {
