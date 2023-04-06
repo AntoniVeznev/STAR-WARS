@@ -1,16 +1,17 @@
 package com.example.star_wars_project.web;
 
+import com.example.star_wars_project.exception.ItemNotFoundException;
 import com.example.star_wars_project.model.entity.News;
 import com.example.star_wars_project.model.entity.Picture;
 import com.example.star_wars_project.model.entity.User;
 import com.example.star_wars_project.model.view.AllNewsViewModel;
 import com.example.star_wars_project.service.NewsService;
 import com.example.star_wars_project.service.PictureService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -49,11 +50,17 @@ public class AllNewsController {
         model.addAttribute("picture", picture);
 
         if (currentNews == null) {
-            return "index";
+            throw new ItemNotFoundException();
         }
         User author = currentNews.getAuthor();
         model.addAttribute("author", author);
         return "news-details";
+    }
+
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    @ExceptionHandler(ItemNotFoundException.class)
+    public ModelAndView onNewsNotFound(ItemNotFoundException mnfe) {
+        return new ModelAndView("other-errors/news-not-found");
     }
 
 

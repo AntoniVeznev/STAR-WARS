@@ -30,15 +30,15 @@ public class AdminController {
 
     @GetMapping()
     public String admin(Model model, Principal principal) {
-        String name = principal.getName();
-        model.addAttribute("name", name);
+
+        String loggedInAdminName = principal.getName();
         List<AllMoviesViewModel> allNotApprovedMovies = movieService.findAllMoviesWithValueNullOrFalse();
         List<AllSerialsViewModel> allNotApprovedSerials = seriesService.findAllSeriesWithValueNullOrFalse();
         List<AllGamesViewModel> allNotApprovedGames = gameService.findAllGamesWithValueNullOrFalse();
         List<AllNewsViewModel> allNotApprovedNews = newsService.findAllNewsWithValueNullOrFalse();
-
         List<AllUsersViewModel> allUsersWithRoleUSER = userService.findAllUsersWithRoleUSER();
 
+        model.addAttribute("loggedInAdminName", loggedInAdminName);
         model.addAttribute("allNotApprovedMovies", allNotApprovedMovies);
         model.addAttribute("allNotApprovedSerials", allNotApprovedSerials);
         model.addAttribute("allNotApprovedGames", allNotApprovedGames);

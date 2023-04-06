@@ -1,16 +1,16 @@
 package com.example.star_wars_project.web;
 
-import com.example.star_wars_project.exeption.ObjectNotFoundException;
+import com.example.star_wars_project.exception.ItemNotFoundException;
 import com.example.star_wars_project.model.entity.Movie;
 import com.example.star_wars_project.model.entity.Picture;
 import com.example.star_wars_project.model.view.AllMoviesViewModel;
 import com.example.star_wars_project.service.MovieService;
 import com.example.star_wars_project.service.PictureService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -41,11 +41,15 @@ public class AllMoviesController {
         model.addAttribute("currentMovie", currentMovie);
         model.addAttribute("picture", picture);
         if (currentMovie == null) {
-            throw new ObjectNotFoundException();
+            throw new ItemNotFoundException();
         }
         return "movie-details";
     }
 
-
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    @ExceptionHandler(ItemNotFoundException.class)
+    public ModelAndView onMovieNotFound(ItemNotFoundException mnfe) {
+        return new ModelAndView("other-errors/movie-not-found");
+    }
 }
 
