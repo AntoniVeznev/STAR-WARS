@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -28,8 +29,9 @@ public class AdminController {
     }
 
     @GetMapping()
-    public String admin(Model model) {
-
+    public String admin(Model model, Principal principal) {
+        String name = principal.getName();
+        model.addAttribute("name", name);
         List<AllMoviesViewModel> allNotApprovedMovies = movieService.findAllMoviesWithValueNullOrFalse();
         List<AllSerialsViewModel> allNotApprovedSerials = seriesService.findAllSeriesWithValueNullOrFalse();
         List<AllGamesViewModel> allNotApprovedGames = gameService.findAllGamesWithValueNullOrFalse();

@@ -1,5 +1,6 @@
 package com.example.star_wars_project.web;
 
+import com.example.star_wars_project.exeption.ObjectNotFoundException;
 import com.example.star_wars_project.model.entity.Movie;
 import com.example.star_wars_project.model.entity.Picture;
 import com.example.star_wars_project.model.view.AllMoviesViewModel;
@@ -40,10 +41,11 @@ public class AllMoviesController {
         model.addAttribute("currentMovie", currentMovie);
         model.addAttribute("picture", picture);
         if (currentMovie == null) {
-            return "index";
+            throw new ObjectNotFoundException();
         }
         return "movie-details";
-
     }
+
+
 }
 
