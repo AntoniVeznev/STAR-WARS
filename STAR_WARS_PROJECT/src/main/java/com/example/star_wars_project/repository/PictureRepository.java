@@ -18,7 +18,6 @@ public interface PictureRepository extends JpaRepository<Picture, Long> {
 
     Picture findPictureByGame_Id(Long id);
 
-
     List<Picture> findAllByMovie_Id(Long id);
 
     List<Picture> findAllByNews_Id(Long id);

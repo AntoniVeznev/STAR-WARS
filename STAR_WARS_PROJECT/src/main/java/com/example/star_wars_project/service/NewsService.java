@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 public interface NewsService {
+
     void addNews(NewsAddBindingModel newsAddBindingModel, String currentUserUsername) throws IOException;
 
     List<AllNewsViewModel> latestStarWarsNews();

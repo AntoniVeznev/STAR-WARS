@@ -48,7 +48,7 @@ public class AllMoviesController {
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     @ExceptionHandler(ItemNotFoundException.class)
-    public ModelAndView onMovieNotFound(ItemNotFoundException mnfe) {
+    public ModelAndView onMovieNotFound(ItemNotFoundException infe) {
         return new ModelAndView("other-errors/movie-not-found");
     }
 }

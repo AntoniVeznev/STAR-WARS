@@ -1,7 +1,5 @@
 package com.example.star_wars_project.service.impl;
-
 import com.example.star_wars_project.model.binding.SeriesAddBindingModel;
-import com.example.star_wars_project.model.entity.Movie;
 import com.example.star_wars_project.model.entity.Picture;
 import com.example.star_wars_project.model.entity.Series;
 import com.example.star_wars_project.model.entity.enums.GenreNameEnum;
@@ -10,14 +8,12 @@ import com.example.star_wars_project.repository.GenreRepository;
 import com.example.star_wars_project.repository.PictureRepository;
 import com.example.star_wars_project.repository.SeriesRepository;
 import com.example.star_wars_project.repository.UserRepository;
-
 import com.example.star_wars_project.utils.CloudinaryImage;
 import com.example.star_wars_project.service.CloudinaryService;
 import com.example.star_wars_project.service.SeriesService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
@@ -43,7 +39,6 @@ public class SeriesServiceImpl implements SeriesService {
 
     @Override
     public List<AllSerialsViewModel> findAllSerialsOrderedByReleaseDate() {
-        //todo order by release date  return list with serial view models:)
         return seriesRepository
                 .findAllSeriesByReleaseDate()
                 .stream()

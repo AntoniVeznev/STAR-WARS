@@ -2,7 +2,6 @@ package com.example.star_wars_project.service.impl;
 
 import com.example.star_wars_project.model.binding.CommentAddBindingModel;
 import com.example.star_wars_project.model.entity.Comment;
-import com.example.star_wars_project.model.entity.User;
 import com.example.star_wars_project.model.view.CommentsView;
 import com.example.star_wars_project.repository.CommentRepository;
 import com.example.star_wars_project.repository.MovieRepository;
@@ -14,8 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+
 import java.util.stream.Collectors;
 
 @Service

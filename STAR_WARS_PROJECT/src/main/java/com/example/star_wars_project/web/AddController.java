@@ -132,10 +132,6 @@ public class AddController {
     }
 
 
-
-
-
-
     @GetMapping("/game")
     public String addGame(Model model) {
         if (model.containsAttribute("pictureFileIsNotEmpty")) {

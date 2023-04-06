@@ -10,7 +10,6 @@ import java.util.List;
 public interface CommentService {
     List<CommentsView> getCommentsByMovie(Long movieId);
 
-
     CommentsView createComment(CommentAddBindingModel commentAddBindingModel, Long movieId, String name);
 
     CommentsView getComment(Long commentId);

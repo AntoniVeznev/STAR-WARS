@@ -59,7 +59,7 @@ public class AllNewsController {
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     @ExceptionHandler(ItemNotFoundException.class)
-    public ModelAndView onNewsNotFound(ItemNotFoundException mnfe) {
+    public ModelAndView onNewsNotFound(ItemNotFoundException infe) {
         return new ModelAndView("other-errors/news-not-found");
     }
 

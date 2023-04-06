@@ -49,7 +49,7 @@ public class AllGamesController {
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     @ExceptionHandler(ItemNotFoundException.class)
-    public ModelAndView onGameNotFound(ItemNotFoundException mnfe) {
+    public ModelAndView onGameNotFound(ItemNotFoundException infe) {
         return new ModelAndView("other-errors/game-not-found");
     }
 }

@@ -1,9 +1,6 @@
 package com.example.star_wars_project.service.impl;
-
-
 import com.example.star_wars_project.model.binding.NewsAddBindingModel;
 import com.example.star_wars_project.model.entity.*;
-import com.example.star_wars_project.model.entity.enums.GenreNameEnum;
 import com.example.star_wars_project.model.view.AllNewsViewModel;
 import com.example.star_wars_project.repository.*;
 import com.example.star_wars_project.service.CloudinaryService;
@@ -12,9 +9,7 @@ import com.example.star_wars_project.utils.CloudinaryImage;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,17 +20,14 @@ public class NewsServiceImpl implements NewsService {
     private final NewsRepository newsRepository;
     private final UserRepository userRepository;
     private final PictureRepository pictureRepository;
-    private final GameRepository gameRepository;
-    private final PlatformRepository platformRepository;
+
     private final CloudinaryService cloudinaryService;
 
-    public NewsServiceImpl(ModelMapper modelMapper, NewsRepository newsRepository, UserRepository userRepository, PictureRepository pictureRepository, GameRepository gameRepository, PlatformRepository platformRepository, CloudinaryService cloudinaryService) {
+    public NewsServiceImpl(ModelMapper modelMapper, NewsRepository newsRepository, UserRepository userRepository, PictureRepository pictureRepository, CloudinaryService cloudinaryService) {
         this.modelMapper = modelMapper;
         this.newsRepository = newsRepository;
         this.userRepository = userRepository;
         this.pictureRepository = pictureRepository;
-        this.gameRepository = gameRepository;
-        this.platformRepository = platformRepository;
         this.cloudinaryService = cloudinaryService;
     }
 

@@ -60,7 +60,6 @@ public class GameServiceImpl implements GameService {
         Game game = modelMapper.map(gameAddBindingModel, Game.class);
         game.setAuthor(userRepository.findUserByUsername(currentUserUsername).orElse(null));
 
-
         game.setPlatform(platformRepository.findPlatformByName(gameAddBindingModel.getPlatform()));
 
         gameRepository.save(game);

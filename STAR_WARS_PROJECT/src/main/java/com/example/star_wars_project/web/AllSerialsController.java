@@ -47,7 +47,7 @@ public class AllSerialsController {
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     @ExceptionHandler(ItemNotFoundException.class)
-    public ModelAndView onSerialNotFound(ItemNotFoundException mnfe) {
+    public ModelAndView onSerialNotFound(ItemNotFoundException infe) {
         return new ModelAndView("other-errors/serial-not-found");
     }
 }

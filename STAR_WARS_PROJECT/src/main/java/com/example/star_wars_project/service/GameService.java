@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 public interface GameService {
+
     List<AllGamesViewModel> findAllGamesOrderedByReleaseDate();
 
     Game findGame(Long id);

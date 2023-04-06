@@ -26,17 +26,15 @@ import java.util.stream.Collectors;
 public class MovieServiceImpl implements MovieService {
     private final ModelMapper modelMapper;
     private final MovieRepository movieRepository;
-    private final SeriesRepository seriesRepository;
     private final UserRepository userRepository;
     private final GenreRepository genreRepository;
     private final PictureRepository pictureRepository;
     private final CloudinaryService cloudinaryService;
 
 
-    public MovieServiceImpl(ModelMapper modelMapper, MovieRepository movieRepository, SeriesRepository seriesRepository, UserRepository userRepository, GenreRepository genreRepository, PictureRepository pictureRepository, CloudinaryService cloudinaryService) {
+    public MovieServiceImpl(ModelMapper modelMapper, MovieRepository movieRepository, UserRepository userRepository, GenreRepository genreRepository, PictureRepository pictureRepository, CloudinaryService cloudinaryService) {
         this.modelMapper = modelMapper;
         this.movieRepository = movieRepository;
-        this.seriesRepository = seriesRepository;
         this.userRepository = userRepository;
         this.genreRepository = genreRepository;
         this.pictureRepository = pictureRepository;
@@ -74,6 +72,7 @@ public class MovieServiceImpl implements MovieService {
         MultipartFile pictureMultipartFile = movieAddBindingModel.getPicture();
         String pictureMultipartFileTitle = movieAddBindingModel.getPictureTitle();
         final CloudinaryImage uploaded = cloudinaryService.upload(pictureMultipartFile);
+
         Picture picture = new Picture();
 
         picture.setPictureUrl(uploaded.getUrl());
