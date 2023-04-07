@@ -1,4 +1,5 @@
 package com.example.star_wars_project.service.impl;
+
 import com.example.star_wars_project.model.binding.NewsAddBindingModel;
 import com.example.star_wars_project.model.entity.*;
 import com.example.star_wars_project.model.view.AllNewsViewModel;
@@ -9,8 +10,13 @@ import com.example.star_wars_project.utils.CloudinaryImage;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.Year;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -282,4 +288,20 @@ public class NewsServiceImpl implements NewsService {
 
     }
 
+    @Override
+    public void deleteOlderNews() {
+        LocalDateTime dateAndTimeNow = LocalDateTime.now();
+        LocalDateTime localDateTime = dateAndTimeNow.minusMonths(3);
+        List<News> allByPostDateBefore = newsRepository.findAllByPostDateBefore(localDateTime);
+        if (allByPostDateBefore.isEmpty()) {
+            return;
+        }
+        for (News news : allByPostDateBefore) {
+            Picture pictureByNewsId = pictureRepository.findPictureByNews_Id(news.getId());
+            pictureRepository.delete(pictureByNewsId);
+        }
+        newsRepository.deleteAll(allByPostDateBefore);
+
+
+    }
 }
