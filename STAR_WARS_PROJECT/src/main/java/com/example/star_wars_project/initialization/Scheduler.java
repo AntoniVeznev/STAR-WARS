@@ -7,18 +7,18 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TestScheduler {
+public class Scheduler {
     private final NewsService newsService;
-    private final Logger LOGGER = LoggerFactory.getLogger(TestScheduler.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(Scheduler.class);
 
-    public TestScheduler(NewsService newsService) {
+    public Scheduler(NewsService newsService) {
         this.newsService = newsService;
 
     }
 
     @Scheduled(fixedRate = 20000)
     public void doInBackground() {
-           newsService.deleteOlderNews();
-           LOGGER.info("Deleting all news in DATABASE that are older than 3 months!");
+        newsService.deleteOlderNews();
+        LOGGER.info("Deleting all news in DATABASE that are older than 3 months!");
     }
 }
