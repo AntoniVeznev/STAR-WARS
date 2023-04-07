@@ -27,6 +27,7 @@ public class NewsAddBindingModel {
     public void setTitle(String title) {
         this.title = title;
     }
+
     @DateTimeFormat(pattern = "yyyy-MM-dd'T 'HH:mm")
     @PastOrPresent(message = "Post date can't be in the future!")
     @NotNull(message = "Post date can't be empty! Please enter a date!")
@@ -37,6 +38,7 @@ public class NewsAddBindingModel {
     public void setPostDate(LocalDateTime postDate) {
         this.postDate = postDate;
     }
+
     @Length(min = 50, max = 100000, message = "Description length must be between 50 and 100000 characters!")
     public String getDescription() {
         return description;
@@ -45,6 +47,7 @@ public class NewsAddBindingModel {
     public void setDescription(String description) {
         this.description = description;
     }
+
     @Length(min = 5, max = 100, message = "Please insert picture title with length between 5 and 100 characters!")
     public String getPictureTitle() {
         return pictureTitle;

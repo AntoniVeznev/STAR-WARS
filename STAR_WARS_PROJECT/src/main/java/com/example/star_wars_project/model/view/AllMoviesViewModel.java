@@ -11,8 +11,6 @@ public class AllMoviesViewModel {
     public AllMoviesViewModel() {
     }
 
-
-
     public Picture getPicture() {
         return picture;
     }

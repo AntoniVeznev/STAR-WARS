@@ -15,7 +15,6 @@ public class CloudinaryServiceImpl implements CloudinaryService {
     private static final String TEMP_FILE = "temp-file";
     private static final String URL = "url";
     private static final String PUBLIC_ID = "public_id";
-
     private final Cloudinary cloudinary;
 
     public CloudinaryServiceImpl(Cloudinary cloudinary) {
@@ -50,7 +49,6 @@ public class CloudinaryServiceImpl implements CloudinaryService {
     public boolean delete(String publicId) {
         try {
             this.cloudinary.uploader().destroy(publicId, Map.of());
-
         } catch (IOException e) {
             return false;
         }

@@ -30,7 +30,6 @@ public class SeriesAddBindingModel {
         this.pictureTitle = pictureTitle;
     }
 
-
     public MultipartFile getPicture() {
         return picture;
     }
@@ -75,7 +74,6 @@ public class SeriesAddBindingModel {
     public void setGenre(GenreNameEnum genre) {
         this.genre = genre;
     }
-
 
     @Length(min = 10, max = 1000, message = "Description length must be between 10 and 1000 characters!")
     public String getDescription() {

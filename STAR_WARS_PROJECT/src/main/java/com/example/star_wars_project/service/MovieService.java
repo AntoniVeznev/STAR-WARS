@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface MovieService {
-
     List<AllMoviesViewModel> findAllMoviesOrderedByReleaseDate();
 
     List<AllMoviesViewModel> latestStarWarsMovies();

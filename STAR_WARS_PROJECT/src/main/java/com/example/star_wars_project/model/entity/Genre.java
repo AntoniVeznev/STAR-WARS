@@ -3,7 +3,6 @@ package com.example.star_wars_project.model.entity;
 import com.example.star_wars_project.model.entity.enums.GenreNameEnum;
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "genres")
 public class Genre extends BaseEntity {
@@ -11,7 +10,6 @@ public class Genre extends BaseEntity {
 
     public Genre() {
     }
-
 
     @Enumerated(EnumType.STRING)
     public GenreNameEnum getName() {

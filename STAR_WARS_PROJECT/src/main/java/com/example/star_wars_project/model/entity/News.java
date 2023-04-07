@@ -14,11 +14,12 @@ public class News extends BaseEntity {
     private String description;
     private LocalDateTime postDate;
     private User author;
-
     private Boolean isApproved;
+
     public News() {
     }
-@Column
+
+    @Column
     public Boolean getApproved() {
         return isApproved;
     }
@@ -32,7 +33,6 @@ public class News extends BaseEntity {
         return title;
     }
 
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -41,7 +41,6 @@ public class News extends BaseEntity {
     public String getDescription() {
         return description;
     }
-
 
     public void setDescription(String description) {
         this.description = description;

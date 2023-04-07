@@ -14,7 +14,6 @@ import java.util.List;
 public class CommentRestController {
     private final CommentService commentService;
 
-
     public CommentRestController(CommentService commentService) {
         this.commentService = commentService;
     }
@@ -38,7 +37,6 @@ public class CommentRestController {
 
         String name = principal.getName();
 
-
         CommentsView commentsView = commentService.createComment(commentAddBindingModel, movieId, name);
 
         if (commentsView == null) {
@@ -48,4 +46,3 @@ public class CommentRestController {
         return ResponseEntity.created(URI.create(String.format("/api/%d/comments/%d", movieId, commentsView.getId()))).body(commentsView);
     }
 }
-

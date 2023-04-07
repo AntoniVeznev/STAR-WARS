@@ -12,6 +12,7 @@ public class CommentAddBindingModel {
     private String postContent;
 
     public CommentAddBindingModel() {
+
     }
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T 'HH:mm")

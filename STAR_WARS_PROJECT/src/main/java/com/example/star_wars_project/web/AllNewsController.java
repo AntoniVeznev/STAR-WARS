@@ -40,7 +40,6 @@ public class AllNewsController {
         return "news-catalogue";
     }
 
-
     @GetMapping("/details/{id}")
     public String details(@PathVariable Long id, Model model) {
         News currentNews = newsService.findNews(id);
@@ -52,8 +51,10 @@ public class AllNewsController {
         if (currentNews == null) {
             throw new ItemNotFoundException();
         }
+
         User author = currentNews.getAuthor();
         model.addAttribute("author", author);
+
         return "news-details";
     }
 
@@ -62,6 +63,4 @@ public class AllNewsController {
     public ModelAndView onNewsNotFound(ItemNotFoundException infe) {
         return new ModelAndView("other-errors/news-not-found");
     }
-
-
 }

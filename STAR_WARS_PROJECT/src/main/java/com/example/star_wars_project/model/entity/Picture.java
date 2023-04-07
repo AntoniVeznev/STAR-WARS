@@ -79,7 +79,6 @@ public class Picture extends BaseEntity {
         this.news = news;
     }
 
-
     @ManyToOne
     public User getAuthor() {
         return author;
@@ -88,6 +87,4 @@ public class Picture extends BaseEntity {
     public void setAuthor(User author) {
         this.author = author;
     }
-
-
 }

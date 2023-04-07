@@ -3,7 +3,6 @@ package com.example.star_wars_project.model.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
 @Table(name = "games")
@@ -51,11 +50,9 @@ public class Game extends BaseEntity {
         return description;
     }
 
-
     public void setDescription(String description) {
         this.description = description;
     }
-
 
     @Column(name = "video_url", nullable = false, columnDefinition = "TEXT")
     public String getVideoUrl() {
@@ -74,7 +71,6 @@ public class Game extends BaseEntity {
     public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
-
 
     @ManyToOne
     public User getAuthor() {

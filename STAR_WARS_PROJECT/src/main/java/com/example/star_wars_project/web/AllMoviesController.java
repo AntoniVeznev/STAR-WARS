@@ -14,10 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-
 @Controller
 @RequestMapping("/movies")
-
 public class AllMoviesController {
     private final MovieService movieService;
     private final PictureService pictureService;
@@ -52,4 +50,3 @@ public class AllMoviesController {
         return new ModelAndView("other-errors/movie-not-found");
     }
 }
-

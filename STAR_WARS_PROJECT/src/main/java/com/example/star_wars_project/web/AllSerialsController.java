@@ -25,7 +25,6 @@ public class AllSerialsController {
         this.pictureService = pictureService;
     }
 
-
     @GetMapping("/catalogue")
     public String allSerials(Model model) {
         List<AllSerialsViewModel> serials = seriesService.findAllSerialsOrderedByReleaseDate();

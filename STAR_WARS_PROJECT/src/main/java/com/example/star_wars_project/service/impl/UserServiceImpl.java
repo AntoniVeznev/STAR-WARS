@@ -17,17 +17,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
 @Service
 public class UserServiceImpl implements UserService {
-
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final String defaultPassForAdmin;
     private final String defaultPassForUser;
-
 
     public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder,
                            @Value("${spring.STAR_WARS_PROJECT.admin.defaultPasswordForAdmin}") String defaultPassForAdmin,
@@ -40,7 +37,6 @@ public class UserServiceImpl implements UserService {
         this.defaultPassForUser = defaultPassForUser;
     }
 
-
     @Override
     public UserServiceModel registerUser(UserServiceModel userServiceModel) {
         User user = modelMapper.map(userServiceModel, User.class);
@@ -52,10 +48,6 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         return modelMapper.map(user, UserServiceModel.class);
     }
-
-
-
-
 
     @Override
     public boolean checkUsername(UserServiceModel userServiceModel) {
@@ -130,12 +122,10 @@ public class UserServiceImpl implements UserService {
         user.getRoles().add(allRolesFromDb.get(1));
 
         userRepository.save(user);
-
     }
 
     @Override
     public void deleteUserWithId(Long id) {
         userRepository.deleteById(id);
     }
-
 }

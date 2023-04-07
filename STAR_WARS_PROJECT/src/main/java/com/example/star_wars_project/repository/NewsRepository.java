@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.List;
 
 @Repository
@@ -24,8 +23,5 @@ public interface NewsRepository extends JpaRepository<News, Long> {
 
     News findNewsById(Long id);
 
-
     List<News> findAllByPostDateBefore(LocalDateTime dateAndTimeNow);
-
-
 }

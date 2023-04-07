@@ -16,7 +16,6 @@ public class User extends BaseEntity {
     public User() {
     }
 
-
     @ManyToMany(fetch = FetchType.EAGER)
     public Set<Role> getRoles() {
         return roles;
@@ -61,5 +60,4 @@ public class User extends BaseEntity {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

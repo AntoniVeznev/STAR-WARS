@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface SeriesService {
-
     List<AllSerialsViewModel> findAllSerialsOrderedByReleaseDate();
 
     List<AllSerialsViewModel> latestStarWarsSerials();

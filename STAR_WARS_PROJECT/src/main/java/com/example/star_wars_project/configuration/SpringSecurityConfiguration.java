@@ -21,7 +21,7 @@ public class SpringSecurityConfiguration {
                 //TODO: РАЗРЕШАВАМ УЖ ПАПКА СТАТИК!
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 //TODO: НАИСТИНА РАЗРЕШАВАМ ПАПКА СТАТИК!
-                .requestMatchers("/css/**", "/images/**", "/js/**", "/videos/**", "/webjars/**","/api/**").permitAll()
+                .requestMatchers("/css/**", "/images/**", "/js/**", "/videos/**", "/webjars/**", "/api/**").permitAll()
                 //TODO: ДОСТЪПНО КАКТО ЗА АНОНИМНИ ТАКА И ЗА ЛОГНАТИ БЕЗ ЗНАЧЕНИЕ АДМИН ИЛИ ЮЗАР!
                 .requestMatchers("/", "/movies/catalogue", "/news/catalogue", "/series/catalogue", "/games/catalogue", "/users/login-error").permitAll()
                 //TODO: РАЗРЕШАВАМ АНОНИМНИТЕ ДА МОГАТ ДА СЕ ЛОГВАТ И РЕГИСТРИРАТ!
@@ -29,7 +29,7 @@ public class SpringSecurityConfiguration {
                 //TODO: РАЗРЕШАВАМ ЛОГНАТИТЕ ЮЗАРИ И АДМИНИ ДА МОГАТ ДА СЕ ЛОГАУТВАТ!
                 .requestMatchers("/users/logout").authenticated()
                 //TODO: РАЗРЕШАВАМ ДОСТЪП НА АДМИНА ДО АДМИН СТРАНИЦАТА МУ!
-                .requestMatchers("/users/admin","/admin").hasRole(RoleNameEnum.ADMINISTRATOR.name())
+                .requestMatchers("/users/admin", "/admin").hasRole(RoleNameEnum.ADMINISTRATOR.name())
 
                 .anyRequest()
                 .authenticated()

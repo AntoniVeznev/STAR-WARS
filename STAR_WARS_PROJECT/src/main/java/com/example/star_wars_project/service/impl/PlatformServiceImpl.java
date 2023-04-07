@@ -21,6 +21,7 @@ public class PlatformServiceImpl implements PlatformService {
         if (platformRepository.count() > 0) {
             return;
         }
+
         Arrays.stream(PlatformNameEnum.values()).forEach(platformNameEnum -> {
             Platform platform = new Platform();
             platform.setName(platformNameEnum);

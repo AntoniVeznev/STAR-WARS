@@ -21,7 +21,6 @@ public class UserController {
     private final UserService userService;
     private final ModelMapper modelMapper;
 
-
     public UserController(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
         this.modelMapper = modelMapper;
@@ -65,6 +64,7 @@ public class UserController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
             return "redirect:register";
         }
+
         boolean checkUsername = userService.checkUsername(modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
         boolean checkEmail = userService.checkEmail(modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
 
@@ -73,6 +73,7 @@ public class UserController {
             redirectAttributes.addFlashAttribute("usernameNotExist", false);
             return "redirect:register";
         }
+
         if (checkEmail) {
             redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
             redirectAttributes.addFlashAttribute("emailNotExist", false);

@@ -92,7 +92,7 @@ a:hover {
     }
 }
 
-/*МОЙ ВАРИАНТ*/
+
 .hero__video {
     position: absolute;
     top: 50%;
@@ -133,7 +133,7 @@ a:hover {
 }
 
 
-/*ОРИГИНАЛЕН ВАРИАНТ ЗАКОМЕНТИРАН*/
+
 /*.hero__video {
     position: absolute;
     top: 50%;
@@ -144,6 +144,7 @@ a:hover {
     height: auto;
     transform: translateX(-50%) translateY(-50%);
 }*/
+
 .hero__content {
     z-index: 1;
 }
@@ -154,7 +155,7 @@ a:hover {
 
 /*Hero section END*/
 
-/*footer - moi ot css i html*/
+/*footer -  ot css i html*/
 .footer {
     text-align: center;
     background-color: black;
@@ -192,7 +193,7 @@ a:hover {
     font-weight: bold;
 }
 
-/*<!--ДА ТЕСТВАМЕ КАРТИЧКИТЕ ОТ ВИДЕОТО СЪС СГРАДИТЕ-->*/
+
 #threeTopMovies {
     background-color: black;
     color: white;

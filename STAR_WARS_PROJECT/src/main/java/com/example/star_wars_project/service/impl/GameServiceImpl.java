@@ -2,9 +2,7 @@ package com.example.star_wars_project.service.impl;
 
 import com.example.star_wars_project.model.binding.GameAddBindingModel;
 import com.example.star_wars_project.model.entity.Game;
-import com.example.star_wars_project.model.entity.Movie;
 import com.example.star_wars_project.model.entity.Picture;
-import com.example.star_wars_project.model.entity.enums.GenreNameEnum;
 import com.example.star_wars_project.model.entity.enums.PlatformNameEnum;
 import com.example.star_wars_project.model.view.AllGamesViewModel;
 import com.example.star_wars_project.repository.GameRepository;
@@ -63,9 +61,7 @@ public class GameServiceImpl implements GameService {
     public void addGame(GameAddBindingModel gameAddBindingModel, String currentUserUsername) throws IOException {
         Game game = modelMapper.map(gameAddBindingModel, Game.class);
         game.setAuthor(userRepository.findUserByUsername(currentUserUsername).orElse(null));
-
         game.setPlatform(platformRepository.findPlatformByName(gameAddBindingModel.getPlatform()));
-
         gameRepository.save(game);
 
         MultipartFile pictureMultipartFile = gameAddBindingModel.getPicture();
@@ -80,7 +76,6 @@ public class GameServiceImpl implements GameService {
         picture.setAuthor(userRepository.findUserByUsername(currentUserUsername).orElse(null));
         picture.setGame(gameRepository.findGameByTitle(gameAddBindingModel.getTitle()));
         pictureRepository.save(picture);
-
     }
 
     @Override

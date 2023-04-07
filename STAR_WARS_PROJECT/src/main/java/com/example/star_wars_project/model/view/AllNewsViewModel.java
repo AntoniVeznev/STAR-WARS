@@ -62,6 +62,4 @@ public class AllNewsViewModel {
     public void setPicture(Picture picture) {
         this.picture = picture;
     }
-
-
 }

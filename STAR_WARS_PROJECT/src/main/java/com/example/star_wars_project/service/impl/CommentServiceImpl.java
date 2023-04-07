@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-
 import java.util.stream.Collectors;
 
 @Service
@@ -60,7 +59,6 @@ public class CommentServiceImpl implements CommentService {
         return commentsView;
     }
 
-
     public CommentsView getComment(Long id) {
         Comment comment = commentRepository.findCommentById(id);
         CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
@@ -68,6 +66,4 @@ public class CommentServiceImpl implements CommentService {
         commentsView.setPostContent(comment.getPostContent());
         return commentsView;
     }
-
-
 }

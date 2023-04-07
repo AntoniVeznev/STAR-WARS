@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "comments")
-
 public class Comment extends BaseEntity {
     private Boolean approved;
     private LocalDateTime created;
@@ -76,7 +75,6 @@ public class Comment extends BaseEntity {
     public void setPostContent(String postContent) {
         this.postContent = postContent;
     }
-
 
     @ManyToOne
     public Movie getMovie() {

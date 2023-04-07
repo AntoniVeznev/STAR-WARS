@@ -40,12 +40,6 @@ public class HomeController {
         model.addAttribute("latestStarWarsSeries", latestStarWarsSeries);
         model.addAttribute("latestStarWarsNews", latestStarWarsNews);
 
-
         return "index";
     }
-
-
-
-
-
 }

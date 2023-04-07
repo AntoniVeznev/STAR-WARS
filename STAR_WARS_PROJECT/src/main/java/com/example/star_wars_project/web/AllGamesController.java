@@ -21,7 +21,6 @@ public class AllGamesController {
     private final PictureService pictureService;
 
     public AllGamesController(GameService gameService, PictureService pictureService) {
-
         this.gameService = gameService;
         this.pictureService = pictureService;
     }
@@ -33,11 +32,9 @@ public class AllGamesController {
         return "games-catalogue";
     }
 
-
     @GetMapping("/details/{id}")
     public String details(@PathVariable Long id, Model model) {
         Game currentGame = gameService.findGame(id);
-
         Picture picture = pictureService.findPictureByGameId(id);
         model.addAttribute("currentGame", currentGame);
         model.addAttribute("picture", picture);

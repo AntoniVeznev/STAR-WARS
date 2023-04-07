@@ -18,7 +18,6 @@ public class GenreServiceImpl implements GenreService {
 
     @Override
     public void initGenres() {
-
         if (genreRepository.count() > 0) {
             return;
         }

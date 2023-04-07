@@ -28,6 +28,5 @@ public class RoleServiceImpl implements RoleService {
             role.setName(roleNameEnum);
             roleRepository.save(role);
         });
-
     }
 }

@@ -12,11 +12,11 @@ public class Series extends BaseEntity {
     private LocalDate releaseDate;
     private User author;
     private Genre genre;
-
     private Boolean isApproved;
 
     public Series() {
     }
+
     @Column
     public Boolean getApproved() {
         return isApproved;
@@ -35,12 +35,10 @@ public class Series extends BaseEntity {
         this.genre = genre;
     }
 
-
     @Column(unique = true, nullable = false, columnDefinition = "LONGTEXT")
     public String getTitle() {
         return title;
     }
-
 
     public void setTitle(String title) {
         this.title = title;
@@ -50,7 +48,6 @@ public class Series extends BaseEntity {
     public String getDescription() {
         return description;
     }
-
 
     public void setDescription(String description) {
         this.description = description;
@@ -73,6 +70,4 @@ public class Series extends BaseEntity {
     public void setAuthor(User author) {
         this.author = author;
     }
-
-
 }

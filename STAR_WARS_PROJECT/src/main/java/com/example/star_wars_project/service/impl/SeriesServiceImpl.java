@@ -1,4 +1,5 @@
 package com.example.star_wars_project.service.impl;
+
 import com.example.star_wars_project.model.binding.SeriesAddBindingModel;
 import com.example.star_wars_project.model.entity.Picture;
 import com.example.star_wars_project.model.entity.Series;
@@ -14,6 +15,7 @@ import com.example.star_wars_project.service.SeriesService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
@@ -48,7 +50,6 @@ public class SeriesServiceImpl implements SeriesService {
                     currentSerial.setPicture(pictureBySerialId);
                     return currentSerial;
                 }).collect(Collectors.toList());
-
     }
 
     @Override
@@ -146,6 +147,7 @@ public class SeriesServiceImpl implements SeriesService {
         seriesRepository.save(series1);
         pictureRepository.save(picture1);
 
+
         Series series2 = new Series();
         series2.setApproved(null);
         series2.setDescription("Jedi Master Obi-Wan Kenobi has to save young Leia after she is kidnapped, all the while being pursued by Imperial Inquisitors and his former Padawan, now known as Darth Vader.");
@@ -164,6 +166,7 @@ public class SeriesServiceImpl implements SeriesService {
 
         seriesRepository.save(series2);
         pictureRepository.save(picture2);
+
 
         Series series3 = new Series();
         series3.setApproved(null);
@@ -184,6 +187,7 @@ public class SeriesServiceImpl implements SeriesService {
         seriesRepository.save(series3);
         pictureRepository.save(picture3);
 
+
         Series series4 = new Series();
         series4.setApproved(null);
         series4.setDescription("The Star Wars saga continues from Executive Producer George Lucas and Lucasfilm Animation! With cutting-edge, feature-film quality computer animation, classic characters, astounding action, and the timeless battle between good and evil, Star Wars: The Clone Wars expands the Star Wars story with all new adventures set in a galaxy far, far away.");
@@ -202,6 +206,5 @@ public class SeriesServiceImpl implements SeriesService {
 
         seriesRepository.save(series4);
         pictureRepository.save(picture4);
-
     }
 }

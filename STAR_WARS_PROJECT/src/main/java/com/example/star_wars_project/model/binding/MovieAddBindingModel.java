@@ -7,7 +7,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 public class MovieAddBindingModel {
     private String title;
@@ -29,7 +28,6 @@ public class MovieAddBindingModel {
     public void setPictureTitle(String pictureTitle) {
         this.pictureTitle = pictureTitle;
     }
-
 
     public MultipartFile getPicture() {
         return picture;
@@ -76,7 +74,6 @@ public class MovieAddBindingModel {
         this.genre = genre;
     }
 
-
     @Length(min = 10, max = 3000, message = "Description length must be between 10 and 3000 characters!")
     public String getDescription() {
         return description;
@@ -85,6 +82,4 @@ public class MovieAddBindingModel {
     public void setDescription(String description) {
         this.description = description;
     }
-
-
 }

@@ -8,11 +8,12 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "platforms")
-public class Platform extends BaseEntity{
+public class Platform extends BaseEntity {
     private PlatformNameEnum name;
 
     public Platform() {
     }
+
     @Enumerated(EnumType.STRING)
     public PlatformNameEnum getName() {
         return name;

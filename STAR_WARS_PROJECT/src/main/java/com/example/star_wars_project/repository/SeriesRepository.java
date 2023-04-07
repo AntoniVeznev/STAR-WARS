@@ -17,10 +17,8 @@ public interface SeriesRepository extends JpaRepository<Series, Long> {
     @Query("select s from Series s order by s.releaseDate desc limit 4")
     List<Series> findNewestFourSeriesByReleaseDate();
 
-
     @Query("select s from Series s where s.approved = null or s.approved=false")
     List<Series> findSeriesThatAreNotApproved();
-
 
     Series findSerialById(Long id);
 }

@@ -43,9 +43,9 @@ public class AddController {
 
     @PostMapping("/news")
     public String addNewsConfirm(@Valid NewsAddBindingModel newsAddBindingModel,
-                                  BindingResult bindingResult,
-                                  RedirectAttributes redirectAttributes,
-                                  Principal principal) throws IOException {
+                                 BindingResult bindingResult,
+                                 RedirectAttributes redirectAttributes,
+                                 Principal principal) throws IOException {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("newsAddBindingModel", newsAddBindingModel);
@@ -60,7 +60,6 @@ public class AddController {
         }
 
         String currentUserUsername = principal.getName();
-
         newsService.addNews(newsAddBindingModel, currentUserUsername);
 
         return "redirect:/";
@@ -93,7 +92,6 @@ public class AddController {
         }
 
         String currentUserUsername = principal.getName();
-
         movieService.addMovie(movieAddBindingModel, currentUserUsername);
 
         return "redirect:/";
@@ -105,6 +103,7 @@ public class AddController {
         if (model.containsAttribute("pictureFileIsNotEmpty")) {
             model.addAttribute("pictureFileIsNotEmpty", true);
         }
+
         return "add-serial";
     }
 
@@ -124,13 +123,12 @@ public class AddController {
             redirectAttributes.addFlashAttribute("pictureFileIsNotEmpty", false);
             return "redirect:serial";
         }
-        String currentUserUsername = principal.getName();
 
+        String currentUserUsername = principal.getName();
         seriesService.addSerial(seriesAddBindingModel, currentUserUsername);
 
         return "redirect:/";
     }
-
 
     @GetMapping("/game")
     public String addGame(Model model) {
@@ -142,9 +140,9 @@ public class AddController {
 
     @PostMapping("/game")
     public String addGameConfirm(@Valid GameAddBindingModel gameAddBindingModel,
-                                  BindingResult bindingResult,
-                                  RedirectAttributes redirectAttributes,
-                                  Principal principal) throws IOException {
+                                 BindingResult bindingResult,
+                                 RedirectAttributes redirectAttributes,
+                                 Principal principal) throws IOException {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("gameAddBindingModel", gameAddBindingModel);
@@ -159,12 +157,10 @@ public class AddController {
         }
 
         String currentUserUsername = principal.getName();
-
         gameService.addGame(gameAddBindingModel, currentUserUsername);
 
         return "redirect:/";
     }
-
 
     @ModelAttribute
     public MovieAddBindingModel movieAddBindingModel() {
@@ -175,6 +171,7 @@ public class AddController {
     public SeriesAddBindingModel seriesAddBindingModel() {
         return new SeriesAddBindingModel();
     }
+
     @ModelAttribute
     public NewsAddBindingModel newsAddBindingModel() {
         return new NewsAddBindingModel();
@@ -184,5 +181,4 @@ public class AddController {
     public GameAddBindingModel gameAddBindingModel() {
         return new GameAddBindingModel();
     }
-
 }

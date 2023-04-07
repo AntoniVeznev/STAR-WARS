@@ -15,7 +15,6 @@ public class DataBaseInit implements CommandLineRunner {
     private final NewsService newsService;
     private final GameService gameService;
 
-
     public DataBaseInit(RoleService roleService, GenreService genreService, PlatformService platformService, UserService userService, MovieService movieService, SeriesService seriesService, NewsService newsService, GameService gameService) {
         this.roleService = roleService;
         this.genreService = genreService;

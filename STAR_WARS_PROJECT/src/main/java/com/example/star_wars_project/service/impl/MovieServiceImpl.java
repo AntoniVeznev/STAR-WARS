@@ -3,8 +3,6 @@ package com.example.star_wars_project.service.impl;
 import com.example.star_wars_project.model.binding.MovieAddBindingModel;
 import com.example.star_wars_project.model.entity.Movie;
 import com.example.star_wars_project.model.entity.Picture;
-import com.example.star_wars_project.model.entity.Role;
-import com.example.star_wars_project.model.entity.User;
 import com.example.star_wars_project.model.entity.enums.GenreNameEnum;
 import com.example.star_wars_project.model.view.AllMoviesViewModel;
 import com.example.star_wars_project.repository.*;
@@ -17,9 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,7 +26,6 @@ public class MovieServiceImpl implements MovieService {
     private final GenreRepository genreRepository;
     private final PictureRepository pictureRepository;
     private final CloudinaryService cloudinaryService;
-
 
     public MovieServiceImpl(ModelMapper modelMapper, MovieRepository movieRepository, UserRepository userRepository, GenreRepository genreRepository, PictureRepository pictureRepository, CloudinaryService cloudinaryService) {
         this.modelMapper = modelMapper;
@@ -54,7 +49,6 @@ public class MovieServiceImpl implements MovieService {
                     newestMovies.setPicture(pictureByMovieId);
                     return newestMovies;
                 }).collect(Collectors.toList());
-
     }
 
     @Override
@@ -83,7 +77,6 @@ public class MovieServiceImpl implements MovieService {
 
         picture.setMovie(movieRepository.findMovieByTitle(movieAddBindingModel.getTitle()));
         pictureRepository.save(picture);
-
     }
 
     @Override
@@ -98,7 +91,6 @@ public class MovieServiceImpl implements MovieService {
                     return currentMovie;
                 }).collect(Collectors.toList());
     }
-
 
     @Override
     public List<AllMoviesViewModel> findAllMoviesOrderedByReleaseDate() {
@@ -152,6 +144,7 @@ public class MovieServiceImpl implements MovieService {
         movieRepository.save(movie1);
         pictureRepository.save(picture1);
 
+
         Movie movie2 = new Movie();
         movie2.setApproved(null);
         movie2.setDescription("Watch the seeds of Anakin Skywalker's transformation take root in Star Wars: Episode II - Attack of the Clones. Ten years after the invasion of Naboo, the galaxy is on the brink of civil war. Under the leadership of a renegade Jedi named Count Dooku, thousands of solar systems threaten to break away from the Galactic Republic. When an assassination attempt is made on Senator Padmé Amidala, the former Queen of Naboo, twenty-year-old Jedi apprentice Anakin Skywalker is assigned to protect her. In the course of his mission, Anakin discovers his love for Padmé as well as his own darker side. Soon, Anakin, Padmé, and Obi-Wan Kenobi are drawn into the heart of the Separatist movement and the beginning of the Clone Wars.");
@@ -170,6 +163,7 @@ public class MovieServiceImpl implements MovieService {
 
         movieRepository.save(movie2);
         pictureRepository.save(picture2);
+
 
         Movie movie3 = new Movie();
         movie3.setApproved(null);
@@ -190,6 +184,7 @@ public class MovieServiceImpl implements MovieService {
         movieRepository.save(movie3);
         pictureRepository.save(picture3);
 
+
         Movie movie4 = new Movie();
         movie4.setApproved(null);
         movie4.setDescription("Luke Skywalker begins a journey that will change the galaxy in Star Wars: Episode IV - A New Hope. Nineteen years after the formation of the Empire, Luke is thrust into the struggle of the Rebel Alliance when he meets Obi-Wan Kenobi, who has lived for years in seclusion on the desert planet of Tatooine. Obi-Wan begins Luke’s Jedi training as Luke joins him on a daring mission to rescue the beautiful Rebel leader Princess Leia from the clutches of Darth Vader and the evil Empire.");
@@ -209,5 +204,4 @@ public class MovieServiceImpl implements MovieService {
         movieRepository.save(movie4);
         pictureRepository.save(picture4);
     }
-
 }

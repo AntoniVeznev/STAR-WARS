@@ -11,9 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.List;
 
-
 public class ApplicationUserDetailServiceImpl implements UserDetailsService {
-
     private final UserRepository userRepository;
 
     public ApplicationUserDetailServiceImpl(UserRepository userRepository) {
@@ -22,7 +20,6 @@ public class ApplicationUserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
         return userRepository
                 .findUserByUsername(username)
                 .map(this::map)

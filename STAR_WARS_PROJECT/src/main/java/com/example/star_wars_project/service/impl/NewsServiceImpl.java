@@ -12,11 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.time.DayOfWeek;
 import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.Year;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +22,6 @@ public class NewsServiceImpl implements NewsService {
     private final NewsRepository newsRepository;
     private final UserRepository userRepository;
     private final PictureRepository pictureRepository;
-
     private final CloudinaryService cloudinaryService;
 
     public NewsServiceImpl(ModelMapper modelMapper, NewsRepository newsRepository, UserRepository userRepository, PictureRepository pictureRepository, CloudinaryService cloudinaryService) {
@@ -80,7 +75,6 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<AllNewsViewModel> findAllNews() {
-
         return newsRepository
                 .findAllNewsOrderedByNewestToOldest()
                 .stream()
@@ -125,6 +119,7 @@ public class NewsServiceImpl implements NewsService {
         if (newsRepository.count() > 0) {
             return;
         }
+
         News news1 = new News();
         news1.setApproved(null);
         news1.setDescription("Note: Following publication of this article, the release date of Star Wars Jedi: Survivor was moved to April 28, 2023. This has been reflected below.\n" +
@@ -157,6 +152,7 @@ public class NewsServiceImpl implements NewsService {
 
         newsRepository.save(news1);
         pictureRepository.save(picture1);
+
 
         News news2 = new News();
         news2.setApproved(null);
@@ -213,6 +209,7 @@ public class NewsServiceImpl implements NewsService {
         newsRepository.save(news2);
         pictureRepository.save(picture2);
 
+
         News news3 = new News();
         news3.setApproved(null);
         news3.setDescription("Katee Sackhoff has played Bo-Katan Kryze for over a decade, starting as the voice of the redheaded Mandalorian on Star Wars: The Clones Wars, but she’s still getting used to inhabiting the role in live action on The Mandalorian.\n" +
@@ -243,6 +240,7 @@ public class NewsServiceImpl implements NewsService {
 
         newsRepository.save(news3);
         pictureRepository.save(picture3);
+
 
         News news4 = new News();
         news4.setApproved(null);
@@ -285,7 +283,6 @@ public class NewsServiceImpl implements NewsService {
 
         newsRepository.save(news4);
         pictureRepository.save(picture4);
-
     }
 
     @Override
@@ -293,6 +290,7 @@ public class NewsServiceImpl implements NewsService {
         LocalDateTime dateAndTimeNow = LocalDateTime.now();
         LocalDateTime localDateTime = dateAndTimeNow.minusMonths(3);
         List<News> allByPostDateBefore = newsRepository.findAllByPostDateBefore(localDateTime);
+
         if (allByPostDateBefore.isEmpty()) {
             return;
         }
@@ -301,7 +299,5 @@ public class NewsServiceImpl implements NewsService {
             pictureRepository.delete(pictureByNewsId);
         }
         newsRepository.deleteAll(allByPostDateBefore);
-
-
     }
 }

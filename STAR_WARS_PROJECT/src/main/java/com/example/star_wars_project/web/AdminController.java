@@ -72,7 +72,6 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-
     @GetMapping("/movie/delete/{id}")
     public String movieDelete(@PathVariable Long id) {
         movieService.deleteMovieWithId(id);
@@ -97,18 +96,15 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-
     @GetMapping("/user/promote/{id}")
     public String userApprove(@PathVariable Long id) {
         userService.promoteUserWithId(id);
         return "redirect:/admin";
     }
 
-
     @GetMapping("/user/delete/{id}")
     public String userDelete(@PathVariable Long id) {
         userService.deleteUserWithId(id);
         return "redirect:/admin";
     }
-
 }

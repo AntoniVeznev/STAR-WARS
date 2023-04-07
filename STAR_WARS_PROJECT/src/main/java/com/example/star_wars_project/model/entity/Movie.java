@@ -12,7 +12,6 @@ public class Movie extends BaseEntity {
     private LocalDate releaseDate;
     private User author;
     private Genre genre;
-
     private Boolean isApproved;
 
     public Movie() {
@@ -71,6 +70,4 @@ public class Movie extends BaseEntity {
     public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
-
-
 }

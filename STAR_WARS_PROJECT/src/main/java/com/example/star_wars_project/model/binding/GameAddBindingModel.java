@@ -1,6 +1,5 @@
 package com.example.star_wars_project.model.binding;
 
-import com.example.star_wars_project.model.entity.Platform;
 import com.example.star_wars_project.model.entity.enums.PlatformNameEnum;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
@@ -60,6 +59,7 @@ public class GameAddBindingModel {
     public void setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
     }
+
     @NotNull
     public PlatformNameEnum getPlatform() {
         return platform;

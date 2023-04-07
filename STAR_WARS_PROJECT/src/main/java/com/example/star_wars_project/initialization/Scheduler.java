@@ -13,7 +13,6 @@ public class Scheduler {
 
     public Scheduler(NewsService newsService) {
         this.newsService = newsService;
-
     }
 
     @Scheduled(fixedRate = 20000)
