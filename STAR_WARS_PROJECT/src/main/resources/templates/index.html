@@ -29,10 +29,6 @@
 </section>
 <!--Hero END-->
 
-<!--<div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item w-100" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-</div>-->
-
 <!--Top three movies START-->
 <h2 class="threeTopMovies-h2 ">Latest Star Wars Movies:</h2>
 <div class="card-group ">
@@ -40,10 +36,6 @@
         <img th:src="*{picture.getPictureUrl()}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 th:text="*{title}" class="card-title">Star Wars: Episode V - The Empire Strikes Back (1980)</h5>
-            <!--<p th:text="*{description}" class="card-text">After the Rebels are brutally overpowered by the Empire on the
-                ice planet Hoth,
-                Luke Skywalker begins Jedi training with Yoda, while his friends are pursued across the galaxy
-                by Darth Vader and bounty hunter Boba Fett.</p>-->
         </div>
         <div class="card-footer ">
             <a th:href="@{/movies/details/{id}(id=*{id})}" class="mt-2 btn btn-lg btn-outline-light" role="button">More
@@ -82,10 +74,6 @@
         <img th:src="*{picture.getPictureUrl()}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 th:text="*{title}" class="card-title">Star Wars: Andor (2022)</h5>
-            <!--<p th:text="*{description}" class="card-text">Prequel series to Star Wars' 'Rogue One'. In an era filled
-                with danger, deception
-                and intrigue, Cassian will embark on the path that is destined to turn him into a Rebel hero.
-            </p>-->
         </div>
         <div class="card-footer">
             <a th:href="@{/series/details/{id}(id=*{id})}" class="mt-2 btn btn-lg btn-outline-light" role="button">More
@@ -110,11 +98,10 @@
         </div>
         <div class="carousel-inner ">
             <div class="carousel-item active" th:object="${latestStarWarsNews.get(0)}">
-                <img  th:src="*{picture.getPictureUrl()}"  class="h-auto d-block w-100" alt="...">
+                <img th:src="*{picture.getPictureUrl()}" class="h-auto d-block w-100" alt="...">
                 <div class="carousel-caption">
                     <h5 th:text="${latestStarWarsNews.get(0).title}">Star Wars Jedi: Survivor</h5>
-                  <!--  <p th:text="${latestStarWarsNews.get(0).description.substring(0,100)}">Stand against the darkness on March 17,
-                        2023.</p>-->
+
                     <a th:href="@{/news/details/{id}(id=*{id})}" class="mt-2 btn btn-lg btn-outline-light"
                        role="button">Read More...</a>
                 </div>
@@ -123,8 +110,7 @@
                 <img th:src="*{picture.getPictureUrl()}" class="h-auto d-block w-100" alt="...">
                 <div class="carousel-caption">
                     <h5 th:text="${latestStarWarsNews.get(1).title}">Star Wars Jedi: Survivor</h5>
-                    <!--<p th:text="${latestStarWarsNews.get(1).description.substring(0,100)}">Stand against the darkness on March 17,
-                        2023.</p>-->
+
                     <a th:href="@{/news/details/{id}(id=*{id})}" class="mt-2 btn btn-lg btn-outline-light"
                        role="button">Read More...</a>
                 </div>
@@ -133,8 +119,7 @@
                 <img th:src="*{picture.getPictureUrl()}" class="h-auto d-block w-100" alt="...">
                 <div class="carousel-caption">
                     <h5 th:text="${latestStarWarsNews.get(2).title}">Star Wars Jedi: Survivor</h5>
-                    <!--<p th:text="${latestStarWarsNews.get(2).description.substring(0,100)}">Stand against the darkness on March 17,
-                        2023.</p>-->
+
                     <a th:href="@{/news/details/{id}(id=*{id})}" class="mt-2 btn btn-lg btn-outline-light"
                        role="button">Read More...</a>
                 </div>
@@ -180,10 +165,7 @@
 <!--GAMES END-->
 
 
-<!--Footer START-->
 <footer th:replace="~{/fragments/commons::footer}"></footer>
-<!--Footer END-->
-
 <script th:replace="~{/fragments/commons::script}"></script>
 
 </body>

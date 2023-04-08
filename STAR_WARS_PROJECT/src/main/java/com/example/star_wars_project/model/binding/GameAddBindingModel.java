@@ -1,6 +1,8 @@
 package com.example.star_wars_project.model.binding;
 
 import com.example.star_wars_project.model.entity.enums.PlatformNameEnum;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import org.hibernate.validator.constraints.Length;
@@ -22,7 +24,8 @@ public class GameAddBindingModel {
     public GameAddBindingModel() {
     }
 
-    @Length(min = 5, max = 250, message = "Game title length must be between 5 and 250 characters!")
+
+    @Length(min = 4, max = 250, message = "Game title length must be between 4 and 250 characters!")
     public String getTitle() {
         return title;
     }
@@ -42,7 +45,7 @@ public class GameAddBindingModel {
         this.releaseDate = releaseDate;
     }
 
-    @Length(min = 50, max = 3000, message = "Description length must be between 50 and 3000 characters!")
+    @Length(min = 50, max = 10000, message = "Description length must be between 50 and 10000 characters!")
     public String getDescription() {
         return description;
     }
@@ -51,7 +54,8 @@ public class GameAddBindingModel {
         this.description = description;
     }
 
-    @NotNull(message = "Video link cant be empty!")
+
+    @NotBlank(message = "Video link cant be empty!")
     public String getVideoUrl() {
         return videoUrl;
     }
@@ -69,7 +73,7 @@ public class GameAddBindingModel {
         this.platform = platform;
     }
 
-    @Length(min = 4, max = 100, message = "Please insert picture title with length between 4 and 100 characters!")
+    @Length(min = 5, max = 100, message = "Picture title length must be between 5 and 100 characters!")
     public String getPictureTitle() {
         return pictureTitle;
     }

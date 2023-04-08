@@ -19,13 +19,6 @@
           th:method="POST"
           th:object="${userRegisterBindingModel}">
 
-        <!--    <th:block th:if="${usernameNotExist}">
-                <div class="text-danger">This username is already taken! Please choose another username.</div>
-            </th:block>
-
-            <th:block th:if="${emailNotExist}">
-                <div class="text-danger">This email is already taken! Please choose another email.</div>
-            </th:block>-->
 
         <div class="form-group row">
             <label for="username" class="col-sm-2 col-form-label">Username</label>
@@ -93,10 +86,7 @@
 </div>
 
 
-<!--Footer START-->
 <footer th:replace="~{/fragments/commons::footer}"></footer>
-<!--Footer END-->
-
 <script th:replace="~{/fragments/commons::script}"></script>
 
 

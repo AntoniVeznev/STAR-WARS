@@ -17,22 +17,22 @@ a:hover {
     color: var(--primary-color);
 }
 
-/* width */
+
 ::-webkit-scrollbar {
     width: 14px;
 }
 
-/* Track */
+
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
-/* Handle */
+
 ::-webkit-scrollbar-thumb {
     background: var(--bs-dark);
 }
 
-/* Handle on hover */
+
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
@@ -51,7 +51,7 @@ a:hover {
     color: white;
 }
 
-/*Custom container START*/
+
 .container-custom {
     width: 100%;
     padding: 0 1rem;
@@ -76,9 +76,7 @@ a:hover {
     }
 }
 
-/*Custom container END*/
 
-/*Hero section START*/
 .hero {
     position: relative;
     height: 100vh;
@@ -133,18 +131,6 @@ a:hover {
 }
 
 
-
-/*.hero__video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translateX(-50%) translateY(-50%);
-}*/
-
 .hero__content {
     z-index: 1;
 }
@@ -153,9 +139,7 @@ a:hover {
     max-width: 540px;
 }
 
-/*Hero section END*/
 
-/*footer -  ot css i html*/
 .footer {
     text-align: center;
     background-color: black;
@@ -236,7 +220,6 @@ a:hover {
 }
 
 
-/*latest 3 series*/
 #lastThreeSerials {
     background-color: black;
     color: white;
@@ -285,8 +268,6 @@ body {
     background-color: black;
 }
 
-
-/*test begin*/
 
 .latestThreeNews-h2 {
     background-color: black;
@@ -392,8 +373,6 @@ body {
 }
 
 
-/*регистрация тест старт*/
-
 #main-register {
     background: black;
     width: 100%;
@@ -479,8 +458,6 @@ label {
 }
 
 
-/*регистрация тест край*/
-
 .picture {
     font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
@@ -490,8 +467,6 @@ label {
     height: 100%;
 }
 
-
-/*test DETAILS start*/
 
 .h1detailstest {
     font-family: 'Montserrat', sans-serif;
@@ -512,7 +487,8 @@ label {
 
     font-size: large;
 }
-.p4detailstest{
+
+.p4detailstest {
     font-family: 'Montserrat', sans-serif;
     font-weight: normal;
     text-align: center;
@@ -530,7 +506,8 @@ label {
     padding-bottom: 2rem;
     font-size: large;
 }
-.p3detailstest{
+
+.p3detailstest {
     font-family: 'Montserrat', sans-serif;
     font-weight: normal;
     text-align: center;
@@ -548,8 +525,6 @@ label {
     padding-bottom: 1rem;
     font-weight: normal;
 }
-
-/*test DETAILS end*/
 
 
 button.nav-link {
@@ -570,26 +545,28 @@ button.nav-link {
     color: white;
 }
 
-#imgRespNews{
+#imgRespNews {
     width: 100%;
     height: auto;
     object-fit: cover;
 }
-#divTestComment2, #divTestComment3{
+
+#divTestComment2, #divTestComment3 {
 
     height: 20%;
 }
-#my0Test{
+
+#my0Test {
     padding-bottom: 2rem;
 }
 
-#img403{
+#img403 {
     width: 100%;
     height: auto;
     image-rendering: auto;
 }
 
-#img404{
+#img404 {
     width: 100%;
     height: auto;
     image-rendering: auto;

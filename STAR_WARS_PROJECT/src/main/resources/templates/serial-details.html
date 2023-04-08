@@ -24,11 +24,10 @@
                                     Fiction</p>
                             </a>
                             <a class="text-info">
-                                <p th:text="|Release Date: *{releaseDate.getMonth().toString().toUpperCase()} *{releaseDate.getDayOfMonth()}, *{releaseDate.getYear()} year|" class="p2detailstest meta">Release Date:
+                                <p th:text="|Release Date: *{releaseDate.getMonth().toString().toUpperCase()} *{releaseDate.getDayOfMonth()}, *{releaseDate.getYear()} year|"
+                                   class="p2detailstest meta">Release Date:
                                     23.05.2018y</p>
                             </a>
-
-
                         </div>
                     </div>
                 </div>
@@ -54,11 +53,9 @@
 </div>
 
 
-<!--Footer START-->
 <footer th:replace="~{/fragments/commons::footer}"></footer>
-<!--Footer END-->
-
 <script th:replace="~{/fragments/commons::script}"></script>
+
 
 </body>
 </html>

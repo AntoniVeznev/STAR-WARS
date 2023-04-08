@@ -16,18 +16,12 @@
     <div class="container poster one-column align-content-center" data-title="Solo: A Star Wars Story">
         <div class="title">
             <h1 th:text="*{title}" class="h1detailstest text-light catalog-title ">Solo: A Star Wars Story</h1>
-
-
             <h3 class="text-light">YouTube Video:</h3>
-            <!--VIDEO TEST 2-->
-
             <div class="embed-responsive embed-responsive-16by9 container-fluid img-fluid">
                 <iframe class="embed-responsive-item img-fluid container-fluid"
-                        th:src="|https://www.youtube.com/embed/*{videoUrl}|" style="width: 1100px; height: 500px" allowfullscreen></iframe>
+                        th:src="|https://www.youtube.com/embed/*{videoUrl}|" style="width: 1100px; height: 500px"
+                        allowfullscreen></iframe>
             </div>
-
-            <!--VIDEO TEST 2-->
-
 
             <div class="flex-meta">
                 <div class="meta-config-compact">
@@ -45,8 +39,6 @@
                                    class="p2detailstest meta">Release Date:
                                     23.05.2018y</p>
                             </a>
-
-
                         </div>
                     </div>
                 </div>
@@ -60,7 +52,6 @@
                 Chewbacca and encounters the notorious gambler Lando Calrissian, in a journey that will set the course
                 of one of the Star Wars saga’s most unlikely heroes.
             </p>
-
         </div>
         <div class="poster-container">
             <div class="poster-inner poster-box ">
@@ -73,10 +64,7 @@
 </div>
 
 
-<!--Footer START-->
 <footer th:replace="~{/fragments/commons::footer}"></footer>
-<!--Footer END-->
-
 <script th:replace="~{/fragments/commons::script}"></script>
 
 </body>

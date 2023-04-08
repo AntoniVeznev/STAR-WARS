@@ -20,7 +20,7 @@ public class MovieAddBindingModel {
     public MovieAddBindingModel() {
     }
 
-    @Length(min = 5, max = 100, message = "Please insert picture title with length between 5 and 100 characters!")
+    @Length(min = 5, max = 100, message = "Picture title length must be between 5 and 100 characters!")
     public String getPictureTitle() {
         return pictureTitle;
     }
@@ -45,7 +45,7 @@ public class MovieAddBindingModel {
         this.publicId = publicId;
     }
 
-    @Length(min = 5, max = 250, message = "Movie title length must be between 5 and 250 characters!")
+    @Length(min = 4, max = 250, message = "Movie title length must be between 4 and 250 characters!")
     public String getTitle() {
         return title;
     }
@@ -74,7 +74,7 @@ public class MovieAddBindingModel {
         this.genre = genre;
     }
 
-    @Length(min = 10, max = 3000, message = "Description length must be between 10 and 3000 characters!")
+    @Length(min = 50, max = 10000, message = "Description length must be between 50 and 10000 characters!")
     public String getDescription() {
         return description;
     }

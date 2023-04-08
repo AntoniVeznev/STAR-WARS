@@ -17,7 +17,7 @@ public class Series extends BaseEntity {
     public Series() {
     }
 
-    @Column
+    @Column()
     public Boolean getApproved() {
         return isApproved;
     }

@@ -19,7 +19,7 @@ public class NewsAddBindingModel {
     public NewsAddBindingModel() {
     }
 
-    @Length(min = 3, max = 250, message = "News title length must be between 3 and 250 characters!")
+    @Length(min = 4, max = 250, message = "News title length must be between 4 and 250 characters!")
     public String getTitle() {
         return title;
     }
@@ -48,7 +48,7 @@ public class NewsAddBindingModel {
         this.description = description;
     }
 
-    @Length(min = 5, max = 100, message = "Please insert picture title with length between 5 and 100 characters!")
+    @Length(min = 5, max = 100, message = "Picture title length must be between 5 and 100 characters!")
     public String getPictureTitle() {
         return pictureTitle;
     }

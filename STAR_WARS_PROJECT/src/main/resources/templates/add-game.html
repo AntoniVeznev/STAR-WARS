@@ -8,8 +8,6 @@
 <nav th:replace="~{/fragments/commons::navigation}"></nav>
 
 
-
-
 <div id="main-add-movie">
     <div class="container text-light ">
         <h1 class="display-3">
@@ -51,19 +49,6 @@
             </div>
         </div>
 
-        <!--<div class="form-group row">
-            <label for="description" class="col-sm-2 col-form-label">Description</label>
-            <div class="col-sm-10">
-                <input th:field="*{description}" th:errorclass="is-invalid" type="text" class="form-control"
-                       id="description"
-                       aria-describedby="descriptionHelpInline" placeholder="Description">
-                <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" id="descriptionHelpInline"
-                       class="invalid-feedback bg-danger text-light rounded">
-                    Description cant be empty.
-                </small>
-            </div>
-        </div>-->
-
         <div class="form-group row">
             <label for="description" class="col-sm-2 col-form-label">Description:</label>
             <div class="col-sm-10">
@@ -94,25 +79,7 @@
             </div>
         </div>
 
-        <!--test check box-->
-
-        <!--ГОРЕ ЗАКОМЕНТИРАХ ВРЕМЕННО ЖАНРОВЕТЕ И ТУК УЖ ПРОБВАМ ДА НАПРАВЯ ЧЕК БОКС-->
-        <!-- <div class="form-group row-cols-0" th:field="*{genre}">
-             <div>
-                 <div class="form-check form-check-inline"
-                      th:each="g : ${T(com.example.star_wars_project.model.entity.enums.GenreNameEnum).values()}">
-                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" >
-                     <label  class="form-check-label" for="inlineCheckbox1">1</label>
-                 </div>
-             </div>
-         </div>-->
-
-        <!--test check box-->
-
-
-    <!--TEST TEST TEST VIDEO-->
-
-        <div class="form-group row">
+        <div class="form-group row mt-5">
             <label for="title" class="col-sm-2 col-form-label">YouTube URL</label>
             <div class="col-sm-10">
                 <input th:field="*{videoUrl}" th:errorclass="is-invalid"
@@ -120,47 +87,15 @@
                        type="text"
                        class="form-control"
                        id="videoTitle"
-                       aria-describedby="videoHelpInline" placeholder="First choose a YouTube-video then click 'Share' button and copy the text after the last symbol - '/'">
-                <small th:if="${#fields.hasErrors('videoUrl')}" th:errors="*{videoUrl}"
-                       id="videoHelpInline"
+                       aria-describedby="videoHelpInline"
+                       placeholder="First choose a YouTube-video then click 'Share' button and copy the text after the last symbol - '/'">
+
+                <small th:if="${#fields.hasErrors('videoUrl')}" th:errors="*{videoUrl}" id="videoHelpInline"
                        class="invalid-feedback bg-danger text-light rounded">
-                    Video cant be empty.
+                    Description cant be empty.
                 </small>
             </div>
         </div>
-
-
-    <!--TEST TEST TEST VIDEO-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <div class="form-group row">
             <label for="title" class="col-sm-2 col-form-label">Picture title</label>
@@ -195,14 +130,8 @@
 </div>
 
 
-
-
-
-
-
-<!--Footer START-->
 <footer th:replace="~{/fragments/commons::footer}"></footer>
-<!--Footer END-->
+
 
 <script th:replace="~{/fragments/commons::script}"></script>
 

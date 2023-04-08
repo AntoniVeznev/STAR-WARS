@@ -42,7 +42,7 @@ public class UserRegisterBindingModel {
         this.email = email;
     }
 
-    @Length(min = 3, max = 20, message = "Password must be between 3 and 20 characters! Please enter a valid password!")
+    @Length(min = 3, max = 30, message = "Password must be between 3 and 30 characters! Please enter a valid password!")
     public String getPassword() {
         return password;
     }
@@ -51,7 +51,7 @@ public class UserRegisterBindingModel {
         this.password = password;
     }
 
-    @Length(min = 3, max = 20, message = "Confirm password must be between 3 and 20 characters! Please enter a valid confirm password!")
+    @Length(min = 3, max = 30, message = "Confirm password must be between 3 and 30 characters! Please enter a valid confirm password!")
     public String getConfirmPassword() {
         return confirmPassword;
     }

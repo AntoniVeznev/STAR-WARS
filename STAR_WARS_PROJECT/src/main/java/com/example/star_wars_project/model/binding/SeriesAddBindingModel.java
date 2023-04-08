@@ -21,7 +21,7 @@ public class SeriesAddBindingModel {
     public SeriesAddBindingModel() {
     }
 
-    @Length(min = 5, max = 100, message = "Please insert picture title with length between 5 and 100 characters!")
+    @Length(min = 5, max = 100, message = "Picture title length must be between 5 and 100 characters!")
     public String getPictureTitle() {
         return pictureTitle;
     }
@@ -46,7 +46,7 @@ public class SeriesAddBindingModel {
         this.publicId = publicId;
     }
 
-    @Length(min = 5, max = 250, message = "Serial title length must be between 5 and 250 characters!")
+    @Length(min = 4, max = 250, message = "Serial title length must be between 4 and 250 characters!")
     public String getTitle() {
         return title;
     }
@@ -75,7 +75,7 @@ public class SeriesAddBindingModel {
         this.genre = genre;
     }
 
-    @Length(min = 10, max = 1000, message = "Description length must be between 10 and 1000 characters!")
+    @Length(min = 50, max = 10000, message = "Description length must be between 50 and 10000 characters!")
     public String getDescription() {
         return description;
     }

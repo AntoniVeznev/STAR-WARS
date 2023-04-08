@@ -19,7 +19,7 @@ public class News extends BaseEntity {
     public News() {
     }
 
-    @Column
+    @Column()
     public Boolean getApproved() {
         return isApproved;
     }
@@ -46,7 +46,7 @@ public class News extends BaseEntity {
         this.description = description;
     }
 
-    @Column(name = "post_date")
+    @Column(name = "post_date", nullable = false)
     public LocalDateTime getPostDate() {
         return postDate;
     }

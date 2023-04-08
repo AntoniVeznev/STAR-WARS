@@ -16,7 +16,7 @@
             <div class="lg-8 m-15px-tb ">
                 <article class="article bg-black ">
                     <div id="divNewsDetail" class="article-img pt-0">
-                        <img th:src="${picture.getPictureUrl()}" class="img-fluid"  id="imgRespNews" title="" alt="">
+                        <img th:src="${picture.getPictureUrl()}" class="img-fluid" id="imgRespNews" title="" alt="">
                     </div>
                     <div class="row mb-3 ">
                         <div class="col-6">
@@ -33,7 +33,8 @@
                         <h2 th:text="*{title}">They Now Bade Farewell To The Kind But Unseen People</h2>
                     </div>
                     <div class="article-content desc text-white pt-5 border-top border-bottom">
-                        <p th:text="*{description}">Aenean eleifend ante maecenas pulvinar montes lorem et pede dis dolor pretium donec dictum.
+                        <p th:text="*{description}">Aenean eleifend ante maecenas pulvinar montes lorem et pede dis
+                            dolor pretium donec dictum.
                             Vici consequat justo enim. Venenatis eget adipiscing luctus lorem. Adipiscing veni amet
                             luctus enim sem libero tellus viverra venenatis aliquam. Commodo natoque quam pulvinar
                             elit.</p>
@@ -43,11 +44,11 @@
         </div>
     </div>
 </div>
-<!--Footer START-->
-<footer th:replace="~{/fragments/commons::footer}"></footer>
-<!--Footer END-->
 
+
+<footer th:replace="~{/fragments/commons::footer}"></footer>
 <script th:replace="~{/fragments/commons::script}"></script>
+
 
 </body>
 </html>

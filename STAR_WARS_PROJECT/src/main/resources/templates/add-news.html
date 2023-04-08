@@ -63,19 +63,6 @@
             </div>
         </div>
 
-        <!--   <div class="form-group row">
-               <label for="description" class="col-sm-2 col-form-label">Description</label>
-               <div class="col-sm-10">
-                   <input th:field="*{description}" th:errorclass="is-invalid" type="text" class="form-control"
-                          id="description"
-                          aria-describedby="descriptionHelpInline" placeholder="Description">
-                   <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" id="descriptionHelpInline"
-                          class="invalid-feedback bg-danger text-light rounded">
-                       Description cant be empty.
-                   </small>
-               </div>
-           </div>-->
-
 
         <div class="form-group row">
             <label for="title" class="col-sm-2 col-form-label">Picture title</label>
@@ -109,11 +96,7 @@
     </form>
 </div>
 
-
-<!--Footer START-->
 <footer th:replace="~{/fragments/commons::footer}"></footer>
-<!--Footer END-->
-
 <script th:replace="~{/fragments/commons::script}"></script>
 
 </body>

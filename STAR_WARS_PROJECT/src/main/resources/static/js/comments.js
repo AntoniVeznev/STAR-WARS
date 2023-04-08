@@ -12,7 +12,7 @@ fetch(`${backEndLocation}/api/${movieId}/comments`)
     })
 
 function addCommentAsHtml(bodyElement) {
-    let commentHtml = `<img class="shadow-1-strong me-3" src="/images/11111.webp" alt="avatar" width="60" height="60"/>
+    let commentHtml = `<img class="shadow-1-strong me-3" src="/images/commentProfilePicture.webp" alt="avatar" width="60" height="60"/>
                        <div>
                            <h6 class="fw-bold mb-1">${bodyElement.authorName}</h6>
                            <div class="d-flex align-items-center mb-3">

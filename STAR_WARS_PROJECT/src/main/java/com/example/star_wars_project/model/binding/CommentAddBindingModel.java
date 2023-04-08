@@ -26,7 +26,8 @@ public class CommentAddBindingModel {
         this.created = created;
     }
 
-    @Length(min = 3, max = 3000, message = "Comment length must be between 3 and 3000 characters!")
+    @NotNull
+    @Length(min = 4, max = 5000, message = "Comment length must be between 4 and 5000 characters!")
     public String getPostContent() {
         return postContent;
     }

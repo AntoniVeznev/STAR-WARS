@@ -9,25 +9,23 @@
 
 
 <h2 class="threeTopMovies-h2">All Games:</h2>
-<div class="row row-cols-1 row-cols-md-4 g-2" >
-  <div class="col" th:each="g : ${games}" th:object="${g}">
-    <div class="card h-100">
-      <img th:src="*{picture.getPictureUrl()}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 th:text="*{title}" class="card-title text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, enim?</h5>
-      </div>
-      <div class="card-footer text-center">
-        <a th:href="@{/games/details/{id}(id=*{id})}" class="mt-2 btn btn-lg btn-outline-light text-center" role="button">More Details</a>
-      </div>
+<div class="row row-cols-1 row-cols-md-4 g-2">
+    <div class="col" th:each="g : ${games}" th:object="${g}">
+        <div class="card h-100">
+            <img th:src="*{picture.getPictureUrl()}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 th:text="*{title}" class="card-title text-center">Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit. Ea, enim?</h5>
+            </div>
+            <div class="card-footer text-center">
+                <a th:href="@{/games/details/{id}(id=*{id})}" class="mt-2 btn btn-lg btn-outline-light text-center"
+                   role="button">More Details</a>
+            </div>
+        </div>
     </div>
-  </div>
-
 </div>
 
-
-<!--Footer START-->
 <footer th:replace="~{/fragments/commons::footer}"></footer>
-<!--Footer END-->
 
 <script th:replace="~{/fragments/commons::script}"></script>
 

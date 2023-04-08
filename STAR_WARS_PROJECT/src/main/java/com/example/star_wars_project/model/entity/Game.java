@@ -18,7 +18,7 @@ public class Game extends BaseEntity {
     public Game() {
     }
 
-    @Column
+    @Column()
     public Boolean getApproved() {
         return isApproved;
     }
@@ -63,7 +63,7 @@ public class Game extends BaseEntity {
         this.videoUrl = videoUrl;
     }
 
-    @Column(name = "release_date")
+    @Column(name = "release_date", nullable = false)
     public LocalDate getReleaseDate() {
         return releaseDate;
     }

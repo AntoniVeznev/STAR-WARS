@@ -12,7 +12,8 @@
     <div class="container bg-blur rounded mt-1 mb-4">
         <div class="row mt-1 mb-2">
             <div class="col-12 mt-5 mb-1">
-                <h3 th:text="|Welcome Jedi-Knight, ${loggedInAdminName}!|" class="mySticky bg-gray text-light  mb-0 mb-5">Welcome Jedi-Knight, Vomer</h3>
+                <h3 th:text="|Welcome Jedi-Knight, ${loggedInAdminName}!|"
+                    class="mySticky bg-gray text-light  mb-0 mb-5">Welcome Jedi-Knight, Vomer</h3>
                 <h3 class="mySticky bg-gray text-light  mb-0 mt-2">Approve or Delete any type of content!</h3>
                 <h3 class="mySticky bg-danger text-light mb-2 mt-5">Movies</h3>
                 <div class=" rounded " style="height: 20vh; overflow: auto; background-color: slategrey">
@@ -43,7 +44,6 @@
                     </div>
                 </div>
 
-
                 <h3 class="mySticky bg-danger text-light mb-2 mt-5">Games</h3>
                 <div class=" rounded " style="height: 20vh; overflow: auto; background-color: slategrey">
                     <div class="mt-1 rounded badge-info " th:each="g : ${allNotApprovedGames}" th:object="${g}">
@@ -52,8 +52,6 @@
                         <a class="ml-3 text-info" th:href="@{/admin/game/delete/{id}(id=*{id})}">Delete</a>
                     </div>
                 </div>
-
-
             </div>
 
 
@@ -61,17 +59,14 @@
                 <h3 class="mySticky bg-danger text-light mb-2 mt-5">All users</h3>
                 <div class=" rounded " style="height: 20vh; overflow: auto; background-color: slategrey">
                     <div class="mt-1 rounded badge-info " th:each="u : ${allUsersWithRoleUSER}" th:object="${u}">
-
-                        <span th:text="|Full name: *{fullName}, Username: *{username}, Email: *{email}|" class="text-light ">
+                        <span th:text="|Full name: *{fullName}, Username: *{username}, Email: *{email}|"
+                              class="text-light ">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, repellat.
                         </span>
                         <a class="ml-3 text-danger" th:href="@{/admin/user/promote/{id}(id=*{id})}">Promote</a>
                         <a class="ml-3 text-danger" th:href="@{/admin/user/delete/{id}(id=*{id})}">Delete</a>
-
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -79,8 +74,6 @@
 
 
 <footer th:replace="~{/fragments/commons::footer}"></footer>
-<!--Footer END-->
-
 <script th:replace="~{/fragments/commons::script}"></script>
 
 </body>
