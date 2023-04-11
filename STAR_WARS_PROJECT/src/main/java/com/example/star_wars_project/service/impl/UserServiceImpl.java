@@ -12,10 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -123,6 +120,17 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
     }
+
+    @Override
+    public void changeUsernameOfCurrentUser(String currentUserName, UserServiceModel userServiceModel) {
+        String username = userServiceModel.getUsername();
+        User userByUsername = userRepository.findUserByUsername(currentUserName).orElse(null);
+        if (userByUsername!=null) {
+            userByUsername.setUsername(username);
+            userRepository.save(userByUsername);
+        }
+    }
+
 
     @Override
     public void deleteUserWithId(Long id) {

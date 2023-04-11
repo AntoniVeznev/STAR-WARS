@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{/fragments/commons::head}"></head>
+<body>
+<nav th:replace="~{/fragments/commons::navigation}"></nav>
+
+<div class="container text-light ">
+    <h1 class="display-3">
+        <strong class="bg-blur rounded border-left border-white pl-3 ">Changes will take effect after LOGOUT! Please
+            Log out Now!</strong>
+    </h1>
+</div>
+
+
+<footer th:replace="~{/fragments/commons::footer}"></footer>
+<script th:replace="~{/fragments/commons::script}"></script>
+</body>
+</html>

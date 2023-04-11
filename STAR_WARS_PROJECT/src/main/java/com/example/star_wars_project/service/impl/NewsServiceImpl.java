@@ -294,10 +294,12 @@ public class NewsServiceImpl implements NewsService {
         if (allByPostDateBefore.isEmpty()) {
             return;
         }
+
         for (News news : allByPostDateBefore) {
             Picture pictureByNewsId = pictureRepository.findPictureByNews_Id(news.getId());
             pictureRepository.delete(pictureByNewsId);
         }
+
         newsRepository.deleteAll(allByPostDateBefore);
     }
 }

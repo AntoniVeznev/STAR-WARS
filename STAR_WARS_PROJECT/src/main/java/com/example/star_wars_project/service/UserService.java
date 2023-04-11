@@ -19,4 +19,7 @@ public interface UserService {
     void deleteUserWithId(Long id);
 
     void promoteUserWithId(Long id);
+
+
+    void changeUsernameOfCurrentUser(String currentUserName, UserServiceModel userServiceModel);
 }

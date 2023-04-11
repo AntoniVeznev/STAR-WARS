@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{/fragments/commons::head}"></head>
+<body class="body-login">
+<nav th:replace="~{/fragments/commons::navigation}"></nav>
+
+
+<form  th:action="@{/users/profile}"
+       th:method="POST"
+       th:object="${changeNicknameBindingModel}">
+
+
+<div id="main-login">
+
+    <div class="container text-light ">
+        <h3 th:text="|Welcome Jedi-Knight, ${currentName}!|"
+            class="mySticky bg-gray text-light  mb-0 mb-5">Welcome Jedi-Knight, Vomer</h3>
+    </div>
+    <p class="text-danger">Here you can change your Nickname</p>
+    <div class="form-group row">
+        <label for="username" class="col-sm-2 col-form-label">Username</label>
+        <div class="col-sm-10">
+            <input th:field="*{username}" th:errorclass="is-invalid" type="text" min="2" max="50"
+                   class="form-control"
+                   id="username"
+                   name="username"
+                   aria-describedby="usernameHelpInline" placeholder="Add your new Jedi Nickname!">
+            <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" id="usernameHelpInline"
+                   class="invalid-feedback bg-danger text-light rounded">
+                Username length must be between 5 and 20 characters.
+            </small>
+        </div>
+    </div>
+    <button type="submit" role="button" class="mt-2 btn btn-lg btn-outline-light">Change it!</button>
+</div>
+</form>
+
+<footer th:replace="~{/fragments/commons::footer}"></footer>
+<script th:replace="~{/fragments/commons::script}"></script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.example.star_wars_project.web;
 
+import com.example.star_wars_project.model.binding.ChangeNicknameBindingModel;
 import com.example.star_wars_project.model.binding.UserRegisterBindingModel;
 import com.example.star_wars_project.model.service.UserServiceModel;
 import com.example.star_wars_project.service.*;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("/users")
 public class UserController {
@@ -24,6 +27,32 @@ public class UserController {
     public UserController(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
         this.modelMapper = modelMapper;
+    }
+
+    @GetMapping("/profile")
+    public String getProfile(Principal principal, Model model) {
+        model.addAttribute("currentName", principal.getName());
+        return "profile";
+    }
+
+    @PostMapping("/profile")
+    public String postProfile(@Valid ChangeNicknameBindingModel changeNicknameBindingModel, BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal) {
+        String currentUserName = principal.getName();
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("changeNicknameBindingModel", changeNicknameBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.changeNicknameBindingModel", bindingResult);
+            return "redirect:profile";
+        }
+
+        UserServiceModel userServiceModel = modelMapper.map(changeNicknameBindingModel, UserServiceModel.class);
+        userService.changeUsernameOfCurrentUser(currentUserName, userServiceModel);
+        return "logout-now";
+    }
+
+    @ModelAttribute
+    public ChangeNicknameBindingModel changeNicknameBindingModel() {
+        return new ChangeNicknameBindingModel();
     }
 
     @GetMapping("/login")
