@@ -29,7 +29,7 @@ public class SpringSecurityConfiguration {
                 //TODO: РАЗРЕШАВАМ ЛОГНАТИТЕ ЮЗАРИ И АДМИНИ ДА МОГАТ ДА СЕ ЛОГАУТВАТ!
                 .requestMatchers("/users/logout").authenticated()
                 //TODO: РАЗРЕШАВАМ ДОСТЪП НА АДМИНА ДО АДМИН СТРАНИЦАТА МУ!
-                .requestMatchers( "/admin").hasRole(RoleNameEnum.ADMINISTRATOR.name())
+                .requestMatchers("/admin").hasRole(RoleNameEnum.ADMINISTRATOR.name())
 
                 .anyRequest()
                 .authenticated()
