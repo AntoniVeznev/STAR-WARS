@@ -8,14 +8,10 @@ import java.util.stream.Collectors;
 
 import com.example.star_wars_project.model.entity.enums.RoleNameEnum;
 import com.example.star_wars_project.model.view.AllUsersViewModel;
-import com.example.star_wars_project.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.example.star_wars_project.model.entity.Role;
@@ -44,7 +40,7 @@ public class UserServiceImplTest {
 
     @Test
     void testRegisterUser() {
-        // Given
+
         UserServiceModel userServiceModel = new UserServiceModel();
         userServiceModel.setUsername("testuser");
         userServiceModel.setFullName("Test User");
@@ -65,10 +61,10 @@ public class UserServiceImplTest {
         when(passwordEncoder.encode(userServiceModel.getPassword())).thenReturn("testpassword");
         when(userRepository.save(user)).thenReturn(user);
 
-        // When
+
         UserServiceModel result = userService.registerUser(userServiceModel);
 
-        // Then
+
         assertEquals(userServiceModel.getUsername(), result.getUsername());
         assertEquals(userServiceModel.getFullName(), result.getFullName());
         assertEquals(userServiceModel.getEmail(), result.getEmail());
@@ -77,7 +73,7 @@ public class UserServiceImplTest {
 
     @Test
     void checkUsername_WithExistingUsername_ShouldReturnTrue() {
-        // Arrange
+
         UserServiceModel userServiceModel = new UserServiceModel();
         userServiceModel.setUsername("testUser");
 
@@ -86,64 +82,64 @@ public class UserServiceImplTest {
 
         Mockito.when(userRepository.findUserByUsername("testUser")).thenReturn(Optional.of(user));
 
-        // Act
+
         boolean result = userService.checkUsername(userServiceModel);
 
-        // Assert
+
         assertTrue(result);
     }
 
     @Test
     void checkUsername_WithNonExistingUsername_ShouldReturnFalse() {
-        // Arrange
+
         UserServiceModel userServiceModel = new UserServiceModel();
         userServiceModel.setUsername("testUser");
 
         Mockito.when(userRepository.findUserByUsername(any())).thenReturn(Optional.empty());
 
-        // Act
+
         boolean result = userService.checkUsername(userServiceModel);
 
-        // Assert
+
         assertFalse(result);
     }
 
 
     @Test
     void testCheckEmail_withExistingEmail_shouldReturnTrue() {
-        // arrange
+
         UserServiceModel userServiceModel = new UserServiceModel();
         userServiceModel.setEmail("test@example.com");
         User user = new User();
         user.setEmail("test@example.com");
         when(userRepository.findUserByEmail("test@example.com")).thenReturn(Optional.of(user));
 
-        // act
+
         boolean result = userService.checkEmail(userServiceModel);
 
-        // assert
+
         assertTrue(result);
         verify(userRepository, times(1)).findUserByEmail("test@example.com");
     }
 
     @Test
     void testCheckEmail_withNonExistingEmail_shouldReturnFalse() {
-        // arrange
+
         UserServiceModel userServiceModel = new UserServiceModel();
         userServiceModel.setEmail("test@example.com");
         when(userRepository.findUserByEmail("test@example.com")).thenReturn(Optional.empty());
 
-        // act
+
         boolean result = userService.checkEmail(userServiceModel);
 
-        // assert
+
         assertFalse(result);
         verify(userRepository, times(1)).findUserByEmail("test@example.com");
     }
 
     @Test
     public void testFindAllUsersWithRoleUSER() {
-        // Arrange
+
         User user1 = new User();
         user1.setUsername("user1");
         user1.setEmail("user1@example.com");
@@ -180,22 +176,12 @@ public class UserServiceImplTest {
         when(userRepository.findAll()).thenReturn(Arrays.asList(user1, user2, user3));
 
 
-        // Act
+
         List<AllUsersViewModel> result = userService.findAllUsersWithRoleUSER();
 
-        // Assert
+
         assertEquals(2, result.size());
         List<String> usernames = result.stream().map(AllUsersViewModel::getUsername).collect(Collectors.toList());
         assertEquals(Arrays.asList("user1", "user2"), usernames);
     }
-
-
-
-
-
-
-
-
-
 }
-

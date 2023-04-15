@@ -1,7 +1,5 @@
 package com.example.star_wars_project.model.entity;
 
-
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -18,14 +16,14 @@ class NewsTest {
     void testSettersAndGetters() {
         News news = new News();
 
-        // Test setters
+
         news.setTitle("Test news");
         news.setDescription("This is a test news.");
         news.setPostDate(LocalDateTime.now());
         news.setAuthor(new User());
         news.setApproved(true);
 
-        // Test getters
+
         assertEquals("Test news", news.getTitle());
         assertEquals("This is a test news.", news.getDescription());
         assertNotNull(news.getPostDate());
@@ -71,7 +69,7 @@ class NewsTest {
         news2.setApproved(true);
 
         assertThrows(PersistenceException.class, () -> {
-            // Try to persist two news with the same title
+
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("test");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
