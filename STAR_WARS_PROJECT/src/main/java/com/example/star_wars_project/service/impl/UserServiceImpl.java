@@ -125,7 +125,7 @@ public class UserServiceImpl implements UserService {
     public void changeUsernameOfCurrentUser(String currentUserName, UserServiceModel userServiceModel) {
         String username = userServiceModel.getUsername();
         User userByUsername = userRepository.findUserByUsername(currentUserName).orElse(null);
-        if (userByUsername!=null) {
+        if (userByUsername != null) {
             userByUsername.setUsername(username);
             userRepository.save(userByUsername);
         }
