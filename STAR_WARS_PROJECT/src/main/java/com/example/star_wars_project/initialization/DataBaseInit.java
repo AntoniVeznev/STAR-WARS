@@ -6,14 +6,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DataBaseInit implements CommandLineRunner {
-    private final RoleService roleService;
-    private final GenreService genreService;
-    private final PlatformService platformService;
-    private final UserService userService;
-    private final MovieService movieService;
-    private final SeriesService seriesService;
-    private final NewsService newsService;
-    private final GameService gameService;
+    public final RoleService roleService;
+    public final GenreService genreService;
+    public final PlatformService platformService;
+    public final UserService userService;
+    public final MovieService movieService;
+    public final SeriesService seriesService;
+    public final NewsService newsService;
+    public final GameService gameService;
 
     public DataBaseInit(RoleService roleService, GenreService genreService, PlatformService platformService, UserService userService, MovieService movieService, SeriesService seriesService, NewsService newsService, GameService gameService) {
         this.roleService = roleService;

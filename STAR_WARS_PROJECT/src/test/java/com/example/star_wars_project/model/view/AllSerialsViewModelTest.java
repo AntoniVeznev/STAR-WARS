@@ -29,5 +29,3 @@ public class AllSerialsViewModelTest {
         Assertions.assertEquals(picture, serialsViewModel.getPicture());
     }
 }
-
-

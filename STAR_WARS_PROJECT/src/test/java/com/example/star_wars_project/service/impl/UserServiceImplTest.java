@@ -28,7 +28,6 @@ public class UserServiceImplTest {
     private ModelMapper modelMapper;
 
 
-
     @BeforeEach
     void setUp() {
         userRepository = mock(UserRepository.class);
@@ -174,7 +173,6 @@ public class UserServiceImplTest {
         user3.setRoles(roles3);
 
         when(userRepository.findAll()).thenReturn(Arrays.asList(user1, user2, user3));
-
 
 
         List<AllUsersViewModel> result = userService.findAllUsersWithRoleUSER();

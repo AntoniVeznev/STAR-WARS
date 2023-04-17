@@ -1,6 +1,7 @@
 package com.example.star_wars_project.model.view;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AllUsersViewModelTest {
@@ -24,4 +25,3 @@ public class AllUsersViewModelTest {
         assertEquals(email, model.getEmail());
     }
 }
-

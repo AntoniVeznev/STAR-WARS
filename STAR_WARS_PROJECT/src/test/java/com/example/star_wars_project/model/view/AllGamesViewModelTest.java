@@ -92,4 +92,3 @@ public class AllGamesViewModelTest {
         assertEquals(expectedPicture, viewModel.getPicture());
     }
 }
-

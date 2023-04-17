@@ -35,4 +35,3 @@ public class AllMoviesViewModelTest {
         Assertions.assertEquals(picture, allMoviesViewModel.getPicture());
     }
 }
-

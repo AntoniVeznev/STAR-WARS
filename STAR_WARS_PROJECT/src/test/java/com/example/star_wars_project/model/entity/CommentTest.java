@@ -40,5 +40,3 @@ public class CommentTest {
         Assertions.assertEquals(author, comment.getAuthor());
     }
 }
-
-

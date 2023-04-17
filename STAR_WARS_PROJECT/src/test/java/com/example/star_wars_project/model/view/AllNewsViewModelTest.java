@@ -35,4 +35,3 @@ public class AllNewsViewModelTest {
         assertEquals(authorName, model.getAuthorName());
     }
 }
-

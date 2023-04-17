@@ -1,4 +1,5 @@
 package com.example.star_wars_project.model.entity;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

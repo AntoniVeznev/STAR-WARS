@@ -47,4 +47,3 @@ class GameTest {
         assertEquals("JohnDoe", game.getAuthor().getUsername());
     }
 }
-

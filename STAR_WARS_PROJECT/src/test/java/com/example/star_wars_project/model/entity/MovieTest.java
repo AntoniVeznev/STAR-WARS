@@ -57,4 +57,3 @@ class MovieTest {
         assertEquals(isApproved, movie.getApproved());
     }
 }
-
