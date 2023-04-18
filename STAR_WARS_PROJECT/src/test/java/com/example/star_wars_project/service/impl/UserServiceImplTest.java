@@ -60,9 +60,7 @@ public class UserServiceImplTest {
         when(passwordEncoder.encode(userServiceModel.getPassword())).thenReturn("testpassword");
         when(userRepository.save(user)).thenReturn(user);
 
-
         UserServiceModel result = userService.registerUser(userServiceModel);
-
 
         assertEquals(userServiceModel.getUsername(), result.getUsername());
         assertEquals(userServiceModel.getFullName(), result.getFullName());
@@ -81,9 +79,7 @@ public class UserServiceImplTest {
 
         Mockito.when(userRepository.findUserByUsername("testUser")).thenReturn(Optional.of(user));
 
-
         boolean result = userService.checkUsername(userServiceModel);
-
 
         assertTrue(result);
     }
@@ -96,9 +92,7 @@ public class UserServiceImplTest {
 
         Mockito.when(userRepository.findUserByUsername(any())).thenReturn(Optional.empty());
 
-
         boolean result = userService.checkUsername(userServiceModel);
-
 
         assertFalse(result);
     }
@@ -113,9 +107,7 @@ public class UserServiceImplTest {
         user.setEmail("test@example.com");
         when(userRepository.findUserByEmail("test@example.com")).thenReturn(Optional.of(user));
 
-
         boolean result = userService.checkEmail(userServiceModel);
-
 
         assertTrue(result);
         verify(userRepository, times(1)).findUserByEmail("test@example.com");
@@ -128,9 +120,7 @@ public class UserServiceImplTest {
         userServiceModel.setEmail("test@example.com");
         when(userRepository.findUserByEmail("test@example.com")).thenReturn(Optional.empty());
 
-
         boolean result = userService.checkEmail(userServiceModel);
-
 
         assertFalse(result);
         verify(userRepository, times(1)).findUserByEmail("test@example.com");
@@ -174,9 +164,7 @@ public class UserServiceImplTest {
 
         when(userRepository.findAll()).thenReturn(Arrays.asList(user1, user2, user3));
 
-
         List<AllUsersViewModel> result = userService.findAllUsersWithRoleUSER();
-
 
         assertEquals(2, result.size());
         List<String> usernames = result.stream().map(AllUsersViewModel::getUsername).collect(Collectors.toList());
