@@ -12,6 +12,7 @@
         th:method="GET"
         th:object="${currentSerial}">
 
+    <input type="hidden" name="serialId" id="serialId" th:value="${currentSerial.id}">
     <div class="container poster one-column align-content-center" data-title="Solo: A Star Wars Story">
         <div class="title">
             <h1 th:text="*{title}" class="h1detailstest text-light catalog-title ">Solo: A Star Wars Story</h1>
@@ -50,9 +51,57 @@
             </div>
         </div>
     </div>
+
+    <form id="commentSerialForm">
+        <section>
+            <div class="container-fluid ">
+                <div class="row d-flex justify-content-center ">
+                    <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6 ">
+                        <div class="card ">
+                            <div class="card-body p-4 ">
+                                <div id="divTestComment2" class="d-flex flex-start w-100 ">
+                                    <div id="divTestComment3" class="w-100">
+                                        <h5 class="text-dark fw-bolder ">Add a comment</h5>
+                                        <div class="form-outline ">
+                                            <textarea class="form-control" id="textAreaExample1" name="textAreaExample1"
+                                                      rows="4"></textarea>
+                                            <label class="form-label  text-dark fw-bolder" for="textAreaExample1">What is
+                                                your view?</label>
+                                        </div>
+                                        <div class="d-flex justify-content-between mt-3 ">
+                                            <button type="submit" class="btn btn-info ">Post</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+
+    <section>
+        <div class="container-fluid ">
+            <div class="row d-flex justify-content-center ">
+                <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6 ">
+                    <div class="card text-dark">
+                        <div class="card-body p-4">
+                            <div class="d-flex flex-start">
+                                <div id="commentSerialSpanTest">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 
+<script th:src="@{/js/serialComments.js}"></script>
 <footer th:replace="~{/fragments/commons::footer}"></footer>
 <script th:replace="~{/fragments/commons::script}"></script>
 

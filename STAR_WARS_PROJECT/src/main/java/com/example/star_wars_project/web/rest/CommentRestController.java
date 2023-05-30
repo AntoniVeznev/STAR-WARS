@@ -24,9 +24,21 @@ public class CommentRestController {
         return ResponseEntity.ok(commentsByMovie);
     }
 
+    @GetMapping("/api/{serialId}/comment")
+    public ResponseEntity<List<CommentsView>> getCommentsSerial(@PathVariable("serialId") Long serialId) {
+        List<CommentsView> commentsBySerial = commentService.getCommentsBySerial(serialId);
+        return ResponseEntity.ok(commentsBySerial);
+    }
+
     @GetMapping("/api/{movieId}/comments/{commentId}")
     public ResponseEntity<CommentsView> getComment(@PathVariable("commentId") Long commentId, @PathVariable String movieId) {
         CommentsView commentsView = commentService.getComment(commentId);
+        return ResponseEntity.ok(commentsView);
+    }
+
+    @GetMapping("/api/{serialId}/comment/{commentId}")
+    public ResponseEntity<CommentsView> getCommentSerial(@PathVariable("commentId") Long commentId, @PathVariable String serialId) {
+        CommentsView commentsView = commentService.getCommentSerial(commentId);
         return ResponseEntity.ok(commentsView);
     }
 
@@ -44,5 +56,21 @@ public class CommentRestController {
         }
 
         return ResponseEntity.created(URI.create(String.format("/api/%d/comments/%d", movieId, commentsView.getId()))).body(commentsView);
+    }
+
+    @PostMapping(value = "/api/{serialId}/comment", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<CommentsView> createCommentSerial(Principal principal,
+                                                            @RequestBody CommentAddBindingModel commentAddBindingModel,
+                                                            @PathVariable("serialId") Long serialId) {
+
+        String name = principal.getName();
+
+        CommentsView commentsView = commentService.createCommentSerial(commentAddBindingModel, serialId, name);
+
+        if (commentsView == null) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.created(URI.create(String.format("/api/%d/comment/%d", serialId, commentsView.getId()))).body(commentsView);
     }
 }
