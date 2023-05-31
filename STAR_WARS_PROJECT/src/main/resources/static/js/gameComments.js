@@ -1,9 +1,10 @@
 const backEndLocation = 'http://localhost:8080'
 
-let serialId = document.getElementById('serialId').getAttribute("value")
-let commentSerialSection = document.getElementById('commentSerialSpanTest')
+let gameId = document.getElementById('gameId').getAttribute("value")
+let commentGameSection = document.getElementById('commentGameSpanTest')
 
-fetch(`${backEndLocation}/api/${serialId}/comment`)
+
+fetch(`${backEndLocation}/api/${gameId}/commentss`)
     .then((response) => response.json())
     .then((body) => {
         for (const bodyElement of body) {
@@ -22,22 +23,22 @@ function addCommentAsHtml(bodyElement) {
                        </div>
                        <hr id="my0Test" class="my-0"/>`
 
-    commentSerialSection.innerHTML += commentHtml;
+    commentGameSection.innerHTML += commentHtml;
 }
 
 let csrfHeaderName = document.getElementById('csrf').getAttribute('name');
 let csrfHeaderValue = document.getElementById('csrf').getAttribute('value');
 
-let commentSerialForm = document.getElementById("commentSerialForm");
+let commentGameForm = document.getElementById("commentGameForm");
 
 
-commentSerialForm.addEventListener("submit", (event) => {
+commentGameForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    let text = document.getElementById("textAreaExample1").value;
+    let text = document.getElementById("textAreaExample2").value;
 
 
-    fetch(`${backEndLocation}/api/${serialId}/comment`, {
+    fetch(`${backEndLocation}/api/${gameId}/commentss`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -49,7 +50,7 @@ commentSerialForm.addEventListener("submit", (event) => {
         })
 
     }).then((res) => {
-        document.getElementById("textAreaExample1").value = '';
+        document.getElementById("textAreaExample2").value = '';
         let location = res.headers.get("Location");
         fetch(`${backEndLocation}${location}`)
             .then(res => res.json())

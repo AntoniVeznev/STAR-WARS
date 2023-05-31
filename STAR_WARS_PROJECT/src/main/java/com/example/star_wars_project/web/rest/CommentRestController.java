@@ -29,6 +29,11 @@ public class CommentRestController {
         List<CommentsView> commentsBySerial = commentService.getCommentsBySerialId(serialId);
         return ResponseEntity.ok(commentsBySerial);
     }
+    @GetMapping("/api/{gameId}/commentss")
+    public ResponseEntity<List<CommentsView>> getGameComments(@PathVariable("gameId") Long gameId) {
+        List<CommentsView> commentsByGame = commentService.getCommentsByGameId(gameId);
+        return ResponseEntity.ok(commentsByGame);
+    }
 
     @GetMapping("/api/{movieId}/comments/{commentId}")
     public ResponseEntity<CommentsView> getCommentMovie(@PathVariable("commentId") Long commentId, @PathVariable String movieId) {
@@ -38,6 +43,11 @@ public class CommentRestController {
 
     @GetMapping("/api/{serialId}/comment/{commentId}")
     public ResponseEntity<CommentsView> getCommentSerial(@PathVariable("commentId") Long commentId, @PathVariable String serialId) {
+        CommentsView commentsView = commentService.getCommentById(commentId);
+        return ResponseEntity.ok(commentsView);
+    }
+    @GetMapping("/api/{gameId}/commentss/{commentId}")
+    public ResponseEntity<CommentsView> getCommentGame(@PathVariable("commentId") Long commentId, @PathVariable String gameId) {
         CommentsView commentsView = commentService.getCommentById(commentId);
         return ResponseEntity.ok(commentsView);
     }
@@ -66,4 +76,18 @@ public class CommentRestController {
         }
         return ResponseEntity.created(URI.create(String.format("/api/%d/comment/%d", serialId, commentsView.getId()))).body(commentsView);
     }
+
+
+    @PostMapping(value = "/api/{gameId}/commentss", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<CommentsView> createGameComment(Principal principal,
+                                                           @RequestBody CommentAddBindingModel commentAddBindingModel,
+                                                           @PathVariable("gameId") Long gameId) {
+        String name = principal.getName();
+        CommentsView commentsView = commentService.createCommentGame(commentAddBindingModel, gameId, name);
+        if (commentsView == null) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.created(URI.create(String.format("/api/%d/commentss/%d", gameId, commentsView.getId()))).body(commentsView);
+    }
+
 }
