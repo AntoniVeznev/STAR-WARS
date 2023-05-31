@@ -42,10 +42,10 @@ class CommentRestControllerTest {
         comment2.setPostContent("I loved it!");
         comment2.setAuthorName("user2");
         comments.add(comment2);
-        Mockito.when(commentService.getCommentsByMovie(movieId)).thenReturn(comments);
+        Mockito.when(commentService.getCommentsByMovieId(movieId)).thenReturn(comments);
 
 
-        ResponseEntity<List<CommentsView>> response = commentRestController.getCommentsMovies(movieId);
+        ResponseEntity<List<CommentsView>> response = commentRestController.getMovieComments(movieId);
 
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -67,10 +67,10 @@ class CommentRestControllerTest {
         comment.setId(commentId);
         comment.getPostContent();
         comment.getAuthorName();
-        Mockito.when(commentService.getComment(commentId)).thenReturn(comment);
+        Mockito.when(commentService.getCommentById(commentId)).thenReturn(comment);
 
 
-        ResponseEntity<CommentsView> response = commentRestController.getComment(commentId, movieId.toString());
+        ResponseEntity<CommentsView> response = commentRestController.getCommentMovie(commentId, movieId.toString());
 
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -91,10 +91,10 @@ class CommentRestControllerTest {
         commentsView.setId(1L);
         commentsView.setPostContent("Great movie!");
         commentsView.setAuthorName("user1");
-        Mockito.when(commentService.createComment(commentAddBindingModel, movieId, "user1")).thenReturn(commentsView);
+        Mockito.when(commentService.createCommentMovie(commentAddBindingModel, movieId, "user1")).thenReturn(commentsView);
 
 
-        ResponseEntity<CommentsView> response = commentRestController.createComment(principal, commentAddBindingModel, movieId);
+        ResponseEntity<CommentsView> response = commentRestController.createMovieComment(principal, commentAddBindingModel, movieId);
 
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());

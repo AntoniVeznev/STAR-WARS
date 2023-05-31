@@ -60,7 +60,7 @@ class CommentServiceImplTest {
         when(modelMapper.map(comment1, CommentsView.class)).thenReturn(new CommentsView());
         when(modelMapper.map(comment2, CommentsView.class)).thenReturn(new CommentsView());
 
-        List<CommentsView> commentsByMovie = commentService.getCommentsByMovie(movieId);
+        List<CommentsView> commentsByMovie = commentService.getCommentsByMovieId(movieId);
 
         assertEquals(2, commentsByMovie.size());
         assertEquals(null, commentsByMovie.get(0).getId());
@@ -76,7 +76,7 @@ class CommentServiceImplTest {
         CommentAddBindingModel commentAddBindingModel = new CommentAddBindingModel();
         commentAddBindingModel.setPostContent(postContent);
 
-        CommentsView createdComment = commentService.createComment(commentAddBindingModel, movieId, username);
+        CommentsView createdComment = commentService.createCommentMovie(commentAddBindingModel, movieId, username);
 
         assertNull(createdComment);
     }
@@ -98,7 +98,7 @@ class CommentServiceImplTest {
         Mockito.when(modelMapper.map(Mockito.any(), Mockito.any())).thenReturn(new CommentsView());
 
 
-        CommentsView commentsView = commentService.createComment(commentAddBindingModel, 1L, "testuser");
+        CommentsView commentsView = commentService.createCommentMovie(commentAddBindingModel, 1L, "testuser");
 
 
         assertEquals(null, commentsView.getPostContent());

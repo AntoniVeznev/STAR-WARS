@@ -32,7 +32,7 @@ public class CommentServiceImpl implements CommentService {
         this.modelMapper = modelMapper;
     }
 
-    public List<CommentsView> getCommentsByMovie(Long movieId) {
+    public List<CommentsView> getCommentsByMovieId(Long movieId) {
         List<Comment> allByMovie = commentRepository.findCommentsByMovie_IdOrderByCreatedDesc(movieId);
         return allByMovie
                 .stream()
@@ -45,7 +45,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<CommentsView> getCommentsBySerial(Long serialId) {
+    public List<CommentsView> getCommentsBySerialId(Long serialId) {
         List<Comment> allBySerial = commentRepository.findCommentsBySeries_IdOrderByCreatedDesc(serialId);
         return allBySerial
                 .stream()
@@ -58,7 +58,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public CommentsView createComment(CommentAddBindingModel commentAddBindingModel, Long movieId, String name) {
+    public CommentsView createCommentMovie(CommentAddBindingModel commentAddBindingModel, Long movieId, String name) {
         if (commentAddBindingModel.getPostContent().equals("")) {
             return null;
         }
@@ -93,16 +93,8 @@ public class CommentServiceImpl implements CommentService {
         return commentsView;
     }
 
-    public CommentsView getComment(Long id) {
-        Comment comment = commentRepository.findCommentById(id);
-        CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
-        commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
-        commentsView.setPostContent(comment.getPostContent());
-        return commentsView;
-    }
-
     @Override
-    public CommentsView getCommentSerial(Long commentId) {
+    public CommentsView getCommentById(Long commentId) {
         Comment comment = commentRepository.findCommentById(commentId);
         CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
         commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
