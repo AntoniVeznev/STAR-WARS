@@ -32,9 +32,9 @@ spring:
 
   #Cloudinary Properties
   cloudinary:
-    api-key: 459979215534265
+    api-key: ${CLOUDINARY_API_KEY}
     api-secret: ${CLOUDINARY_API_SECRET}
-    cloud-name: dedh1hh8k
+    cloud-name: ${CLOUDINARY_API_NAME}
 
   #Passwords for the first 2 users that are auto initialized in the DataBase: Admin and User
   STAR_WARS_PROJECT:
