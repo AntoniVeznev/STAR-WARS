@@ -140,7 +140,7 @@ public class NewsServiceImpl implements NewsService {
                 "\n" +
                 "Still, the actor seems most excited about the story. While he won’t go into specifics, it sounds like Jedi: Survivor will make an impact. “This is going to be an emotional rollercoaster for people,” he says. “I think that you’d have to be made of stone for it to not hit you in the heart.”");
         news1.setTitle("Star Wars Jedi: Survivor: Cameron Monaghan on Cal Kestis’ Next Adventure");
-        news1.setPostDate(LocalDateTime.of(2023, 3, 9, 16, 45));
+        news1.setPostDate(LocalDateTime.of(2023, 6, 13, 16, 45));
         news1.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
 
         Picture picture1 = new Picture();
@@ -196,7 +196,7 @@ public class NewsServiceImpl implements NewsService {
                 "\n" +
                 "Mark your calendars, gather your crew, and brush up on Season 1 now, because Clone Force 99 is on its way.");
         news2.setTitle("Clone Force 99 Is Back in New Star Wars: The Bad Batch Season 2 Trailer");
-        news2.setPostDate(LocalDateTime.of(2023, 3, 7, 20, 34));
+        news2.setPostDate(LocalDateTime.of(2023, 6, 12, 20, 34));
         news2.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
 
         Picture picture2 = new Picture();
@@ -228,7 +228,7 @@ public class NewsServiceImpl implements NewsService {
                 "And the fans have embraced Sackhoff and Bo-Katan’s joint leap to Star Wars live action. After the surprise debut in The Mandalorian, Sackhoff delighted in watching fan reactions online. “One of my favorite things to do last year — I mean, I didn't do it like repeatedly, that would be kind of weird, — but I watched the fan reaction compilation that was put together of Bo showing up, and it just warmed my heart,” she says. “I was so happy that she was so well received. I mean, listen: love her, hate her. You can hate her. She's done some pretty appalling things in her existence. But the reaction and overall excitement — and to see people instantaneously know who she was, the moment she landed… was really cool. I loved it.”" +
                 "As Bo-Katan’s journey continues, Sackhoff is tight-lipped about what’s in store, confirming only this: she did learn a new stunt move for Season 3. “But if I told you about it, it would give things away,” she says with a laugh. “That's one of the fun things. There's always a skill that I'm relearning and a different type of fighting style for different characters. Bo has a finesse to her.”");
         news3.setTitle("“As Fierce as Possible”: Katee Sackhoff on the Evolution of Bo-Katan Kryze");
-        news3.setPostDate(LocalDateTime.of(2023, 4, 23, 17, 29));
+        news3.setPostDate(LocalDateTime.of(2023, 6, 11, 17, 29));
         news3.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
 
         Picture picture3 = new Picture();
@@ -271,7 +271,7 @@ public class NewsServiceImpl implements NewsService {
                 "Favreau has been a part of the galaxy almost as long, first stepping into the role of Pre Vizsla in Star Wars: The Clone Wars, the leader of Death Watch who wielded the Darksaber in animation. “Life is weird,” he says. “In retrospect, it looks like it has followed some path. But at the time it just felt like we were doing things that seemed fun and cool and I had no idea [it would lead to The Mandalorian]. I definitely feel a connection to the Darksaber because I was the first one to wield it.” The idea for the Darksaber came from Lucas himself, a rewrite after Favreau initially recorded the episode with dialogue for a vibroblade. “George didn't like the logic of vibroblade being able to parry a lightsaber, so he invented the Darksaber, and I had to read the whole monologue about how it was found in a Jedi Temple. And I was telling my wife, she's like, ‘That's the coolest thing in the world.’ And it became so cool that we ended up making a whole TV show about it,” he says with a laugh. “That whole idea and how profound that thing is, that Tarre Vizsla was both Mandalorian and Jedi, that implies so much because those were two diametrically opposed warring factions. So, what does that mean? These are the clues that we look for, these little anomalies and things that instead of shying away from, we sort of delve into and explore.” That includes the factions of Bo-Katan’s Mandalorian sect and the Children of the Watch, whose members must never remove their helmets. “In The Clone Wars, they're always taking their helmets off. So what's going on there?” Favreau asks. “We pulled all that together and in Season 2 they confronted each other. Now, we see how all of that plays out.”" +
                 "As for the best-kept-secrets and character surprises that the show has become known for, we’ll have to wait and see what comes next. “We like to have surprises,” Favreau says. “We like to have something revealed each episode. I like when everybody tries to see it at the same time and then talks about it and reacts to it, discusses it. Tries to guess what's happening next. That's part of the fun of the serialized storytelling. We want to make sure that each week a new piece of information comes out and that maybe things resolve in an unexpected way, but ways that feel justified and emotionally resonant and character-based. Look, we just hope that people enjoy this new set of stories. I certainly am enjoying doing what I'm doing here. Hopefully we can do it for a long time.”");
         news4.setTitle("Jon Favreau and Dave Filoni Chart a Course to Mandalore");
-        news4.setPostDate(LocalDateTime.of(2023, 4, 16, 11, 48));
+        news4.setPostDate(LocalDateTime.of(2023, 6, 10, 11, 48));
         news4.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
 
         Picture picture4 = new Picture();
