@@ -70,6 +70,13 @@ public class UserServiceImpl implements UserService {
             return;
         }
 
+        initDefaultAdmin();
+
+        initDefaultUser();
+
+    }
+
+    public void initDefaultAdmin() {
         User admin = new User();
         admin.setUsername("Admin");
         admin.setFullName("Admin Adminov");
@@ -83,7 +90,9 @@ public class UserServiceImpl implements UserService {
         admin.setRoles(adminRoles);
 
         userRepository.save(admin);
+    }
 
+    public void initDefaultUser() {
         User user = new User();
         user.setUsername("Vomer");
         user.setFullName("Antoni Veznev");
@@ -91,6 +100,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(defaultPassForUser));
 
         Set<Role> userRoles = new HashSet<>();
+        List<Role> allRolesFromDb = roleRepository.findAll();
         userRoles.add(allRolesFromDb.get(0));
         user.setRoles(userRoles);
 
