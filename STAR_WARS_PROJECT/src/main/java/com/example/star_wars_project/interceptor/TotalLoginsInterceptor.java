@@ -24,7 +24,7 @@ public class TotalLoginsInterceptor implements HandlerInterceptor {
             if (!Objects.equals(request.getRemoteUser(), oldLoggedInUser)) {
                 totalLoginCounts += 1;
                 oldLoggedInUser = request.getRemoteUser();
-                System.out.println("The total number of logged in users since the website has been active: " + totalLoginCounts);
+                System.out.println("The total number of logins since the website has been active: " + totalLoginCounts);
             }
         }
     }

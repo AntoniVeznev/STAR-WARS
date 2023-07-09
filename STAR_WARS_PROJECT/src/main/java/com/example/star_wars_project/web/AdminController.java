@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
@@ -48,6 +49,11 @@ public class AdminController {
         return "admin";
     }
 
+    @GetMapping("/user/promote/{id}")
+    public String userApprove(@PathVariable Long id) {
+        userService.promoteUserWithId(id);
+        return "redirect:/admin";
+    }
     @GetMapping("/movie/approve/{id}")
     public String movieApprove(@PathVariable Long id) {
         movieService.approveMovieWithId(id);
@@ -96,11 +102,6 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/user/promote/{id}")
-    public String userApprove(@PathVariable Long id) {
-        userService.promoteUserWithId(id);
-        return "redirect:/admin";
-    }
 
     @GetMapping("/user/delete/{id}")
     public String userDelete(@PathVariable Long id) {
