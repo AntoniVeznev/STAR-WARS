@@ -1,5 +1,6 @@
 package com.example.star_wars_project.interceptor;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -44,5 +45,12 @@ public class TotalLoginsInterceptorTest {
 
 
         assert totalLoginsInterceptor.totalLoginCounts == 2;
+    }
+    @Test
+    public void testPreHandle() throws Exception {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        totalLoginsInterceptor.preHandle(request,response,null);
+
     }
 }

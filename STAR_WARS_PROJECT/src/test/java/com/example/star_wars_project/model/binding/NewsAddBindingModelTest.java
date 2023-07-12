@@ -2,6 +2,7 @@ package com.example.star_wars_project.model.binding;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -13,11 +14,18 @@ public class NewsAddBindingModelTest {
     private static final String VALID_DESCRIPTION = "Test Description";
     private static final String VALID_PICTURE_TITLE = "Test Picture Title";
     private static final String VALID_PUBLIC_ID = "Test Public Id";
+    private static MultipartFile multipartFile;
+
     private NewsAddBindingModel newsAddBindingModel;
 
     @BeforeEach
     public void setup() {
         newsAddBindingModel = new NewsAddBindingModel();
+    }
+    @Test
+    public void testSetPicture() {
+        newsAddBindingModel.setPicture(multipartFile);
+        assertEquals(multipartFile, newsAddBindingModel.getPicture());
     }
 
     @Test
