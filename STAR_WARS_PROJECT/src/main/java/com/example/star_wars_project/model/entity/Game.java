@@ -36,7 +36,8 @@ public class Game extends BaseEntity {
         this.platform = platform;
     }
 
-    @Column(unique = true, nullable = false, columnDefinition = "LONGTEXT")
+    @Lob
+    @Column(length=100000, unique = true, nullable = false)
     public String getTitle() {
         return title;
     }
@@ -45,7 +46,8 @@ public class Game extends BaseEntity {
         this.title = title;
     }
 
-    @Column(unique = true, nullable = false, columnDefinition = "LONGTEXT")
+    @Lob
+    @Column(length=100000, unique = true, nullable = false)
     public String getDescription() {
         return description;
     }
@@ -54,7 +56,8 @@ public class Game extends BaseEntity {
         this.description = description;
     }
 
-    @Column(name = "video_url", nullable = false, columnDefinition = "TEXT")
+    @Lob
+    @Column(name = "video_url", nullable = false)
     public String getVideoUrl() {
         return videoUrl;
     }

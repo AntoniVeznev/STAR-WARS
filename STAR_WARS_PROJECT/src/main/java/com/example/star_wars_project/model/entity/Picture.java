@@ -34,8 +34,8 @@ public class Picture extends BaseEntity {
     public void setTitle(String title) {
         this.title = title;
     }
-
-    @Column(nullable = false, columnDefinition = "LONGTEXT")
+    @Lob
+    @Column(length=100000,  nullable = false)
     public String getPictureUrl() {
         return pictureUrl;
     }

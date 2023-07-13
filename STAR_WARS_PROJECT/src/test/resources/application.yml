@@ -1,18 +1,17 @@
 spring:
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/STAR_WARS_PROJECT?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
-    username: root
-    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: create
+
   #Cloudinary Properties
   cloudinary:
-    api-key: 459979215534265
-    api-secret: _wgmjJfOu9W3dACZwn4MD-5A4yI
-    cloud-name: dedh1hh8k
+    api-key: test
+    api-secret: test
+    cloud-name: test
 
   #Passwords for the first 2 users that are auto initialized in the DataBase: Admin and User
   STAR_WARS_PROJECT:
     admin:
-      defaultPasswordForAdmin: ${DEFAULT_PASS_ADMIN:test}
+      defaultPasswordForAdmin: test
     user:
-      defaultPasswordForUser: ${DEFAULT_PASS_USER:test}
+      defaultPasswordForUser: test

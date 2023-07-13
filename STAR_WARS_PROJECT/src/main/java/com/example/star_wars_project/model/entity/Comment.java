@@ -1,9 +1,6 @@
 package com.example.star_wars_project.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -67,7 +64,8 @@ public class Comment extends BaseEntity {
         this.created = created;
     }
 
-    @Column(columnDefinition = "LONGTEXT", nullable = false)
+    @Lob
+    @Column(length=100000, nullable = false)
     public String getPostContent() {
         return postContent;
     }

@@ -35,7 +35,8 @@ public class Series extends BaseEntity {
         this.genre = genre;
     }
 
-    @Column(unique = true, nullable = false, columnDefinition = "LONGTEXT")
+    @Lob
+    @Column(length=100000,  unique = true, nullable = false)
     public String getTitle() {
         return title;
     }
@@ -44,7 +45,8 @@ public class Series extends BaseEntity {
         this.title = title;
     }
 
-    @Column(unique = true, nullable = false, columnDefinition = "LONGTEXT")
+    @Lob
+    @Column(length=100000,  unique = true, nullable = false)
     public String getDescription() {
         return description;
     }
