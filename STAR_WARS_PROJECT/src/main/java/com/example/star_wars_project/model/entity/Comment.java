@@ -64,8 +64,8 @@ public class Comment extends BaseEntity {
         this.created = created;
     }
 
-    @Lob
-    @Column(length=100000, nullable = false)
+
+    @Column(length = 100000, nullable = false)
     public String getPostContent() {
         return postContent;
     }

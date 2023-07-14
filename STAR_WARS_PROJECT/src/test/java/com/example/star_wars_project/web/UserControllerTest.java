@@ -7,11 +7,8 @@ import java.security.Principal;
 
 import com.example.star_wars_project.model.binding.ChangeNicknameBindingModel;
 import com.example.star_wars_project.model.binding.UserRegisterBindingModel;
-
 import com.example.star_wars_project.service.UserService;
-
 import jakarta.validation.Validator;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +16,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
-
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -27,7 +23,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @ExtendWith(MockitoExtension.class)
 class UserControllerTest {
-
     @Mock
     private UserService userService;
 

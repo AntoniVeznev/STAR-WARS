@@ -25,8 +25,8 @@ public class News extends BaseEntity {
         isApproved = approved;
     }
 
-    @Lob
-    @Column(length=100000,  unique = true, nullable = false)
+
+    @Column(length = 100000, unique = true, nullable = false)
     public String getTitle() {
         return title;
     }
@@ -35,8 +35,8 @@ public class News extends BaseEntity {
         this.title = title;
     }
 
-    @Lob
-    @Column(length=100000,  unique = true, nullable = false)
+
+    @Column(length = 100000, unique = true, nullable = false)
     public String getDescription() {
         return description;
     }
