@@ -29,6 +29,7 @@ public class CommentRestController {
         List<CommentsView> commentsBySerial = commentService.getCommentsBySerialId(serialId);
         return ResponseEntity.ok(commentsBySerial);
     }
+
     @GetMapping("/api/{gameId}/commentss")
     public ResponseEntity<List<CommentsView>> getGameComments(@PathVariable("gameId") Long gameId) {
         List<CommentsView> commentsByGame = commentService.getCommentsByGameId(gameId);
@@ -46,6 +47,7 @@ public class CommentRestController {
         CommentsView commentsView = commentService.getCommentById(commentId);
         return ResponseEntity.ok(commentsView);
     }
+
     @GetMapping("/api/{gameId}/commentss/{commentId}")
     public ResponseEntity<CommentsView> getCommentGame(@PathVariable("commentId") Long commentId, @PathVariable String gameId) {
         CommentsView commentsView = commentService.getCommentById(commentId);
@@ -80,8 +82,8 @@ public class CommentRestController {
 
     @PostMapping(value = "/api/{gameId}/commentss", consumes = "application/json", produces = "application/json")
     public ResponseEntity<CommentsView> createGameComment(Principal principal,
-                                                           @RequestBody CommentAddBindingModel commentAddBindingModel,
-                                                           @PathVariable("gameId") Long gameId) {
+                                                          @RequestBody CommentAddBindingModel commentAddBindingModel,
+                                                          @PathVariable("gameId") Long gameId) {
         String name = principal.getName();
         CommentsView commentsView = commentService.createCommentGame(commentAddBindingModel, gameId, name);
         if (commentsView == null) {

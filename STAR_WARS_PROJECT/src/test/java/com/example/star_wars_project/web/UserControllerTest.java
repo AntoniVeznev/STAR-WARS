@@ -2,52 +2,39 @@ package com.example.star_wars_project.web;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.security.Principal;
 
 import com.example.star_wars_project.model.binding.ChangeNicknameBindingModel;
-import com.example.star_wars_project.model.binding.UserRegisterBindingModel;
 import com.example.star_wars_project.service.UserService;
-import jakarta.validation.Validator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 class UserControllerTest {
+    @Autowired
+    private MockMvc mockMvc;
     @Mock
     private UserService userService;
-
     @Mock
     private ModelMapper modelMapper;
-
-    @Mock
-    BindingResult bindingResult;
-
     @InjectMocks
     private UserController userController;
-
-
-    @Mock
-    UserRegisterBindingModel userRegisterBindingModel;
-
-    @Mock
-    RedirectAttributes redirectAttributes;
-
-    @Mock
-    Model model;
-
-    private Validator validator;
-
     private Principal principal;
+    private Model model;
 
     @BeforeEach
     void setUp() {
@@ -68,14 +55,33 @@ class UserControllerTest {
         ChangeNicknameBindingModel changeNicknameBindingModel = mock(ChangeNicknameBindingModel.class);
         BindingResult bindingResult = mock(BindingResult.class);
         RedirectAttributes redirectAttributes = mock(RedirectAttributes.class);
-
         when(bindingResult.hasErrors()).thenReturn(true);
-
         String viewName = userController.postProfile(changeNicknameBindingModel, bindingResult, redirectAttributes, principal);
-
         assertEquals("redirect:profile", viewName);
         verify(redirectAttributes).addFlashAttribute(eq("changeNicknameBindingModel"), eq(changeNicknameBindingModel));
         verify(redirectAttributes).addFlashAttribute(eq("org.springframework.validation.BindingResult.changeNicknameBindingModel"), eq(bindingResult));
         verifyNoInteractions(userService, modelMapper);
+    }
+
+    @Test
+    void testLoginGet() throws Exception {
+        mockMvc
+                .perform(get("/users/login"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void testRegisterGet() throws Exception {
+        Model model = mock(Model.class);
+        mockMvc.perform(get("/users/register")
+                .requestAttr("usernameNotExist", false)
+                .requestAttr("emailNotExist", false)
+        ).andExpect(status().isOk());
+        model.addAttribute("usernameNotExist", true);
+        model.addAttribute("emailNotExist", true);
+        mockMvc.perform(get("/users/register")
+                .requestAttr("usernameNotExist", true)
+                .requestAttr("emailNotExist", true)
+        ).andExpect(status().isOk());
     }
 }
