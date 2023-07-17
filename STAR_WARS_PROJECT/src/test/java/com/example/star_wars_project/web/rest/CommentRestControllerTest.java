@@ -11,12 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -30,7 +32,6 @@ class CommentRestControllerTest {
     private MockMvc mockMvc;
     @MockBean
     private CommentService commentService;
-
     private ObjectMapper objectMapper;
 
     @BeforeEach
@@ -79,7 +80,6 @@ class CommentRestControllerTest {
                 .perform(get("/api/1/comments/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.postContent", is("some text here!")));
-
     }
 
     @Test
@@ -90,7 +90,6 @@ class CommentRestControllerTest {
                 .perform(get("/api/1/comment/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.postContent", is("some text")));
-
     }
 
     @Test
@@ -113,6 +112,64 @@ class CommentRestControllerTest {
                 .andExpect(status().isForbidden());
     }
 
+    @Test
+    @WithMockUser(username = "Vomer")
+    void createCommentForMovie() throws Exception {
+        CommentAddBindingModel commentAddBindingModel = new CommentAddBindingModel();
+        commentAddBindingModel.setPostContent("Test comment!");
+        User user = new User();
+        user.setUsername("Vomer");
+
+        when(commentService.createCommentMovie(commentAddBindingModel, 1L, user.getUsername()))
+                .thenReturn(createComment("Test comment!"));
+
+        mockMvc
+                .perform(post("/api/1/comments")
+                        .content(objectMapper.writeValueAsString(commentAddBindingModel))
+                        .contentType("application/json")
+                        .with(csrf()))
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    @WithMockUser(username = "Vomer")
+    void createCommentForSerial() throws Exception {
+        CommentAddBindingModel commentAddBindingModel = new CommentAddBindingModel();
+        commentAddBindingModel.setPostContent("Test comment!");
+        User user = new User();
+        user.setUsername("Vomer");
+
+        when(commentService.createCommentSerial(
+                commentAddBindingModel, 1L, user.getUsername()))
+                .thenReturn(createComment("Test comment!"));
+
+        mockMvc
+                .perform(post("/api/1/comment")
+                        .content(objectMapper.writeValueAsString(commentAddBindingModel))
+                        .contentType("application/json")
+                        .with(csrf()))
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    @WithMockUser(username = "Vomer")
+    void createCommentForGame() throws Exception {
+        CommentAddBindingModel commentAddBindingModel = new CommentAddBindingModel();
+        commentAddBindingModel.setPostContent("Test comment!");
+        User user = new User();
+        user.setUsername("Vomer");
+
+        when(commentService.createCommentGame(commentAddBindingModel, 1L, user.getUsername()))
+                .thenReturn(createComment("Test comment!"));
+
+        mockMvc
+                .perform(post("/api/1/commentss")
+                        .content(objectMapper.writeValueAsString(commentAddBindingModel))
+                        .contentType("application/json")
+                        .with(csrf()))
+                .andExpect(status().isNoContent());
+    }
+
     private CommentsView createComment(String text) {
         User author = new User();
         author.setUsername("Vomer");
@@ -123,6 +180,8 @@ class CommentRestControllerTest {
         comment.setCreated("LocalDateTime.now()");
         comment.setPostContent(text);
         comment.setAuthorName(author.getUsername());
+
         return comment;
     }
 }
+
