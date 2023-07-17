@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class CommentAddBindingModel {
     private LocalDateTime created;
@@ -13,6 +14,19 @@ public class CommentAddBindingModel {
 
     public CommentAddBindingModel() {
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CommentAddBindingModel that = (CommentAddBindingModel) o;
+        return Objects.equals(created, that.created) && Objects.equals(postContent, that.postContent);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(created, postContent);
     }
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T 'HH:mm")

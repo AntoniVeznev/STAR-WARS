@@ -128,6 +128,25 @@ class CommentRestControllerTest {
                         .content(objectMapper.writeValueAsString(commentAddBindingModel))
                         .contentType("application/json")
                         .with(csrf()))
+                .andExpect(status().isCreated());
+    }
+
+    @Test
+    @WithMockUser(username = "Vomer")
+    void createCommentForMovieWithNullPostContent() throws Exception {
+        CommentAddBindingModel commentAddBindingModel = new CommentAddBindingModel();
+        commentAddBindingModel.setPostContent("Test comment!");
+        User user = new User();
+        user.setUsername("Vomer");
+
+        when(commentService.createCommentMovie(commentAddBindingModel, 1L, user.getUsername()))
+                .thenReturn(null);
+
+        mockMvc
+                .perform(post("/api/1/comments")
+                        .content(objectMapper.writeValueAsString(commentAddBindingModel))
+                        .contentType("application/json")
+                        .with(csrf()))
                 .andExpect(status().isNoContent());
     }
 
@@ -148,6 +167,25 @@ class CommentRestControllerTest {
                         .content(objectMapper.writeValueAsString(commentAddBindingModel))
                         .contentType("application/json")
                         .with(csrf()))
+                .andExpect(status().isCreated());
+    }
+
+    @Test
+    @WithMockUser(username = "Vomer")
+    void createCommentForSerialWithNullPostContent() throws Exception {
+        CommentAddBindingModel commentAddBindingModel = new CommentAddBindingModel();
+        commentAddBindingModel.setPostContent("Test comment!");
+        User user = new User();
+        user.setUsername("Vomer");
+
+        when(commentService.createCommentSerial(commentAddBindingModel, 1L, user.getUsername()))
+                .thenReturn(null);
+
+        mockMvc
+                .perform(post("/api/1/comment")
+                        .content(objectMapper.writeValueAsString(commentAddBindingModel))
+                        .contentType("application/json")
+                        .with(csrf()))
                 .andExpect(status().isNoContent());
     }
 
@@ -161,6 +199,25 @@ class CommentRestControllerTest {
 
         when(commentService.createCommentGame(commentAddBindingModel, 1L, user.getUsername()))
                 .thenReturn(createComment("Test comment!"));
+
+        mockMvc
+                .perform(post("/api/1/commentss")
+                        .content(objectMapper.writeValueAsString(commentAddBindingModel))
+                        .contentType("application/json")
+                        .with(csrf()))
+                .andExpect(status().isCreated());
+    }
+
+    @Test
+    @WithMockUser(username = "Vomer")
+    void createCommentForGameWithNullPostContent() throws Exception {
+        CommentAddBindingModel commentAddBindingModel = new CommentAddBindingModel();
+        commentAddBindingModel.setPostContent("Test comment!");
+        User user = new User();
+        user.setUsername("Vomer");
+
+        when(commentService.createCommentGame(commentAddBindingModel, 1L, user.getUsername()))
+                .thenReturn(null);
 
         mockMvc
                 .perform(post("/api/1/commentss")
