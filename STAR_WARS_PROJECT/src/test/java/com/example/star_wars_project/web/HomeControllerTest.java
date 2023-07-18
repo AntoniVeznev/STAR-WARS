@@ -54,4 +54,25 @@ class HomeControllerTest {
         assertEquals(news, model.getAttribute("latestStarWarsNews"));
         assertFalse((Boolean) model.getAttribute("notEnoughNews"));
     }
+    @Test
+    void testIndexNewsError() {
+
+        List<AllMoviesViewModel> movies = Arrays.asList(new AllMoviesViewModel(), new AllMoviesViewModel());
+        List<AllSerialsViewModel> serials = Arrays.asList(new AllSerialsViewModel(), new AllSerialsViewModel());
+        List<AllNewsViewModel> news = Arrays.asList(new AllNewsViewModel(), new AllNewsViewModel());
+        when(movieService.latestStarWarsMovies()).thenReturn(movies);
+        when(seriesService.latestStarWarsSerials()).thenReturn(serials);
+        when(newsService.latestStarWarsNews()).thenReturn(news);
+
+
+        Model model = new ExtendedModelMap();
+
+
+        String viewName = homeController.index(model);
+        assertEquals("index", viewName);
+        assertEquals(movies, model.getAttribute("latestStarWarsMovies"));
+        assertEquals(serials, model.getAttribute("latestStarWarsSeries"));
+        assertEquals(news, model.getAttribute("latestStarWarsNews"));
+        assertTrue((Boolean) model.getAttribute("notEnoughNews"));
+    }
 }

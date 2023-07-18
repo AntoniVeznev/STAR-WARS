@@ -1,5 +1,6 @@
 package com.example.star_wars_project.web;
 
+import com.example.star_wars_project.exception.ItemNotFoundException;
 import com.example.star_wars_project.model.entity.Movie;
 import com.example.star_wars_project.model.entity.Picture;
 import com.example.star_wars_project.model.view.AllMoviesViewModel;
@@ -9,14 +10,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -29,13 +37,16 @@ class AllMoviesControllerTest {
     private PictureService pictureService;
     @Mock
     private Model model;
-
+    private MockMvc mockMvc;
     private AllMoviesController allMoviesController;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
         allMoviesController = new AllMoviesController(movieService, pictureService);
+        mockMvc = MockMvcBuilders.standaloneSetup(allMoviesController)
+                .setControllerAdvice(new ItemNotFoundException())
+                .build();
     }
 
     @Test
@@ -87,5 +98,20 @@ class AllMoviesControllerTest {
         verify(pictureService).findPictureByMovieId(movieId);
         verify(model).addAttribute("currentMovie", movie1);
         verify(model).addAttribute("picture", picture);
+    }
+    @Test
+    void testOnSerialNotFound() {
+
+        ModelAndView mav = allMoviesController.onMovieNotFound(new ItemNotFoundException());
+        assertEquals("other-errors/movie-not-found", mav.getViewName());
+    }
+    @Test
+    void testMovieDetailsWhenMovieNotFound() throws Exception {
+        Long id = 1L;
+        Mockito.when(movieService.findMovie(id)).thenReturn(null);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/movies/details/{id}", id))
+                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andExpect(MockMvcResultMatchers.view().name("other-errors/movie-not-found"));
     }
 }

@@ -2,6 +2,7 @@ package com.example.star_wars_project.web;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 import java.util.Arrays;
@@ -13,8 +14,14 @@ import com.example.star_wars_project.model.entity.Series;
 import com.example.star_wars_project.model.view.AllSerialsViewModel;
 import com.example.star_wars_project.service.PictureService;
 import com.example.star_wars_project.service.SeriesService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 
@@ -25,13 +32,15 @@ class AllSerialsControllerTest {
     private AllSerialsController allSerialsController;
     private SeriesService seriesService;
     private PictureService pictureService;
-
+    private MockMvc mockMvc;
     @BeforeEach
     void setUp() {
         seriesService = mock(SeriesService.class);
         pictureService = mock(PictureService.class);
-
         allSerialsController = new AllSerialsController(seriesService, pictureService);
+        mockMvc = MockMvcBuilders.standaloneSetup(allSerialsController)
+                .setControllerAdvice(new ItemNotFoundException())
+                .build();
     }
 
     @Test
@@ -65,6 +74,16 @@ class AllSerialsControllerTest {
         assertEquals("serial-details", viewName);
         assertEquals(currentSerial, model.getAttribute("currentSerial"));
         assertEquals(picture, model.getAttribute("picture"));
+    }
+
+    @Test
+    void testSerialDetailsWhenSerialNotFound() throws Exception {
+        Long id = 1L;
+        Mockito.when(seriesService.findSerial(id)).thenReturn(null);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/series/details/{id}", id))
+                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andExpect(MockMvcResultMatchers.view().name("other-errors/serial-not-found"));
     }
 
 

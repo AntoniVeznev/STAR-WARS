@@ -17,10 +17,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.servlet.ModelAndView;
 
 
 import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 class AllGamesControllerTest {
@@ -81,5 +84,11 @@ class AllGamesControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/games/details/{id}", id))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
                 .andExpect(MockMvcResultMatchers.view().name("other-errors/game-not-found"));
+    }
+    @Test
+    void testOnSerialNotFound() {
+
+        ModelAndView mav = controller.onGameNotFound(new ItemNotFoundException());
+        assertEquals("other-errors/game-not-found", mav.getViewName());
     }
 }
