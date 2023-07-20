@@ -2,7 +2,9 @@ package com.example.star_wars_project.web;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.security.Principal;
@@ -13,6 +15,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.stubbing.Answer;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -64,6 +67,20 @@ class UserControllerTest {
     }
 
     @Test
+    void testPostProfileWithCorrectData() throws Exception {
+        ChangeNicknameBindingModel changeNicknameBindingModel = mock(ChangeNicknameBindingModel.class);
+        BindingResult bindingResult = mock(BindingResult.class);
+        RedirectAttributes redirectAttributes = mock(RedirectAttributes.class);
+        when(bindingResult.hasErrors()).thenReturn(false);
+        String viewName = userController.postProfile(changeNicknameBindingModel, bindingResult, redirectAttributes, principal);
+        assertEquals("logout-now", viewName);
+        mockMvc
+                .perform(post("/users/profile")
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection());
+    }
+
+    @Test
     void testLoginGet() throws Exception {
         mockMvc
                 .perform(get("/users/login"))
@@ -73,15 +90,9 @@ class UserControllerTest {
     @Test
     void testRegisterGet() throws Exception {
         Model model = mock(Model.class);
+        when(model.containsAttribute("usernameNotExist")).thenReturn(true);
+        when(model.containsAttribute("emailNotExist")).thenReturn(true);
         mockMvc.perform(get("/users/register")
-                .requestAttr("usernameNotExist", false)
-                .requestAttr("emailNotExist", false)
-        ).andExpect(status().isOk());
-        model.addAttribute("usernameNotExist", true);
-        model.addAttribute("emailNotExist", true);
-        mockMvc.perform(get("/users/register")
-                .requestAttr("usernameNotExist", true)
-                .requestAttr("emailNotExist", true)
         ).andExpect(status().isOk());
     }
 }
