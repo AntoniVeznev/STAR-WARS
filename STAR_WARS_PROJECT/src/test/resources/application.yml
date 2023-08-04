@@ -15,3 +15,4 @@ spring:
       defaultPasswordForAdmin: test
     user:
       defaultPasswordForUser: test
+
