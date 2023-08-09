@@ -3,9 +3,9 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="~{/fragments/commons::head}"></head>
+<head th:replace="~{fragments/commons::head}"></head>
 <body>
-<nav th:replace="~{/fragments/commons::navigation}"></nav>
+<nav th:replace="~{fragments/commons::navigation}"></nav>
 
 <div
         th:action="@{/movies/catalogue/{id}(id=*{id})}"
@@ -101,8 +101,8 @@
 
 
 <script th:src="@{/js/comments.js}"></script>
-<footer th:replace="~{/fragments/commons::footer}"></footer>
-<script th:replace="~{/fragments/commons::script}"></script>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+<script th:replace="~{fragments/commons::script}"></script>
 
 </body>
 

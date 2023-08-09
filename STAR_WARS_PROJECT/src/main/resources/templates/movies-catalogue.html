@@ -3,9 +3,9 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="~{/fragments/commons::head}"></head>
+<head th:replace="~{fragments/commons::head}"></head>
 <body>
-<nav th:replace="~{/fragments/commons::navigation}"></nav>
+<nav th:replace="~{fragments/commons::navigation}"></nav>
 
 <h2 class="threeTopMovies-h2">All Movies ordered by release year:</h2>
 <div class="row row-cols-1 row-cols-md-4 g-2">
@@ -26,8 +26,8 @@
 </div>
 
 
-<footer th:replace="~{/fragments/commons::footer}"></footer>
-<script th:replace="~{/fragments/commons::script}"></script>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+<script th:replace="~{fragments/commons::script}"></script>
 
 </body>
 </html>
