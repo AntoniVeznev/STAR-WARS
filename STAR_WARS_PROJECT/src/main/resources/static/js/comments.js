@@ -1,4 +1,4 @@
-const backEndLocation = 'http://localhost:8080'
+const backEndLocation = 'https://av-spring-app-star-wars.azuremicroservices.io'
 
 let movieId = document.getElementById('movieId').getAttribute("value")
 let commentSection = document.getElementById('commentSpanTest')

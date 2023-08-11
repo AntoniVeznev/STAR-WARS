@@ -1,4 +1,4 @@
-const backEndLocation = 'http://localhost:8080'
+const backEndLocation = 'https://av-spring-app-star-wars.azuremicroservices.io'
 
 let gameId = document.getElementById('gameId').getAttribute("value")
 let commentGameSection = document.getElementById('commentGameSpanTest')
