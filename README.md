@@ -2,7 +2,7 @@
 
 
 ## Project description
-Project is running at Microsoft Azure Cloud -> -> ->
+Project is deployed and currently running at Microsoft Azure Cloud -> -> ->
 https://av-spring-app-star-wars.azuremicroservices.io
 
 
