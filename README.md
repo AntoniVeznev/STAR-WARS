@@ -15,11 +15,11 @@ https://av-spring-app-star-wars.azuremicroservices.io
 - Watch Game trailers
 
 ## Admins can:
-- do everything that normal User can
-- approve content added by normal Users
-- delete content
-- promote normal User to Admin
-- delete Users
+- Do everything that normal User can
+- Approve content added by normal Users
+- Delete content
+- Promote normal User to Admin
+- Delete Users
 
 ## Installation:
 1. Download STAR-WARS source code.
