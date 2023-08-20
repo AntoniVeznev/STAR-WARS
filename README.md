@@ -1,7 +1,6 @@
-# STAR-WARS
+## STAR-WARS
 
 ## Project description
-Main idea for this website is for fans of the Star Wars universe that can easy check out latest news and some other stuff like movies, series and games.
 
 ## Installation
 1. Download STAR-WARS source code.
