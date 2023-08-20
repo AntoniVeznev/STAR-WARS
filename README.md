@@ -1,7 +1,10 @@
 ## STAR-WARS
+
+
+## Project description
 Project is running at Microsoft Azure Cloud -> -> ->
 https://av-spring-app-star-wars.azuremicroservices.io
-## Project description
+
 
 ## Installation
 1. Download STAR-WARS source code.
@@ -11,6 +14,7 @@ https://av-spring-app-star-wars.azuremicroservices.io
 5. Press "Run" button.
 6. Go to your Browser. For best user experience use Google Chrome.
 7. Enter this url -> http://localhost:8080/
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
