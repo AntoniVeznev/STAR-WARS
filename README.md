@@ -3,8 +3,7 @@
 This is my first project. I made it for my final exam in SoftUni. It is responsive website for Star Wars fans.
 
 ## Project description
-Project is deployed and currently running at Microsoft Azure Cloud -> -> ->
-https://av-spring-app-star-wars.azuremicroservices.io
+
 
 ## Logged in Users can:
 - Change their nicknames
