@@ -140,7 +140,7 @@ public class NewsServiceImpl implements NewsService {
                 "\n" +
                 "Still, the actor seems most excited about the story. While he won’t go into specifics, it sounds like Jedi: Survivor will make an impact. “This is going to be an emotional rollercoaster for people,” he says. “I think that you’d have to be made of stone for it to not hit you in the heart.”");
         news1.setTitle("Star Wars Jedi: Survivor: Cameron Monaghan on Cal Kestis’ Next Adventure");
-        news1.setPostDate(LocalDateTime.of(2023, 6, 13, 16, 45));
+        news1.setPostDate(LocalDateTime.of(2023, 8, 31, 12, 30));
         news1.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
 
         Picture picture1 = new Picture();
@@ -196,7 +196,7 @@ public class NewsServiceImpl implements NewsService {
                 "\n" +
                 "Mark your calendars, gather your crew, and brush up on Season 1 now, because Clone Force 99 is on its way.");
         news2.setTitle("Clone Force 99 Is Back in New Star Wars: The Bad Batch Season 2 Trailer");
-        news2.setPostDate(LocalDateTime.of(2023, 6, 12, 20, 34));
+        news2.setPostDate(LocalDateTime.of(2023, 8, 31, 10, 30));
         news2.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
 
         Picture picture2 = new Picture();
@@ -228,7 +228,7 @@ public class NewsServiceImpl implements NewsService {
                 "And the fans have embraced Sackhoff and Bo-Katan’s joint leap to Star Wars live action. After the surprise debut in The Mandalorian, Sackhoff delighted in watching fan reactions online. “One of my favorite things to do last year — I mean, I didn't do it like repeatedly, that would be kind of weird, — but I watched the fan reaction compilation that was put together of Bo showing up, and it just warmed my heart,” she says. “I was so happy that she was so well received. I mean, listen: love her, hate her. You can hate her. She's done some pretty appalling things in her existence. But the reaction and overall excitement — and to see people instantaneously know who she was, the moment she landed… was really cool. I loved it.”" +
                 "As Bo-Katan’s journey continues, Sackhoff is tight-lipped about what’s in store, confirming only this: she did learn a new stunt move for Season 3. “But if I told you about it, it would give things away,” she says with a laugh. “That's one of the fun things. There's always a skill that I'm relearning and a different type of fighting style for different characters. Bo has a finesse to her.”");
         news3.setTitle("“As Fierce as Possible”: Katee Sackhoff on the Evolution of Bo-Katan Kryze");
-        news3.setPostDate(LocalDateTime.of(2023, 6, 11, 17, 29));
+        news3.setPostDate(LocalDateTime.of(2023, 8, 31, 9, 30));
         news3.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
 
         Picture picture3 = new Picture();
@@ -271,7 +271,7 @@ public class NewsServiceImpl implements NewsService {
                 "Favreau has been a part of the galaxy almost as long, first stepping into the role of Pre Vizsla in Star Wars: The Clone Wars, the leader of Death Watch who wielded the Darksaber in animation. “Life is weird,” he says. “In retrospect, it looks like it has followed some path. But at the time it just felt like we were doing things that seemed fun and cool and I had no idea [it would lead to The Mandalorian]. I definitely feel a connection to the Darksaber because I was the first one to wield it.” The idea for the Darksaber came from Lucas himself, a rewrite after Favreau initially recorded the episode with dialogue for a vibroblade. “George didn't like the logic of vibroblade being able to parry a lightsaber, so he invented the Darksaber, and I had to read the whole monologue about how it was found in a Jedi Temple. And I was telling my wife, she's like, ‘That's the coolest thing in the world.’ And it became so cool that we ended up making a whole TV show about it,” he says with a laugh. “That whole idea and how profound that thing is, that Tarre Vizsla was both Mandalorian and Jedi, that implies so much because those were two diametrically opposed warring factions. So, what does that mean? These are the clues that we look for, these little anomalies and things that instead of shying away from, we sort of delve into and explore.” That includes the factions of Bo-Katan’s Mandalorian sect and the Children of the Watch, whose members must never remove their helmets. “In The Clone Wars, they're always taking their helmets off. So what's going on there?” Favreau asks. “We pulled all that together and in Season 2 they confronted each other. Now, we see how all of that plays out.”" +
                 "As for the best-kept-secrets and character surprises that the show has become known for, we’ll have to wait and see what comes next. “We like to have surprises,” Favreau says. “We like to have something revealed each episode. I like when everybody tries to see it at the same time and then talks about it and reacts to it, discusses it. Tries to guess what's happening next. That's part of the fun of the serialized storytelling. We want to make sure that each week a new piece of information comes out and that maybe things resolve in an unexpected way, but ways that feel justified and emotionally resonant and character-based. Look, we just hope that people enjoy this new set of stories. I certainly am enjoying doing what I'm doing here. Hopefully we can do it for a long time.”");
         news4.setTitle("Jon Favreau and Dave Filoni Chart a Course to Mandalore");
-        news4.setPostDate(LocalDateTime.of(2023, 6, 10, 11, 48));
+        news4.setPostDate(LocalDateTime.of(2023, 8, 31, 8, 30));
         news4.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
 
         Picture picture4 = new Picture();
@@ -283,6 +283,136 @@ public class NewsServiceImpl implements NewsService {
 
         newsRepository.save(news4);
         pictureRepository.save(picture4);
+
+
+        News news5 = new News();
+        news5.setApproved(null);
+        news5.setDescription("Today at San Diego Comic-Con 2023, Massive Entertainment, Ubisoft, and Lucasfilm Games held a panel discussion about the highly-anticipated Star Wars Outlaws. Notably, a behind-the-scenes feature debuted, showing new visuals from the game, concept art, and insights from the cast and creators. Watch it below" +
+                "The video offers first looks and information about many areas of the game, including background around how the time period and themes were selected. Julian Gerighty, creative director, also details how Outlaw’s premise influenced the worlds and elements created for the game, “Building the world of Star Wars Outlaws,\" he says, \"first thing we had to do was think of places that outlaws thrive: these hubs of scum and villainy.”\n" +
+                "\n" +
+                "The feature goes on to describe the creation of Toshara, a new moon, and its main city of Mirogana, to support the outlaw fantasy Massive is bringing to life. It also delves into how the team is drawing from Westerns for the game’s tone, and the syndicates and scoundrel experiences players will encounter. “We’ve only scratched the surface of what Star Wars Outlaws has to offer,” says Lucasfilm’s Steve Blank, director of franchise content and strategy, to close out the feature. “There is so much more that you will get to embody and use and play when you become Kay Vess.”\n" +
+                "\n" +
+                "For more on Star Wars Outlaws, check out StarWars.com’s new interview with Julian Gerighty.");
+        news5.setTitle("SDCC 2023: Take a Peek Behind the Scenes of Star Wars Outlaws");
+        news5.setPostDate(LocalDateTime.of(2023, 9, 3, 13, 30));
+        news5.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+
+        Picture picture5 = new Picture();
+        picture5.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1692084354/l8k9rfdgu2ssufj1ic6v.jpg");
+        picture5.setPublicId("l8k9rfdgu2ssufj1ic6v");
+        picture5.setTitle("Star Wars Outlaws");
+        picture5.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture5.setNews(news5);
+
+        newsRepository.save(news5);
+        pictureRepository.save(picture5);
+
+
+        News news6 = new News();
+        news6.setApproved(null);
+        news6.setDescription("Andor, Obi-Wan Kenobi, The Mandalorian, and Light & Magic have been honored with 23 nominations in 21 different categories at the 75th Primetime Emmy® Awards. Among the top honors, Andor was nominated in the Outstanding Drama Series category with a total of 8 nominations, Obi-Wan Kenobi nabbed a nomination in the Outstanding Limited or Anthology Series category and a total of 5 nominations, and The Mandalorian was nominated for a total of 9 nominations. \n" +
+                "\n" +
+                "\"This morning the 2023 Emmy nominations were announced and I am thrilled to share that a record four of our productions – The Mandalorian, Andor, Obi-Wan Kenobi, and Light & Magic – have received an outstanding combined 23 nods across 21 categories,\" Lucasfilm President Kathleen Kennedy said in a message to employees. \"I am so proud of everyone who worked on these productions and the acknowledgement each one of them has so dearly earned for their dedication and hard work.\" \n" +
+                "\n" +
+                "Read the full list of Star Wars nominations below." +
+                "Outstanding Drama Series\n" +
+                "\n" +
+                "Andor • Disney+ • Lucasfilm Ltd.\n" +
+                "\n" +
+                "Outstanding Limited or Anthology Series\n" +
+                "\n" +
+                "Obi-Wan Kenobi • Disney+ • Lucasfilm Ltd.\n" +
+                "\n" +
+                "Outstanding Cinematography For A Series (Half-Hour)\n" +
+                "\n" +
+                "The Mandalorian • “Chapter 20: The Foundling” • Disney+ • Lucasfilm Ltd.\n" +
+                "\n" +
+                "Dean Cundey, ASC, Director of Photography\n" +
+                "\n" +
+                "Outstanding Cinematography For A Series (One Hour)\n" +
+                "\n" +
+                "Andor • “Rix Road” • Disney+ • Lucasfilm Ltd.\n" +
+                "\n" +
+                "Damián García, Director of Photography\n" +
+                "\n" +
+                "Outstanding Fantasy/Sci-Fi Costumes\n" +
+                "\n" +
+                "The Mandalorian • “Chapter 22: Guns For Hire” • Disney+ • Lucasfilm Ltd.\n" +
+                "\n" +
+                "Shawna Trpcic, Costume Designer\n" +
+                "\n" +
+                "Elissa Alcala, Assistant Costume Designer\n" +
+                "\n" +
+                "Julie Robar, Costume Supervisor\n" +
+                "\n" +
+                "Julie Yang Silver, Costume Supervisor\n" +
+                "\n" +
+                "Obi-Wan Kenobi • “Part I” • Disney+ • Lucasfilm Ltd.\n" +
+                "\n" +
+                "Suttirat Anne Larlarb, Costume Designer\n" +
+                "\n" +
+                "Stacia Lang, Assistant Costume Designer\n" +
+                "\n" +
+                "Lynda Foote, Costume Supervisor\n" +
+                "\n" +
+                "Outstanding Directing For A Drama Series\n" +
+                "\n" +
+                "Andor • “Rix Road” • Disney+ • Lucasfilm Ltd.\n" +
+                "\n" +
+                "Benjamin Caron, Directed by\n" +
+                "\n" +
+                "Outstanding Picture Editing For A Limited Or Anthology Series Or Movie\n" +
+                "\n" +
+                "Obi-Wan Kenobi • “Part VI” • Disney+ • Lucasfilm Ltd.\n" +
+                "\n" +
+                "Kelley Dixon, ACE, Editor Josh Earl, ACE, Editor\n" +
+                "\n" +
+                "Outstanding Period And/Or Character Hairstyling\n" +
+                "\n" +
+                "The Mandalorian • “Chapter 19: The Convert” • Disney+ • Lucasfilm Ltd.\n" +
+                "\n" +
+                "Maria Sandoval, Hair Designer\n" +
+                "\n" +
+                "Ashleigh Childers, Key Hairstylist\n" +
+                "\n" +
+                "Sallie Ciganovich, Hairstylist ");
+        news6.setTitle("Lucasfilm and Star Wars Receive a Combined 23 Emmy Nominations");
+        news6.setPostDate(LocalDateTime.of(2023, 9, 3, 15, 30));
+        news6.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+
+        Picture picture6 = new Picture();
+        picture6.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1692084626/iyelij9u2qlzpgxdd9yl.jpg");
+        picture6.setPublicId("iyelij9u2qlzpgxdd9yl");
+        picture6.setTitle("Star Wars Receive a Combined 23 Emmy Nominations");
+        picture6.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture6.setNews(news6);
+
+        newsRepository.save(news6);
+        pictureRepository.save(picture6);
+
+
+        News news7 = new News();
+        news7.setApproved(null);
+        news7.setDescription("Lucasfilm and The Walt Disney Company are thrilled and humbled to announce that Part One of Ahsoka, \"Master and Apprentice,\" was the most-watched title on Disney+ this past week. The debut episode garnered 14 million views, making the series number one globally on the streaming platform.\n" +
+                "\n" +
+                "“Ahsoka has become a fan favorite with people of all ages and it’s wonderful to see her continue to resonate with viewers in her very own headlining series,” says Kathleen Kennedy, Lucasfilm president. “I want to recognize the fantastic work done by our creative team, led by Dave Filoni and Jon Favreau, the incredible cast led by Rosario Dawson, and our talented crew — and on behalf of the team and all of Lucasfilm, we give our thanks to all the fans who have been with Ahsoka on every step of her journey and to all those who are just learning about her now in Ahsoka on Disney+.”\n" +
+                "\n" +
+                "New episodes of Ahsoka arrive every Tuesday at 6 p.m. PT., only on Disney+");
+        news7.setTitle("Ahsoka Draws 14 Million Views for First Episode");
+        news7.setPostDate(LocalDateTime.of(2023, 9, 3, 17, 45));
+        news7.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+
+        Picture picture7 = new Picture();
+        picture7.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1692084135/ni8r27o0ii9lmpmo7czx.jpg");
+        picture7.setPublicId("ni8r27o0ii9lmpmo7czx");
+        picture7.setTitle("Ahsoka Draws 14 Million Views for First Episode");
+        picture7.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture7.setNews(news7);
+
+        newsRepository.save(news7);
+        pictureRepository.save(picture7);
+
+
     }
 
     @Override

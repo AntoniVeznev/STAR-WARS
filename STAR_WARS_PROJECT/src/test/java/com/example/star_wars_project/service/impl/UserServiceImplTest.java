@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import com.example.star_wars_project.model.entity.enums.RoleNameEnum;
 import com.example.star_wars_project.model.view.AllUsersViewModel;
+import com.example.star_wars_project.repository.CommentRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -24,6 +25,7 @@ public class UserServiceImplTest {
     private UserServiceImpl userService;
     private UserRepository userRepository;
     private RoleRepository roleRepository;
+    private CommentRepository commentRepository;
     private PasswordEncoder passwordEncoder;
     private ModelMapper modelMapper;
 
@@ -34,7 +36,7 @@ public class UserServiceImplTest {
         roleRepository = mock(RoleRepository.class);
         passwordEncoder = mock(PasswordEncoder.class);
         modelMapper = new ModelMapper();
-        userService = new UserServiceImpl(modelMapper, userRepository, roleRepository, passwordEncoder, "defaultPassForAdmin", "defaultPassForUser");
+        userService = new UserServiceImpl(modelMapper, userRepository, roleRepository, commentRepository, passwordEncoder, "defaultPassForAdmin", "defaultPassForUser");
     }
 
     @Test

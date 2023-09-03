@@ -12,6 +12,7 @@ public class DataBaseInit implements CommandLineRunner {
     public final UserService userService;
     public final MovieService movieService;
     public final SeriesService seriesService;
+
     public final NewsService newsService;
     public final GameService gameService;
 

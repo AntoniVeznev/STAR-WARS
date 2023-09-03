@@ -15,4 +15,6 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
     List<Comment> findCommentsByGame_IdOrderByCreatedDesc(Long gameId);
 
     Comment findCommentById(Long id);
+
+    List<Comment> findCommentsByAuthor_Id(Long id);
 }
