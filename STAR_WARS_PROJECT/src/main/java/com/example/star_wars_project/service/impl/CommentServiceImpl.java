@@ -35,11 +35,7 @@ public class CommentServiceImpl implements CommentService {
         List<Comment> allByMovie = commentRepository.findCommentsByMovie_IdOrderByCreatedDesc(movieId);
         return allByMovie
                 .stream()
-                .map(comment -> {
-                    CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
-                    commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
-                    return commentsView;
-                })
+                .map(this::getCommentsView)
                 .collect(Collectors.toList());
     }
 
@@ -48,11 +44,7 @@ public class CommentServiceImpl implements CommentService {
         List<Comment> allBySerial = commentRepository.findCommentsBySeries_IdOrderByCreatedDesc(serialId);
         return allBySerial
                 .stream()
-                .map(comment -> {
-                    CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
-                    commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
-                    return commentsView;
-                })
+                .map(this::getCommentsView)
                 .collect(Collectors.toList());
     }
 
@@ -61,66 +53,41 @@ public class CommentServiceImpl implements CommentService {
         List<Comment> allByGame = commentRepository.findCommentsByGame_IdOrderByCreatedDesc(gameId);
         return allByGame
                 .stream()
-                .map(comment -> {
-                    CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
-                    commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
-                    return commentsView;
-                })
+                .map(this::getCommentsView)
                 .collect(Collectors.toList());
     }
 
     @Override
     public CommentsView createCommentMovie(CommentAddBindingModel commentAddBindingModel, Long movieId, String name) {
-        if (commentAddBindingModel.getPostContent().equals("")) {
+        if (commentAddBindingModel.getPostContent().isEmpty()) {
             return null;
         }
-
         Comment comment = new Comment();
         comment.setCreated(LocalDateTime.now());
         comment.setMovie(movieRepository.findMovieById(movieId));
-        comment.setAuthor(userRepository.findUserByUsername(name).orElse(null));
-        comment.setPostContent(commentAddBindingModel.getPostContent());
-        CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
-        commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
-        commentRepository.save(comment);
-        commentsView.setId(comment.getId());
-        return commentsView;
+        return creatingCurrentComment(commentAddBindingModel, name, comment);
     }
 
     @Override
     public CommentsView createCommentSerial(CommentAddBindingModel commentAddBindingModel, Long serialId, String name) {
-        if (commentAddBindingModel.getPostContent().equals("")) {
+        if (commentAddBindingModel.getPostContent().isEmpty()) {
             return null;
         }
-
         Comment comment = new Comment();
         comment.setCreated(LocalDateTime.now());
         comment.setSeries(seriesRepository.findSerialById(serialId));
-        comment.setAuthor(userRepository.findUserByUsername(name).orElse(null));
-        comment.setPostContent(commentAddBindingModel.getPostContent());
-        CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
-        commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
-        commentRepository.save(comment);
-        commentsView.setId(comment.getId());
-        return commentsView;
+        return creatingCurrentComment(commentAddBindingModel, name, comment);
     }
 
     @Override
     public CommentsView createCommentGame(CommentAddBindingModel commentAddBindingModel, Long gameId, String name) {
-        if (commentAddBindingModel.getPostContent().equals("")) {
+        if (commentAddBindingModel.getPostContent().isEmpty()) {
             return null;
         }
-
         Comment comment = new Comment();
         comment.setCreated(LocalDateTime.now());
         comment.setGame(gameRepository.findGameById(gameId));
-        comment.setAuthor(userRepository.findUserByUsername(name).orElse(null));
-        comment.setPostContent(commentAddBindingModel.getPostContent());
-        CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
-        commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
-        commentRepository.save(comment);
-        commentsView.setId(comment.getId());
-        return commentsView;
+        return creatingCurrentComment(commentAddBindingModel, name, comment);
     }
 
     @Override
@@ -129,6 +96,22 @@ public class CommentServiceImpl implements CommentService {
         CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
         commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
         commentsView.setPostContent(comment.getPostContent());
+        return commentsView;
+    }
+
+    private CommentsView getCommentsView(Comment comment) {
+        CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
+        commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
+        return commentsView;
+    }
+
+    private CommentsView creatingCurrentComment(CommentAddBindingModel commentAddBindingModel, String name, Comment comment) {
+        comment.setAuthor(userRepository.findUserByUsername(name).orElse(null));
+        comment.setPostContent(commentAddBindingModel.getPostContent());
+        CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
+        commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
+        commentRepository.save(comment);
+        commentsView.setId(comment.getId());
         return commentsView;
     }
 }
