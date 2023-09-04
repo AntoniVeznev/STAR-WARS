@@ -44,12 +44,8 @@ public class SeriesServiceImpl implements SeriesService {
         return seriesRepository
                 .findAllSeriesByReleaseDate()
                 .stream()
-                .map(series -> {
-                    AllSerialsViewModel currentSerial = modelMapper.map(series, AllSerialsViewModel.class);
-                    Picture pictureBySerialId = pictureRepository.findPictureBySeries_Id(series.getId());
-                    currentSerial.setPicture(pictureBySerialId);
-                    return currentSerial;
-                }).collect(Collectors.toList());
+                .map(this::mapsSeriesToSeriesView)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -57,14 +53,24 @@ public class SeriesServiceImpl implements SeriesService {
         return seriesRepository
                 .findNewestFourSeriesByReleaseDate()
                 .stream()
-                .map(newestSerial -> {
-                    AllSerialsViewModel serial =
-                            modelMapper.map(newestSerial, AllSerialsViewModel.class);
-                    Picture pictureBySerialId =
-                            pictureRepository.findPictureBySeries_Id(newestSerial.getId());
-                    serial.setPicture(pictureBySerialId);
-                    return serial;
-                }).collect(Collectors.toList());
+                .map(this::mapsSeriesToSeriesView)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AllSerialsViewModel> findAllSeriesWithValueNullOrFalse() {
+        return seriesRepository
+                .findSeriesThatAreNotApproved()
+                .stream()
+                .map(this::mapsSeriesToSeriesView)
+                .collect(Collectors.toList());
+    }
+
+    private AllSerialsViewModel mapsSeriesToSeriesView(Series series) {
+        AllSerialsViewModel currentSerial = modelMapper.map(series, AllSerialsViewModel.class);
+        Picture currentPicture = pictureRepository.findPictureBySeries_Id(series.getId());
+        currentSerial.setPicture(currentPicture);
+        return currentSerial;
     }
 
     @Override
@@ -93,19 +99,6 @@ public class SeriesServiceImpl implements SeriesService {
         picture.setAuthor(userRepository.findUserByUsername(currentUserUsername).orElse(null));
         picture.setSeries(seriesRepository.findSeriesByTitle(seriesAddBindingModel.getTitle()));
         pictureRepository.save(picture);
-    }
-
-    @Override
-    public List<AllSerialsViewModel> findAllSeriesWithValueNullOrFalse() {
-        return seriesRepository
-                .findSeriesThatAreNotApproved()
-                .stream()
-                .map(series -> {
-                    AllSerialsViewModel currentSerial = modelMapper.map(series, AllSerialsViewModel.class);
-                    Picture pictureBySeriesId = pictureRepository.findPictureBySeries_Id(series.getId());
-                    currentSerial.setPicture(pictureBySeriesId);
-                    return currentSerial;
-                }).collect(Collectors.toList());
     }
 
     @Override

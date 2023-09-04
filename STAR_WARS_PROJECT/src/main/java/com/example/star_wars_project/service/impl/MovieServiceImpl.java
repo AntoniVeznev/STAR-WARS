@@ -41,15 +41,35 @@ public class MovieServiceImpl implements MovieService {
         return movieRepository
                 .findNewestFourMoviesByReleaseDate()
                 .stream()
-                .map(newestMovie -> {
-                    AllMoviesViewModel newestMovies =
-                            modelMapper.map(newestMovie, AllMoviesViewModel.class);
-                    Picture pictureByMovieId =
-                            pictureRepository.findPictureByMovie_Id(newestMovie.getId());
-                    newestMovies.setPicture(pictureByMovieId);
-                    return newestMovies;
-                }).collect(Collectors.toList());
+                .map(this::mapsMovieToMovieView)
+                .collect(Collectors.toList());
     }
+
+    @Override
+    public List<AllMoviesViewModel> findAllMoviesWithValueNullOrFalse() {
+        return movieRepository
+                .findMoviesThatAreNotApproved()
+                .stream()
+                .map(this::mapsMovieToMovieView)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AllMoviesViewModel> findAllMoviesOrderedByReleaseDate() {
+        return movieRepository
+                .findAllMoviesByReleaseDate()
+                .stream()
+                .map(this::mapsMovieToMovieView)
+                .collect(Collectors.toList());
+    }
+
+    private AllMoviesViewModel mapsMovieToMovieView(Movie movie) {
+        AllMoviesViewModel currentMovie = modelMapper.map(movie, AllMoviesViewModel.class);
+        Picture pictureByMovieId = pictureRepository.findPictureByMovie_Id(movie.getId());
+        currentMovie.setPicture(pictureByMovieId);
+        return currentMovie;
+    }
+
 
     @Override
     public Movie findMovie(Long id) {
@@ -79,31 +99,6 @@ public class MovieServiceImpl implements MovieService {
         pictureRepository.save(picture);
     }
 
-    @Override
-    public List<AllMoviesViewModel> findAllMoviesWithValueNullOrFalse() {
-        return movieRepository
-                .findMoviesThatAreNotApproved()
-                .stream()
-                .map(movie -> {
-                    AllMoviesViewModel currentMovie = modelMapper.map(movie, AllMoviesViewModel.class);
-                    Picture pictureByMovieId = pictureRepository.findPictureByMovie_Id(movie.getId());
-                    currentMovie.setPicture(pictureByMovieId);
-                    return currentMovie;
-                }).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<AllMoviesViewModel> findAllMoviesOrderedByReleaseDate() {
-        return movieRepository
-                .findAllMoviesByReleaseDate()
-                .stream()
-                .map(movie -> {
-                    AllMoviesViewModel currentMovie = modelMapper.map(movie, AllMoviesViewModel.class);
-                    Picture pictureByMovieId = pictureRepository.findPictureByMovie_Id(movie.getId());
-                    currentMovie.setPicture(pictureByMovieId);
-                    return currentMovie;
-                }).collect(Collectors.toList());
-    }
 
     @Override
     public void approveMovieWithId(Long id) {

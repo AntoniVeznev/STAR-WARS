@@ -44,12 +44,24 @@ public class GameServiceImpl implements GameService {
         return gameRepository
                 .findAllGamesByReleaseDate()
                 .stream()
-                .map(game -> {
-                    AllGamesViewModel currentGame = modelMapper.map(game, AllGamesViewModel.class);
-                    Picture pictureByGameId = pictureRepository.findPictureByGame_Id(game.getId());
-                    currentGame.setPicture(pictureByGameId);
-                    return currentGame;
-                }).collect(Collectors.toList());
+                .map(this::mapsGameToGameView)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AllGamesViewModel> findAllGamesWithValueNullOrFalse() {
+        return gameRepository
+                .findGamesThatAreNotApproved()
+                .stream()
+                .map(this::mapsGameToGameView)
+                .collect(Collectors.toList());
+    }
+
+    private AllGamesViewModel mapsGameToGameView(Game game) {
+        AllGamesViewModel currentGame = modelMapper.map(game, AllGamesViewModel.class);
+        Picture pictureByGameId = pictureRepository.findPictureByGame_Id(game.getId());
+        currentGame.setPicture(pictureByGameId);
+        return currentGame;
     }
 
     @Override
@@ -78,18 +90,6 @@ public class GameServiceImpl implements GameService {
         pictureRepository.save(picture);
     }
 
-    @Override
-    public List<AllGamesViewModel> findAllGamesWithValueNullOrFalse() {
-        return gameRepository
-                .findGamesThatAreNotApproved()
-                .stream()
-                .map(game -> {
-                    AllGamesViewModel currentGame = modelMapper.map(game, AllGamesViewModel.class);
-                    Picture pictureByGameId = pictureRepository.findPictureByGame_Id(game.getId());
-                    currentGame.setPicture(pictureByGameId);
-                    return currentGame;
-                }).collect(Collectors.toList());
-    }
 
     @Override
     public void approveGameWithId(Long id) {

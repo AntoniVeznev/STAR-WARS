@@ -33,6 +33,43 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    public List<AllNewsViewModel> latestStarWarsNews() {
+        return newsRepository
+                .findLatestThreeNews()
+                .stream()
+                .map(this::mapsNewsToNewsView)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AllNewsViewModel> findAllNewsWithValueNullOrFalse() {
+        return newsRepository
+                .findNewsThatAreNotApproved()
+                .stream()
+                .map(this::mapsNewsToNewsView)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AllNewsViewModel> findAllNews() {
+        return newsRepository
+                .findAllNewsOrderedByNewestToOldest()
+                .stream()
+                .map(news -> {
+                    AllNewsViewModel currentNews = mapsNewsToNewsView(news);
+                    currentNews.setAuthorName(news.getAuthor().getUsername());
+                    return currentNews;
+                }).collect(Collectors.toList());
+    }
+
+    private AllNewsViewModel mapsNewsToNewsView(News news) {
+        AllNewsViewModel currentNews = modelMapper.map(news, AllNewsViewModel.class);
+        Picture currentPicture = pictureRepository.findPictureByNews_Id(news.getId());
+        currentNews.setPicture(currentPicture);
+        return currentNews;
+    }
+
+    @Override
     public void addNews(NewsAddBindingModel newsAddBindingModel, String currentUserUsername) throws IOException {
         News news = modelMapper.map(newsAddBindingModel, News.class);
         news.setAuthor(userRepository.findUserByUsername(currentUserUsername).orElse(null));
@@ -54,50 +91,8 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public List<AllNewsViewModel> latestStarWarsNews() {
-        return newsRepository
-                .findLatestThreeNews()
-                .stream()
-                .map(currentNews -> {
-                    AllNewsViewModel latestNews =
-                            modelMapper.map(currentNews, AllNewsViewModel.class);
-                    Picture pictureBySerialId =
-                            pictureRepository.findPictureByNews_Id(currentNews.getId());
-                    latestNews.setPicture(pictureBySerialId);
-                    return latestNews;
-                }).collect(Collectors.toList());
-    }
-
-    @Override
     public News findNews(Long id) {
         return newsRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public List<AllNewsViewModel> findAllNews() {
-        return newsRepository
-                .findAllNewsOrderedByNewestToOldest()
-                .stream()
-                .map(news -> {
-                    AllNewsViewModel currentNews = modelMapper.map(news, AllNewsViewModel.class);
-                    Picture pictureByNewsId = pictureRepository.findPictureByNews_Id(news.getId());
-                    currentNews.setPicture(pictureByNewsId);
-                    currentNews.setAuthorName(news.getAuthor().getUsername());
-                    return currentNews;
-                }).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<AllNewsViewModel> findAllNewsWithValueNullOrFalse() {
-        return newsRepository
-                .findNewsThatAreNotApproved()
-                .stream()
-                .map(news -> {
-                    AllNewsViewModel currentNews = modelMapper.map(news, AllNewsViewModel.class);
-                    Picture pictureByNewsId = pictureRepository.findPictureByNews_Id(news.getId());
-                    currentNews.setPicture(pictureByNewsId);
-                    return currentNews;
-                }).collect(Collectors.toList());
     }
 
     @Override
@@ -112,6 +107,24 @@ public class NewsServiceImpl implements NewsService {
         List<Picture> allByNewsId = pictureRepository.findAllByNews_Id(id);
         pictureRepository.deleteAll(allByNewsId);
         newsRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteOlderNews() {
+        LocalDateTime dateAndTimeNow = LocalDateTime.now();
+        LocalDateTime localDateTime = dateAndTimeNow.minusMonths(3);
+        List<News> allByPostDateBefore = newsRepository.findAllByPostDateBefore(localDateTime);
+
+        if (allByPostDateBefore.isEmpty()) {
+            return;
+        }
+
+        for (News news : allByPostDateBefore) {
+            Picture pictureByNewsId = pictureRepository.findPictureByNews_Id(news.getId());
+            pictureRepository.delete(pictureByNewsId);
+        }
+
+        newsRepository.deleteAll(allByPostDateBefore);
     }
 
     @Override
@@ -412,24 +425,5 @@ public class NewsServiceImpl implements NewsService {
         newsRepository.save(news7);
         pictureRepository.save(picture7);
 
-
-    }
-
-    @Override
-    public void deleteOlderNews() {
-        LocalDateTime dateAndTimeNow = LocalDateTime.now();
-        LocalDateTime localDateTime = dateAndTimeNow.minusMonths(3);
-        List<News> allByPostDateBefore = newsRepository.findAllByPostDateBefore(localDateTime);
-
-        if (allByPostDateBefore.isEmpty()) {
-            return;
-        }
-
-        for (News news : allByPostDateBefore) {
-            Picture pictureByNewsId = pictureRepository.findPictureByNews_Id(news.getId());
-            pictureRepository.delete(pictureByNewsId);
-        }
-
-        newsRepository.deleteAll(allByPostDateBefore);
     }
 }

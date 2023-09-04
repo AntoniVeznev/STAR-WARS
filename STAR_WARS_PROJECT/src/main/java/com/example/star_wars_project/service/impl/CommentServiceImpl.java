@@ -35,7 +35,7 @@ public class CommentServiceImpl implements CommentService {
         List<Comment> allByMovie = commentRepository.findCommentsByMovie_IdOrderByCreatedDesc(movieId);
         return allByMovie
                 .stream()
-                .map(this::getCommentsView)
+                .map(this::mapsCommentToCommentView)
                 .collect(Collectors.toList());
     }
 
@@ -44,7 +44,7 @@ public class CommentServiceImpl implements CommentService {
         List<Comment> allBySerial = commentRepository.findCommentsBySeries_IdOrderByCreatedDesc(serialId);
         return allBySerial
                 .stream()
-                .map(this::getCommentsView)
+                .map(this::mapsCommentToCommentView)
                 .collect(Collectors.toList());
     }
 
@@ -53,8 +53,14 @@ public class CommentServiceImpl implements CommentService {
         List<Comment> allByGame = commentRepository.findCommentsByGame_IdOrderByCreatedDesc(gameId);
         return allByGame
                 .stream()
-                .map(this::getCommentsView)
+                .map(this::mapsCommentToCommentView)
                 .collect(Collectors.toList());
+    }
+
+    private CommentsView mapsCommentToCommentView(Comment comment) {
+        CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
+        commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
+        return commentsView;
     }
 
     @Override
@@ -99,11 +105,6 @@ public class CommentServiceImpl implements CommentService {
         return commentsView;
     }
 
-    private CommentsView getCommentsView(Comment comment) {
-        CommentsView commentsView = modelMapper.map(comment, CommentsView.class);
-        commentsView.setCreated(comment.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm")));
-        return commentsView;
-    }
 
     private CommentsView creatingCurrentComment(CommentAddBindingModel commentAddBindingModel, String name, Comment comment) {
         comment.setAuthor(userRepository.findUserByUsername(name).orElse(null));
