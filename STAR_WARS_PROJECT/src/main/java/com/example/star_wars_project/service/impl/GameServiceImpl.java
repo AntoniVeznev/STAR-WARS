@@ -238,5 +238,124 @@ public class GameServiceImpl implements GameService {
 
         gameRepository.save(game4);
         pictureRepository.save(picture4);
+
+
+        Game game5 = new Game();
+        game5.setApproved(null);
+        game5.setDescription("The story of Cal Kestis continues in Star Wars Jedi: Survivor, a third person galaxy-spanning action-adventure game from Respawn Entertainment, developed in collaboration with Lucasfilm Games. This narratively-driven, single player title picks up five years after the events of Star Wars Jedi: Fallen Order and follows Cal’s increasingly desperate fight as the galaxy descends further into darkness.\n" +
+                "\n" +
+                "Stand against the darkness." +
+                "\n" +
+                "\n" +
+                "Continue Cal’s Journey - No longer a Padawan, Cal has come into his own and grown into a powerful Jedi Knight. The Dark Times are closing in - with enemies new and familiar surrounding him, Cal will need to decide how far he’s willing to go to save those closest to him.\n" +
+                "\n" +
+                "Go Beyond Your Training - The cinematic combat system returns with additional Force abilities and new lightsaber fighting styles. Creatively leverage all these abilities and weapons to strategically take on an expanded host of enemies, sizing up strengths and weaknesses while cleverly utilizing your training to overcome your opponents and solve the mysteries that lay in your path.\n" +
+                "\n" +
+                "Explore an Untamed Galaxy - Discover new planets and familiar frontiers in the Star Wars galaxy, each with unique biomes, challenges, and enemies. Master new skills, equipment, and abilities that will augment the ways you explore, fight, and roam.\n");
+        game5.setReleaseDate(LocalDate.of(2023, 4, 28));
+        game5.setTitle("Star Wars Jedi: Survivor");
+        game5.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        game5.setPlatform(platformRepository.findPlatformByName(PlatformNameEnum.PC));
+        game5.setVideoUrl("VRaobDJjiec?si");
+
+        Picture picture5 = new Picture();
+        picture5.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1693921400/qwrcosmgsfnlxbnzzr26.webp");
+        picture5.setPublicId("qwrcosmgsfnlxbnzzr26");
+        picture5.setTitle("Star Wars Jedi: Survivor");
+        picture5.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture5.setGame(game5);
+
+        gameRepository.save(game5);
+        pictureRepository.save(picture5);
+
+
+        Game game6 = new Game();
+        game6.setApproved(null);
+        game6.setDescription("Immerse yourself in your STAR WARS™ battle fantasies. Feeling the ominous thud of an AT-AT stomping down on the frozen tundra of Hoth. Rebel forces firing blasters as Imperial speeder bikes zip through the lush forests of Endor. Intense dogfights between squadrons of X-wings and TIE fighters filling the skies. Immerse yourself in the epic STAR WARS™ battles you’ve always dreamed of and create new heroic moments of your own in STAR WARS™ Battlefront™.");
+        game6.setReleaseDate(LocalDate.of(2015, 11, 19));
+        game6.setTitle("Star Wars Battlefront");
+        game6.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        game6.setPlatform(platformRepository.findPlatformByName(PlatformNameEnum.PC));
+        game6.setVideoUrl("V2xp-qtUlsQ?si");
+
+        Picture picture6 = new Picture();
+        picture6.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1692087549/vuzlhvo6mrn6hqafrzv0.jpg");
+        picture6.setPublicId("vuzlhvo6mrn6hqafrzv0");
+        picture6.setTitle("Star Wars Battlefront");
+        picture6.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture6.setGame(game6);
+
+        gameRepository.save(game6);
+        pictureRepository.save(picture6);
+
+
+        Game game7 = new Game();
+        game7.setApproved(null);
+        game7.setDescription("Star Wars: The Old Republic is a free-to-play MMORPG that puts you at the center of your own story-driven saga. Play as a Jedi, Sith, Bounty Hunter, or one of many other iconic Star Wars roles in the galaxy far, far away over three thousand years before the classic films. The story of Legacy of the Sith builds upon Star Wars: The Old Republic’s dynamic plot and ongoing war between the Galactic Republic and the Sith Empire, allowing players to advance their level to a new cap of 80. Adventure to the aquatic planet of Manaan on a campaign to track down the insidious Darth Malgus - whose secret plans could spell doom for both the Jedi and the Sith. Legacy of the Sith brings new collaborative missions as well, including a 4-player Flashpoint set in a ruined Sith Fortress on the remote planet Elom.");
+        game7.setReleaseDate(LocalDate.of(2011, 12, 20));
+        game7.setTitle("Star Wars: The Old Republic");
+        game7.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        game7.setPlatform(platformRepository.findPlatformByName(PlatformNameEnum.PC));
+        game7.setVideoUrl("YdgmH9Vv2-I?si");
+
+        Picture picture7 = new Picture();
+        picture7.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1692087023/rb01biianbhc4ikwpnsp.jpg");
+        picture7.setPublicId("rb01biianbhc4ikwpnsp");
+        picture7.setTitle("Star Wars: The Old Republic");
+        picture7.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture7.setGame(game7);
+
+        gameRepository.save(game7);
+        pictureRepository.save(picture7);
+
+
+        Game game8 = new Game();
+        game8.setApproved(null);
+        game8.setDescription("\n" +
+                "\n" +
+                "The Star Wars Saga continues with Star Wars: The Force Unleashed II, the highly anticipated sequel to the fastest-selling Star Wars game ever created, which has sold more than seven million copies worldwide. In Star Wars: The Force Unleashed, the world was introduced to Darth Vader’s now fugitive apprentice, Starkiller — the unlikely hero who would ignite the flames of rebellion in a galaxy so desperately in need of a champion.\n" +
+                "\n" +
+                "In the sequel, Starkiller returns with over-the-top Force powers and embarks on a journey to discover his own identity and to reunite with his one true love, Juno Eclipse. In Star Wars: The Force Unleashed II, Starkiller is once again the pawn of Darth Vader — but instead of training his protégée as a ruthless assassin, the dark lord is attempting to clone his former apprentice in an attempt to create the Ultimate Sith warrior. The chase is on — Starkiller is in pursuit of Juno and Darth Vader is hunting for Starkiller.\n" +
+                "\n" +
+                "With all-new devastating Force powers and the ability to dual-wield lightsabers, Starkiller cuts a swath through deadly new enemies across exciting worlds from the Star Wars movies — all in his desperate search for answers to his past.\n");
+        game8.setReleaseDate(LocalDate.of(2010, 10, 26));
+        game8.setTitle("Star Wars: The Force Unleashed II");
+        game8.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        game8.setPlatform(platformRepository.findPlatformByName(PlatformNameEnum.PC));
+        game8.setVideoUrl("ChVXYSU89fs?si");
+
+        Picture picture8 = new Picture();
+        picture8.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1692088971/ejdulhdsqbuta8kauz0i.jpg");
+        picture8.setPublicId("ejdulhdsqbuta8kauz0i");
+        picture8.setTitle("Star Wars: The Force Unleashed II");
+        picture8.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture8.setGame(game8);
+
+        gameRepository.save(game8);
+        pictureRepository.save(picture8);
+
+
+        Game game9 = new Game();
+        game9.setApproved(null);
+        game9.setDescription("\n" +
+                "\n" +
+                "As the title implies, Star Wars: The Force Unleashed completely re-imagines the scope and scale of the Force to epic proportions. Players are cast into the role of Darth Vader’s secret apprentice, Starkiller, who has been trained to hunt down and destroy Jedi. During his quest, Starkiller will ally himself with a most unlikely set of heroes and be forced to make decisions that could change the course of his destiny and set events in motion that will forever shape the galaxy!\n" +
+                "\n" +
+                "By incorporating two ground-breaking technologies, Digital Molecular Matter (DMM) and euphoria, and paired with the powerful Havok physics system, players will interact with their environments and battle against enemies in new and exciting ways. Couple those technological advancements with devastating lightsaber attack combos, over-the-top Force powers like Force Grip and Force Repulse, and a storyline that takes place in the largely unexplored era between Star Wars: Episode III: Revenge of the Sith and Star Wars: Episode IV: A New Hope, Star Wars: The Force Unleashed provides a Star Wars gaming experience the likes of which have never been seen before.\n");
+        game9.setReleaseDate(LocalDate.of(2008, 9, 16));
+        game9.setTitle("Star Wars: The Force Unleashed");
+        game9.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        game9.setPlatform(platformRepository.findPlatformByName(PlatformNameEnum.PC));
+        game9.setVideoUrl("49beQOa--Jc?si");
+
+        Picture picture9 = new Picture();
+        picture9.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1692088220/hmvdxkrmshgfdolfwqlr.jpg");
+        picture9.setPublicId("hmvdxkrmshgfdolfwqlr");
+        picture9.setTitle("Star Wars: The Force Unleashed");
+        picture9.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture9.setGame(game9);
+
+        gameRepository.save(game9);
+        pictureRepository.save(picture9);
     }
 }
