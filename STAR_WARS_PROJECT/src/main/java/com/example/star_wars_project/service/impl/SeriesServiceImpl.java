@@ -199,5 +199,105 @@ public class SeriesServiceImpl implements SeriesService {
 
         seriesRepository.save(series4);
         pictureRepository.save(picture4);
+
+
+        Series series5 = new Series();
+        series5.setApproved(null);
+        series5.setDescription("It is a dark time in the galaxy as the Galactic Empire continues to tighten its grip on the people through oppression and fear, compelling a few brave individuals to band together in resistance. The motley crew of the starship Ghost stands up for those who cannot fight for themselves, providing the spark to ignite a rebellion.");
+        series5.setReleaseDate(LocalDate.of(2017, 10, 16));
+        series5.setTitle("Star Wars Rebels");
+        series5.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        series5.setGenre(genreRepository.findByName(GenreNameEnum.ANIMATION));
+
+
+        Picture picture5 = new Picture();
+        picture5.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1691915057/d4mugdanohtamwc8acd1.webp");
+        picture5.setPublicId("d4mugdanohtamwc8acd1");
+        picture5.setTitle("Star Wars Rebels");
+        picture5.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture5.setSeries(series5);
+
+        seriesRepository.save(series5);
+        pictureRepository.save(picture5);
+
+
+        Series series6 = new Series();
+        series6.setApproved(null);
+        series6.setDescription("A six-episode event featuring parables built around Jedi from the prequel era. Journey into the lives of two distinctly different Jedi -- Ahsoka Tano and Count Dooku. Each will be put to the test as they make choices that will define their destinies.  ");
+        series6.setReleaseDate(LocalDate.of(2022, 10, 26));
+        series6.setTitle("Tales of the Jedi");
+        series6.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        series6.setGenre(genreRepository.findByName(GenreNameEnum.ANIMATION));
+
+
+        Picture picture6 = new Picture();
+        picture6.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1691916145/hkhxomm3ksyp9euona8m.webp");
+        picture6.setPublicId("hkhxomm3ksyp9euona8m");
+        picture6.setTitle("Tales of the Jedi");
+        picture6.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture6.setSeries(series6);
+
+        seriesRepository.save(series6);
+        pictureRepository.save(picture6);
+
+
+        Series series7 = new Series();
+        series7.setApproved(null);
+        series7.setDescription("The Bad Batch follows the elite and experimental clones of the Bad Batch (first introduced in “The Clone Wars”) as they find their way in a rapidly changing galaxy in the immediate aftermath of the Clone War. Members of Bad Batch—a unique squad of clones who vary genetically from their brothers in the Clone Army—each possess a singular exceptional skill that makes them extraordinarily effective soldiers and a formidable crew.  ");
+        series7.setReleaseDate(LocalDate.of(2021, 5, 4));
+        series7.setTitle("Star Wars: The Bad Batch");
+        series7.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        series7.setGenre(genreRepository.findByName(GenreNameEnum.ANIMATION));
+
+
+        Picture picture7 = new Picture();
+        picture7.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1691915262/yeudbahcv9vc7tidazdq.webp");
+        picture7.setPublicId("yeudbahcv9vc7tidazdq");
+        picture7.setTitle("Star Wars: The Bad Batch");
+        picture7.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture7.setSeries(series7);
+
+        seriesRepository.save(series7);
+        pictureRepository.save(picture7);
+
+
+        Series series8 = new Series();
+        series8.setApproved(null);
+        series8.setDescription("After the fall of the Empire, a lone Mandalorian makes his way through the lawless galaxy with his foundling, Grogu.  ");
+        series8.setReleaseDate(LocalDate.of(2023, 3, 1));
+        series8.setTitle("The Mandalorian");
+        series8.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        series8.setGenre(genreRepository.findByName(GenreNameEnum.ACTION));
+
+
+        Picture picture8 = new Picture();
+        picture8.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1691915565/xvzqeutuefx50tqtewic.webp");
+        picture8.setPublicId("xvzqeutuefx50tqtewic");
+        picture8.setTitle("The Mandalorian");
+        picture8.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture8.setSeries(series8);
+
+        seriesRepository.save(series8);
+        pictureRepository.save(picture8);
+
+
+        Series series9 = new Series();
+        series9.setApproved(null);
+        series9.setDescription("Set after the fall of the Empire, \"Ahsoka\" follows the former Jedi knight Ahsoka Tano as she investigates an emerging threat to a vulnerable galaxy.  ");
+        series9.setReleaseDate(LocalDate.of(2023, 8, 22));
+        series9.setTitle("Ahsoka");
+        series9.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        series9.setGenre(genreRepository.findByName(GenreNameEnum.ADVENTURE));
+
+
+        Picture picture9 = new Picture();
+        picture9.setPictureUrl("https://res.cloudinary.com/dedh1hh8k/image/upload/v1693902908/ipefsschdggliykiakpu.jpg");
+        picture9.setPublicId("ipefsschdggliykiakpu");
+        picture9.setTitle("Ahsoka");
+        picture9.setAuthor(userRepository.findUserByUsername("Admin").orElse(null));
+        picture9.setSeries(series9);
+
+        seriesRepository.save(series9);
+        pictureRepository.save(picture9);
     }
 }
