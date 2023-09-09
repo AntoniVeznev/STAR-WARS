@@ -3,8 +3,7 @@ const backEndLocation = 'http://localhost:8080'
 let gameId = document.getElementById('gameId').getAttribute("value")
 let commentGameSection = document.getElementById('commentGameSpanTest')
 
-
-fetch(`${backEndLocation}/api/${gameId}/commentss`)
+fetch(`${backEndLocation}/api/games/comments/${gameId}`)
     .then((response) => response.json())
     .then((body) => {
         for (const bodyElement of body) {

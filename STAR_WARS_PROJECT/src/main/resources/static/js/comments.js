@@ -3,7 +3,7 @@ const backEndLocation = 'http://localhost:8080'
 let movieId = document.getElementById('movieId').getAttribute("value")
 let commentSection = document.getElementById('commentSpanTest')
 
-fetch(`${backEndLocation}/api/${movieId}/comments`)
+fetch(`${backEndLocation}/api/movies/comments/${movieId}`)
     .then((response) => response.json())
     .then((body) => {
         for (const bodyElement of body) {

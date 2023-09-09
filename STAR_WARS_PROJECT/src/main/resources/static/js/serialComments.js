@@ -3,7 +3,7 @@ const backEndLocation = 'http://localhost:8080'
 let serialId = document.getElementById('serialId').getAttribute("value")
 let commentSerialSection = document.getElementById('commentSerialSpanTest')
 
-fetch(`${backEndLocation}/api/${serialId}/comment`)
+fetch(`${backEndLocation}/api/series/comments/${serialId}`)
     .then((response) => response.json())
     .then((body) => {
         for (const bodyElement of body) {

@@ -7,12 +7,14 @@ import com.example.star_wars_project.service.CommentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+
 
 import java.util.List;
 
@@ -44,7 +46,7 @@ class CommentRestControllerTest {
         when(commentService.getCommentsByMovieId(1L))
                 .thenReturn(List.of(createComment("text1"), createComment("text2")));
         mockMvc
-                .perform(get("/api/1/comments"))
+                .perform(get("/api/movies/comments/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].postContent", is("text1")))
                 .andExpect(jsonPath("$.[1].postContent", is("text2")));
@@ -55,7 +57,7 @@ class CommentRestControllerTest {
         when(commentService.getCommentsBySerialId(1L))
                 .thenReturn(List.of(createComment("text1"), createComment("text2")));
         mockMvc
-                .perform(get("/api/1/comment"))
+                .perform(get("/api/series/comments/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].postContent", is("text1")))
                 .andExpect(jsonPath("$.[1].postContent", is("text2")));
@@ -66,7 +68,7 @@ class CommentRestControllerTest {
         when(commentService.getCommentsByGameId(1L))
                 .thenReturn(List.of(createComment("text1"), createComment("text2")));
         mockMvc
-                .perform(get("/api/1/commentss"))
+                .perform(get("/api/games/comments/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].postContent", is("text1")))
                 .andExpect(jsonPath("$.[1].postContent", is("text2")));

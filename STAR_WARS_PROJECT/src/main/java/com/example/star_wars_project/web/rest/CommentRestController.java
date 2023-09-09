@@ -1,10 +1,13 @@
 package com.example.star_wars_project.web.rest;
 
+import com.example.star_wars_project.exception.ItemNotFoundException;
 import com.example.star_wars_project.model.binding.CommentAddBindingModel;
 import com.example.star_wars_project.model.view.CommentsView;
 import com.example.star_wars_project.service.CommentService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.net.URI;
 import java.security.Principal;
@@ -18,21 +21,30 @@ public class CommentRestController {
         this.commentService = commentService;
     }
 
-    @GetMapping("/api/{movieId}/comments")
-    public ResponseEntity<List<CommentsView>> getMovieComments(@PathVariable("movieId") Long movieId) {
+    @GetMapping("/api/movies/comments/{movieId}")
+    public ResponseEntity<List<CommentsView>> getAllCommentsForThisMovie(@PathVariable("movieId") Long movieId) {
         List<CommentsView> commentsByMovie = commentService.getCommentsByMovieId(movieId);
+        if (commentsByMovie.isEmpty()) {
+            throw new ItemNotFoundException();
+        }
         return ResponseEntity.ok(commentsByMovie);
     }
 
-    @GetMapping("/api/{serialId}/comment")
-    public ResponseEntity<List<CommentsView>> getSerialComments(@PathVariable("serialId") Long serialId) {
+    @GetMapping("/api/series/comments/{serialId}")
+    public ResponseEntity<List<CommentsView>> getAllCommentsForThisSeries(@PathVariable("serialId") Long serialId) {
         List<CommentsView> commentsBySerial = commentService.getCommentsBySerialId(serialId);
+        if (commentsBySerial.isEmpty()) {
+            throw new ItemNotFoundException();
+        }
         return ResponseEntity.ok(commentsBySerial);
     }
 
-    @GetMapping("/api/{gameId}/commentss")
-    public ResponseEntity<List<CommentsView>> getGameComments(@PathVariable("gameId") Long gameId) {
+    @GetMapping("/api/games/comments/{gameId}")
+    public ResponseEntity<List<CommentsView>> getAllCommentsForThisGame(@PathVariable("gameId") Long gameId) {
         List<CommentsView> commentsByGame = commentService.getCommentsByGameId(gameId);
+        if (commentsByGame.isEmpty()) {
+            throw new ItemNotFoundException();
+        }
         return ResponseEntity.ok(commentsByGame);
     }
 
@@ -92,4 +104,9 @@ public class CommentRestController {
         return ResponseEntity.created(URI.create(String.format("/api/%d/commentss/%d", gameId, commentsView.getId()))).body(commentsView);
     }
 
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    @ExceptionHandler(ItemNotFoundException.class)
+    public ModelAndView commentNotFoundException(ItemNotFoundException infe) {
+        return new ModelAndView("other-errors/comment-not-found");
+    }
 }
