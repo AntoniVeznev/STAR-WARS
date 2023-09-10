@@ -48,26 +48,25 @@ public class CommentRestController {
         return ResponseEntity.ok(commentsByGame);
     }
 
-    @GetMapping("/api/{movieId}/comments/{commentId}")
+    @GetMapping("/api/movie/{movieId}/comments/{commentId}")
     public ResponseEntity<CommentsView> getCommentMovie(@PathVariable("commentId") Long commentId, @PathVariable String movieId) {
         CommentsView commentsView = commentService.getCommentById(commentId);
         return ResponseEntity.ok(commentsView);
     }
 
-    @GetMapping("/api/{serialId}/comment/{commentId}")
+    @GetMapping("/api/serial/{serialId}/comments/{commentId}")
     public ResponseEntity<CommentsView> getCommentSerial(@PathVariable("commentId") Long commentId, @PathVariable String serialId) {
         CommentsView commentsView = commentService.getCommentById(commentId);
         return ResponseEntity.ok(commentsView);
     }
 
-    @GetMapping("/api/{gameId}/commentss/{commentId}")
+    @GetMapping("/api/game/{gameId}/comments/{commentId}")
     public ResponseEntity<CommentsView> getCommentGame(@PathVariable("commentId") Long commentId, @PathVariable String gameId) {
         CommentsView commentsView = commentService.getCommentById(commentId);
         return ResponseEntity.ok(commentsView);
     }
 
-
-    @PostMapping(value = "/api/{movieId}/comments", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/api/movie/{movieId}/comments", consumes = "application/json", produces = "application/json")
     public ResponseEntity<CommentsView> createMovieComment(Principal principal,
                                                            @RequestBody CommentAddBindingModel commentAddBindingModel,
                                                            @PathVariable("movieId") Long movieId) {
@@ -76,10 +75,10 @@ public class CommentRestController {
         if (commentsView == null) {
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.created(URI.create(String.format("/api/%d/comments/%d", movieId, commentsView.getId()))).body(commentsView);
+        return ResponseEntity.created(URI.create(String.format("/api/movie/%d/comments/%d", movieId, commentsView.getId()))).body(commentsView);
     }
 
-    @PostMapping(value = "/api/{serialId}/comment", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/api/serial/{serialId}/comments", consumes = "application/json", produces = "application/json")
     public ResponseEntity<CommentsView> createSerialComment(Principal principal,
                                                             @RequestBody CommentAddBindingModel commentAddBindingModel,
                                                             @PathVariable("serialId") Long serialId) {
@@ -88,11 +87,10 @@ public class CommentRestController {
         if (commentsView == null) {
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.created(URI.create(String.format("/api/%d/comment/%d", serialId, commentsView.getId()))).body(commentsView);
+        return ResponseEntity.created(URI.create(String.format("/api/serial/%d/comments/%d", serialId, commentsView.getId()))).body(commentsView);
     }
 
-
-    @PostMapping(value = "/api/{gameId}/commentss", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/api/game/{gameId}/comments", consumes = "application/json", produces = "application/json")
     public ResponseEntity<CommentsView> createGameComment(Principal principal,
                                                           @RequestBody CommentAddBindingModel commentAddBindingModel,
                                                           @PathVariable("gameId") Long gameId) {
@@ -101,7 +99,7 @@ public class CommentRestController {
         if (commentsView == null) {
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.created(URI.create(String.format("/api/%d/commentss/%d", gameId, commentsView.getId()))).body(commentsView);
+        return ResponseEntity.created(URI.create(String.format("/api/game/%d/comments/%d", gameId, commentsView.getId()))).body(commentsView);
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND)

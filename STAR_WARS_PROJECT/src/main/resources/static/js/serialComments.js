@@ -37,7 +37,7 @@ commentSerialForm.addEventListener("submit", (event) => {
     let text = document.getElementById("textAreaExample1").value;
 
 
-    fetch(`${backEndLocation}/api/${serialId}/comment`, {
+    fetch(`${backEndLocation}/api/serial/${serialId}/comments`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

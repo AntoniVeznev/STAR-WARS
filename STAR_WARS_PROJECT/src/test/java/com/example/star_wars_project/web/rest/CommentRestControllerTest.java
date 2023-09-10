@@ -79,7 +79,7 @@ class CommentRestControllerTest {
         when(commentService.getCommentById(1L))
                 .thenReturn(createComment("some text here!"));
         mockMvc
-                .perform(get("/api/1/comments/1"))
+                .perform(get("/api/movie/1/comments/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.postContent", is("some text here!")));
     }
@@ -89,7 +89,7 @@ class CommentRestControllerTest {
         when(commentService.getCommentById(1L))
                 .thenReturn(createComment("some text"));
         mockMvc
-                .perform(get("/api/1/comment/1"))
+                .perform(get("/api/serial/1/comments/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.postContent", is("some text")));
     }
@@ -99,7 +99,7 @@ class CommentRestControllerTest {
         when(commentService.getCommentById(1L))
                 .thenReturn(createComment("some text here!!!"));
         mockMvc
-                .perform(get("/api/1/commentss/1"))
+                .perform(get("/api//game/1/comments/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.postContent", is("some text here!!!")));
     }
@@ -126,7 +126,7 @@ class CommentRestControllerTest {
                 .thenReturn(createComment("Test comment!"));
 
         mockMvc
-                .perform(post("/api/1/comments")
+                .perform(post("/api/movie/1/comments")
                         .content(objectMapper.writeValueAsString(commentAddBindingModel))
                         .contentType("application/json")
                         .with(csrf()))
@@ -145,7 +145,7 @@ class CommentRestControllerTest {
                 .thenReturn(null);
 
         mockMvc
-                .perform(post("/api/1/comments")
+                .perform(post("/api/movie/1/comments")
                         .content(objectMapper.writeValueAsString(commentAddBindingModel))
                         .contentType("application/json")
                         .with(csrf()))
@@ -165,7 +165,7 @@ class CommentRestControllerTest {
                 .thenReturn(createComment("Test comment!"));
 
         mockMvc
-                .perform(post("/api/1/comment")
+                .perform(post("/api/serial/1/comments")
                         .content(objectMapper.writeValueAsString(commentAddBindingModel))
                         .contentType("application/json")
                         .with(csrf()))
@@ -184,7 +184,7 @@ class CommentRestControllerTest {
                 .thenReturn(null);
 
         mockMvc
-                .perform(post("/api/1/comment")
+                .perform(post("/api/serial/1/comments")
                         .content(objectMapper.writeValueAsString(commentAddBindingModel))
                         .contentType("application/json")
                         .with(csrf()))
@@ -203,7 +203,7 @@ class CommentRestControllerTest {
                 .thenReturn(createComment("Test comment!"));
 
         mockMvc
-                .perform(post("/api/1/commentss")
+                .perform(post("/api/game/1/comments")
                         .content(objectMapper.writeValueAsString(commentAddBindingModel))
                         .contentType("application/json")
                         .with(csrf()))
@@ -222,7 +222,7 @@ class CommentRestControllerTest {
                 .thenReturn(null);
 
         mockMvc
-                .perform(post("/api/1/commentss")
+                .perform(post("/api/game/1/comments")
                         .content(objectMapper.writeValueAsString(commentAddBindingModel))
                         .contentType("application/json")
                         .with(csrf()))

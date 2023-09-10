@@ -37,7 +37,7 @@ commentForm.addEventListener("submit", (event) => {
     let text = document.getElementById("textAreaExample").value;
 
 
-    fetch(`${backEndLocation}/api/${movieId}/comments`, {
+    fetch(`${backEndLocation}/api/movie/${movieId}/comments`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

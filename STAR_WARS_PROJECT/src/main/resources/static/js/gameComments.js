@@ -37,7 +37,7 @@ commentGameForm.addEventListener("submit", (event) => {
     let text = document.getElementById("textAreaExample2").value;
 
 
-    fetch(`${backEndLocation}/api/${gameId}/commentss`, {
+    fetch(`${backEndLocation}/api/game/${gameId}/comments`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
