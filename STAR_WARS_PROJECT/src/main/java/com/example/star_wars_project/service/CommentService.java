@@ -19,4 +19,6 @@ public interface CommentService {
     CommentsView createCommentGame(CommentAddBindingModel commentAddBindingModel, Long gameId, String name);
 
     CommentsView getCommentById(Long commentId);
+
+    void deleteComment(String name, CommentsView commentsView);
 }

@@ -2,6 +2,7 @@ package com.example.star_wars_project.service.impl;
 
 import com.example.star_wars_project.model.binding.CommentAddBindingModel;
 import com.example.star_wars_project.model.entity.Comment;
+import com.example.star_wars_project.model.entity.User;
 import com.example.star_wars_project.model.view.CommentsView;
 import com.example.star_wars_project.repository.*;
 import com.example.star_wars_project.service.CommentService;
@@ -105,6 +106,16 @@ public class CommentServiceImpl implements CommentService {
         return commentsView;
     }
 
+    @Override
+    public void deleteComment(String name, CommentsView commentsView) {
+        Comment commentById = commentRepository.findCommentById(commentsView.getId());
+        User authorOfTheComment = commentById.getAuthor();
+        User currentlyLogedInUser = userRepository.findUserByUsername(name).orElseThrow();
+        if (name.equals(authorOfTheComment.getUsername()) ||
+                currentlyLogedInUser.getRoles().size() == 2) {
+            commentRepository.delete(commentById);
+        }
+    }
 
     private CommentsView creatingCurrentComment(CommentAddBindingModel commentAddBindingModel, String name, Comment comment) {
         comment.setAuthor(userRepository.findUserByUsername(name).orElse(null));
