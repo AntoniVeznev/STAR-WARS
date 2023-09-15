@@ -8,9 +8,9 @@ This is my first project. I made it for my final exam in SoftUni. It is responsi
 ## Logged in Users can:
 - Change their nicknames
 - Add News, Movies, Series and Games
+- Leave comments
 - Read the latest News
 - Find all Movies, Series and Games
-- Leave comments
 - Watch Game trailers
 
 ## Admins can:
