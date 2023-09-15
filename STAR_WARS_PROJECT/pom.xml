@@ -14,7 +14,7 @@
     <name>STAR_WARS_PROJECT</name>
     <description>STAR_WARS_PROJECT</description>
     <properties>
-        <java.version>19</java.version>
+        <java.version>20</java.version>
     </properties>
     <dependencies>
         <dependency>
