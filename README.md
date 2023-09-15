@@ -17,8 +17,9 @@ This is my first project. I made it for my final exam in SoftUni. It is responsi
 - Do everything that normal User can
 - Approve content added by normal Users
 - Delete content (Comments, News, Movies, Series and Games)
-- Promote normal User to Admin
 - Delete Users
+- Promote normal User to Admin
+
 
 ## Installation:
 1. Download STAR-WARS source code.
