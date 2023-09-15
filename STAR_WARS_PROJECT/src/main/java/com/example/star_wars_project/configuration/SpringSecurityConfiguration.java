@@ -18,17 +18,11 @@ public class SpringSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeHttpRequests()
-                //TODO: РАЗРЕШАВАМ УЖ ПАПКА СТАТИК!
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                //TODO: НАИСТИНА РАЗРЕШАВАМ ПАПКА СТАТИК!
                 .requestMatchers("/css/**", "/images/**", "/js/**", "/videos/**", "/webjars/**", "/api/**").permitAll()
-                //TODO: ДОСТЪПНО КАКТО ЗА АНОНИМНИ ТАКА И ЗА ЛОГНАТИ БЕЗ ЗНАЧЕНИЕ АДМИН ИЛИ ЮЗАР!
                 .requestMatchers("/", "/movies/catalogue", "/news/catalogue", "/series/catalogue", "/games/catalogue", "/users/login-error").permitAll()
-                //TODO: РАЗРЕШАВАМ АНОНИМНИТЕ ДА МОГАТ ДА СЕ ЛОГВАТ И РЕГИСТРИРАТ!
                 .requestMatchers("/users/login", "/users/register").anonymous()
-                //TODO: РАЗРЕШАВАМ ЛОГНАТИТЕ ЮЗАРИ И АДМИНИ ДА МОГАТ ДА СЕ ЛОГАУТВАТ!
                 .requestMatchers("/users/logout").authenticated()
-                //TODO: РАЗРЕШАВАМ ДОСТЪП НА АДМИНА ДО АДМИН СТРАНИЦАТА МУ!
                 .requestMatchers("/admin").hasRole(RoleNameEnum.ADMINISTRATOR.name())
 
                 .anyRequest()

@@ -51,9 +51,9 @@ public class CommentRestController {
     }
 
     @DeleteMapping("/api/movie/{movieId}/comments/{commentId}")
-    public ResponseEntity<CommentsView> deleteCommentById(Principal principal,
-                                                          @PathVariable("commentId") Long commentId,
-                                                          @PathVariable String movieId) {
+    public ResponseEntity<CommentsView> deleteMovieCommentById(Principal principal,
+                                                               @PathVariable("commentId") Long commentId,
+                                                               @PathVariable String movieId) {
         String name = principal.getName();
         CommentsView commentsView = commentService.getCommentById(commentId);
 
@@ -91,6 +91,20 @@ public class CommentRestController {
         return ResponseEntity.created(URI.create(String.format("/api/serial/%d/comments/%d", serialId, commentsView.getId()))).body(commentsView);
     }
 
+    @DeleteMapping("/api/serial/{serialId}/comments/{commentId}")
+    public ResponseEntity<CommentsView> deleteSerialCommentById(Principal principal,
+                                                                @PathVariable("commentId") Long commentId,
+                                                                @PathVariable String serialId) {
+        String name = principal.getName();
+        CommentsView commentsView = commentService.getCommentById(commentId);
+
+        if (commentsView != null) {
+            commentService.deleteComment(name, commentsView);
+            return ResponseEntity.ok(commentsView);
+        }
+        return ResponseEntity.status(403).build();
+    }
+
     @GetMapping("/api/games/comments/{gameId}")
     public ResponseEntity<List<CommentsView>> getAllCommentsForThisGame(@PathVariable("gameId") Long gameId) {
         List<CommentsView> commentsByGame = commentService.getCommentsByGameId(gameId);
@@ -118,6 +132,20 @@ public class CommentRestController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.created(URI.create(String.format("/api/game/%d/comments/%d", gameId, commentsView.getId()))).body(commentsView);
+    }
+
+    @DeleteMapping("/api/game/{gameId}/comments/{commentId}")
+    public ResponseEntity<CommentsView> deleteGameCommentById(Principal principal,
+                                                              @PathVariable("commentId") Long commentId,
+                                                              @PathVariable String gameId) {
+        String name = principal.getName();
+        CommentsView commentsView = commentService.getCommentById(commentId);
+
+        if (commentsView != null) {
+            commentService.deleteComment(name, commentsView);
+            return ResponseEntity.ok(commentsView);
+        }
+        return ResponseEntity.status(403).build();
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
