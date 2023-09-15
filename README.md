@@ -16,7 +16,7 @@ This is my first project. I made it for my final exam in SoftUni. It is responsi
 ## Admins can:
 - Do everything that normal User can
 - Approve content added by normal Users
-- Delete content
+- Delete content (Comments, News, Movies, Series and Games)
 - Promote normal User to Admin
 - Delete Users
 
