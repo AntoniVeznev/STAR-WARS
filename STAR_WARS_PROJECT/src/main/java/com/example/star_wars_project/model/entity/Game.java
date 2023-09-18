@@ -27,7 +27,7 @@ public class Game extends BaseEntity {
         isApproved = approved;
     }
 
-    @OneToOne
+    @ManyToOne
     public Platform getPlatform() {
         return platform;
     }
